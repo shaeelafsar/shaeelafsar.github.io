@@ -1,0 +1,33 @@
+---
+title: "Designing the foundation for a calm, technical portfolio"
+slug: "foundation-systems"
+date: "2026-05-02T17:18:28-05:00"
+excerpt: "A first post for the content pipeline, focused on tokens, layout, and content architecture."
+tags:
+  - design-system
+  - nextjs
+  - mdx
+published: true
+featured: true
+image: "/images/blog/foundation-systems.jpg"
+---
+
+## Why this foundation matters
+
+This placeholder post exists so the content pipeline can validate real MDX parsing, frontmatter loading, and syntax highlighting.
+
+### The stack choices
+
+- App Router with Server Components by default
+- File-based content in `content/`
+- Shared design tokens in CSS custom properties
+
+```ts
+export const foundation = {
+  shell: "header-footer-layout",
+  content: "mdx-plus-json",
+  theme: "class-based-dark-mode",
+};
+```
+
+> Strong foundations make later page work faster, calmer, and easier to reason about.

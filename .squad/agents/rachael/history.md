@@ -12,6 +12,11 @@
 - **2026-05-02T16:10:31-05:00** — Most frontend specs are implementable, but the main gaps are shared client/server boundaries (`Header`, `Button`, `ProjectFilter`) rather than visual/layout direction.
 - **2026-05-02T16:10:31-05:00** — Long-form content architecture is strong; remaining frontend clarifications are around TOC/reading-progress behavior, MDX image handling, and aligning compiled-content types across specs.
 - **2026-05-02T16:10:31-05:00** — The only major implementation blocker is the contact form submission contract; page structure and validation are already clear.
+- **2026-05-02T17:18:28-05:00** — Foundation scaffold now lives at the repo root with App Router, Tailwind v4, strict TypeScript, and `next dev --turbopack`; shared frontend helpers are in `lib/metadata.ts`, `lib/utils.ts`, and `types/*.ts`.
+- **2026-05-02T17:18:28-05:00** — Active architecture decisions applied during setup: Server Components by default, `next-mdx-remote` for file-based MDX content, Lenis + Framer Motion in the dependency graph, class-based dark-mode groundwork, and reduced-motion protection in `app/globals.css`.
+- **2026-05-02T17:18:28-05:00** — Repo-level linting needed an ignore update for orchestration folders (`.squad/`, `.copilot/`) because this project is scaffolded in a non-empty team workspace; Next 16 currently exposes the View Transition experiment as `experimental.viewTransition` in `next.config.ts`.
+- **2026-05-02T17:18:28-05:00** — Wave 2 foundation now includes a shared shell (`Header`, `Footer`, desktop `Nav`, `ThemeToggle`, `MobileMenu`), design-system UI primitives in `components/ui/`, and global CSS tokens aligned to Pris's design-system spec.
+- **2026-05-02T17:18:28-05:00** — The file-based content pipeline is live with `lib/mdx.ts`, `lib/blog.ts`, `lib/projects.ts`, `lib/resume.ts`, placeholder content under `content/`, and validated `pnpm lint && pnpm build` output on the updated shell.
 
 ## Notifications
 

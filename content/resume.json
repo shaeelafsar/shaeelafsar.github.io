@@ -1,0 +1,51 @@
+{
+  "name": "Shaeel Afsar",
+  "title": "Frontend Engineer",
+  "summary": "Placeholder resume data for the Phase 1 content pipeline.",
+  "location": "Chicago, IL",
+  "email": "hello@shaeelafsar.com",
+  "website": "https://shaeelafsar.com",
+  "experience": [
+    {
+      "company": "Placeholder Studio",
+      "role": "Senior Frontend Engineer",
+      "location": "Remote",
+      "startDate": "2026-05-02T17:18:28-05:00",
+      "endDate": "2026-05-02T17:18:28-05:00",
+      "summary": "Built polished React and Next.js interfaces with a focus on system quality.",
+      "highlights": [
+        "Created reusable UI systems for content-rich product surfaces.",
+        "Partnered across design and engineering to ship responsive web experiences."
+      ],
+      "techStack": ["Next.js", "TypeScript", "Tailwind CSS"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Placeholder University",
+      "degree": "Bachelor of Science",
+      "fieldOfStudy": "Computer Science",
+      "location": "Illinois",
+      "startDate": "2026-05-02T17:18:28-05:00",
+      "endDate": "2026-05-02T17:18:28-05:00",
+      "summary": "Placeholder education entry for structured resume rendering."
+    }
+  ],
+  "skillCategories": [
+    {
+      "title": "Frontend",
+      "skills": [
+        { "name": "React", "level": "advanced" },
+        { "name": "Next.js", "level": "advanced" },
+        { "name": "Tailwind CSS", "level": "advanced" }
+      ]
+    },
+    {
+      "title": "Content",
+      "skills": [
+        { "name": "MDX", "level": "advanced" },
+        { "name": "Structured content modeling", "level": "advanced" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+export { FadeIn } from "./fade-in";
+export type { FadeInProps } from "./fade-in";
+export { Magnetic } from "./magnetic";
+export type { MagneticProps } from "./magnetic";
+export { Parallax } from "./parallax";
+export type { ParallaxProps } from "./parallax";
+export { SmoothScrollProvider, useLenis } from "./smooth-scroll-provider";
+export type { SmoothScrollProviderProps } from "./smooth-scroll-provider";
+export { StaggerChildren } from "./stagger-children";
+export type { StaggerChildrenProps } from "./stagger-children";
+export { TextReveal } from "./text-reveal";
+export type { TextRevealProps } from "./text-reveal";

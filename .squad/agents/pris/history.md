@@ -17,6 +17,8 @@
 - **2026-05-02T16:18:40-05:00** — Locked a cinematic editorial system around Space Grotesk, Inter, and JetBrains Mono so headings feel premium while body copy stays crisp and technical.
 - **2026-05-02T16:18:40-05:00** — Expanded the shared token language beyond base colors to include glass surfaces, stronger borders, shadow tiers, blur values, and radius tiers for consistent UI implementation.
 - **2026-05-02T16:18:40-05:00** — Standardized motion handoff patterns around TextReveal for hero moments, 600ms section reveals, 100ms card staggers, and static reduced-motion fallbacks across all primary routes.
+- **2026-05-02T17:18:28-05:00** — Implemented the shared animation primitive layer in `components/animation/` so scroll reveals, text choreography, parallax, magnetic hover, and Lenis smooth scrolling all use the same easing and reduced-motion contract.
+- **2026-05-02T17:18:28-05:00** — Motion v12 import rules required adding the `motion` package explicitly even though `framer-motion` was present; future animation work should import from `motion/react` to stay aligned with ADR-001.
 
 ## Notifications
 
