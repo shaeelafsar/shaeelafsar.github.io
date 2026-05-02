@@ -38,8 +38,17 @@ export function SmoothScrollProvider({
       smoothWheel: true,
     });
 
+    let isSyncingScroll = false;
     const syncMotionScroll = () => {
-      window.dispatchEvent(new Event("scroll"));
+      if (isSyncingScroll) {
+        return;
+      }
+
+      isSyncingScroll = true;
+      window.requestAnimationFrame(() => {
+        window.dispatchEvent(new Event("scroll"));
+        isSyncingScroll = false;
+      });
     };
 
     let frameId = 0;

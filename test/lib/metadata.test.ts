@@ -9,12 +9,12 @@ describe("metadata", () => {
     expect(siteConfig.author).toBe("Shaeel Afsar");
   });
 
-  it("creates metadata with the expected defaults and overrides", () => {
+  it("creates website metadata with the expected defaults and overrides", () => {
     const metadata = createMetadata({
       title: "Projects",
       description: "Selected case studies and writing.",
       path: "/projects",
-      image: "/og/projects.png",
+      image: "/projects/example/opengraph-image",
     });
 
     expect(metadata.metadataBase?.toString()).toBe("https://shaeelafsar.com/");
@@ -31,7 +31,7 @@ describe("metadata", () => {
     });
     expect(metadata.openGraph?.images).toEqual([
       {
-        url: "https://shaeelafsar.com/og/projects.png",
+        url: "https://shaeelafsar.com/projects/example/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Projects | Shaeel Afsar",
@@ -41,7 +41,30 @@ describe("metadata", () => {
       card: "summary_large_image",
       title: "Projects | Shaeel Afsar",
       description: "Selected case studies and writing.",
-      images: ["https://shaeelafsar.com/og/projects.png"],
+      creator: "@shaeelafsar",
+      site: "@shaeelafsar",
+      images: ["https://shaeelafsar.com/projects/example/opengraph-image"],
+    });
+  });
+
+  it("creates article metadata for dynamic content", () => {
+    const metadata = createMetadata({
+      title: "Shipping server components without losing the human feel",
+      description: "A post on balancing performance and polish.",
+      path: "/blog/shipping-server-components",
+      image: "/blog/shipping-server-components/opengraph-image",
+      type: "article",
+      publishedTime: "2026-04-02T09:00:00-05:00",
+      section: "Blog",
+      tags: ["nextjs", "react"],
+    });
+
+    expect(metadata.openGraph).toMatchObject({
+      type: "article",
+      publishedTime: "2026-04-02T09:00:00-05:00",
+      section: "Blog",
+      tags: ["nextjs", "react"],
+      authors: ["Shaeel Afsar"],
     });
   });
 });

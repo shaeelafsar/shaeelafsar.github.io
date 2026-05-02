@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { FadeIn, StaggerChildren } from "@/components/animation";
 import { SkillsGrid } from "@/components/about/skills-grid";
 import { Button } from "@/components/ui/button";
@@ -24,14 +23,12 @@ const interests = [
   },
 ] as const;
 
-export function generateMetadata(): Metadata {
-  return createMetadata({
-    title: "About",
-    description:
-      "About Shaeel Afsar — frontend engineer focused on thoughtful systems, premium interfaces, and calm product execution.",
-    path: "/about",
-  });
-}
+export const metadata = createMetadata({
+  title: "About",
+  description:
+    "About Shaeel Afsar — frontend engineer focused on thoughtful systems, premium interfaces, and calm product execution.",
+  path: "/about",
+});
 
 export default async function AboutPage() {
   const resume = await getResumeData();

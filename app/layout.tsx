@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import { SmoothScrollProvider } from "@/components/animation";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { JsonLd } from "@/components/seo/json-ld";
 import { createMetadata } from "@/lib/metadata";
+import { createWebsiteStructuredData } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,6 +40,8 @@ const themeScript = `(() => {
 
 export const metadata = createMetadata();
 
+const websiteStructuredData = createWebsiteStructuredData();
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +57,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
+        <JsonLd data={websiteStructuredData} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[var(--z-toast)] focus:rounded-[var(--radius-pill)] focus:bg-card focus:px-4 focus:py-2"

@@ -130,6 +130,7 @@ export async function scrollToHeadingWithOffset(page: Page, id: string, offset =
 
       const top = heading.getBoundingClientRect().top + window.scrollY - headingOffset;
       window.scrollTo({ top, behavior: "auto" });
+      window.dispatchEvent(new Event("scroll"));
     },
     { headingId: id, headingOffset: offset },
   );

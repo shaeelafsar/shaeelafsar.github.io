@@ -91,7 +91,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       }
 
       return (
-        <a ref={ref as Ref<HTMLAnchorElement>} className={classes} {...anchorProps}>
+        <a ref={ref as Ref<HTMLAnchorElement>} className={classes} href={href} {...anchorProps}>
           {children}
         </a>
       );

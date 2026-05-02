@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/animation";
 import { mdxComponents } from "@/components/blog/mdx-components";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -13,6 +14,7 @@ import { Section } from "@/components/ui/section";
 import { compileMDX } from "@/lib/mdx";
 import { createMetadata } from "@/lib/metadata";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
+import { createProjectStructuredData } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
 type ProjectDetailPageProps = {
@@ -41,7 +43,11 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
     title: project.title,
     description: project.excerpt,
     path: `/projects/${project.slug}`,
-    image: project.image,
+    image: `/projects/${project.slug}/opengraph-image`,
+    type: "article",
+    publishedTime: project.date,
+    section: project.category,
+    tags: project.tags,
   });
 }
 
@@ -57,10 +63,13 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     source: project.content,
     components: mdxComponents,
   });
+  const structuredData = createProjectStructuredData(project);
 
   return (
-    <Section className="pt-16 md:pt-20 lg:pt-24">
-      <Container className="max-w-[var(--container-wide)] space-y-10 md:space-y-12">
+    <>
+      <JsonLd data={structuredData} />
+      <Section className="pt-16 md:pt-20 lg:pt-24">
+        <Container className="max-w-[var(--container-wide)] space-y-10 md:space-y-12">
         <FadeIn>
           <Link
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-foreground"
@@ -199,7 +208,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </Button>
           </div>
         </div>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
+    </>
   );
 }

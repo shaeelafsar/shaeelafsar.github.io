@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { FadeIn } from "@/components/animation";
 import { ContactForm } from "@/components/contact/contact-form";
 import { SocialLinks } from "@/components/contact/social-links";
@@ -7,13 +6,11 @@ import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { createMetadata } from "@/lib/metadata";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return createMetadata({
-    title: "Contact",
-    description: "Get in touch with Shaeel Afsar for freelance, product, and frontend collaboration.",
-    path: "/contact",
-  });
-}
+export const metadata = createMetadata({
+  title: "Contact",
+  description: "Get in touch with Shaeel Afsar for freelance, product, and frontend collaboration.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

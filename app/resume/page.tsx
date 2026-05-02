@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { FadeIn } from "@/components/animation";
 import { EducationSection } from "@/components/resume/education-section";
 import { SkillsGrid } from "@/components/resume/skills-grid";
@@ -11,13 +10,11 @@ import { Section } from "@/components/ui/section";
 import { createMetadata } from "@/lib/metadata";
 import { getResumeData } from "@/lib/resume";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return createMetadata({
-    title: "Resume",
-    description: "Experience, skills, and education for Shaeel Afsar.",
-    path: "/resume",
-  });
-}
+export const metadata = createMetadata({
+  title: "Resume",
+  description: "Experience, skills, and education for Shaeel Afsar.",
+  path: "/resume",
+});
 
 export default async function ResumePage() {
   const resume = await getResumeData();

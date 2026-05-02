@@ -12,6 +12,7 @@ interface TableOfContentsProps {
 }
 
 const HEADING_OFFSET = 112;
+const ACTIVE_HEADING_TOLERANCE = 24;
 
 export function TableOfContents({
   items,
@@ -31,11 +32,12 @@ export function TableOfContents({
 
     const updateActiveId = () => {
       const currentHeading =
-        headingElements.filter((heading) => heading.getBoundingClientRect().top - HEADING_OFFSET <= 0).at(-1) ??
-        headingElements[0];
+        headingElements
+          .filter((heading) => heading.getBoundingClientRect().top - HEADING_OFFSET <= ACTIVE_HEADING_TOLERANCE)
+          .at(-1) ?? headingElements[0];
 
       if (currentHeading) {
-        setActiveId(currentHeading.id);
+        setActiveId((currentId) => (currentId === currentHeading.id ? currentId : currentHeading.id));
       }
     };
 

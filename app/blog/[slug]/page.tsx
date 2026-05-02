@@ -7,6 +7,7 @@ import { mdxComponents } from "@/components/blog/mdx-components";
 import { PostCard } from "@/components/blog/post-card";
 import { ReadingProgress } from "@/components/blog/reading-progress";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
@@ -15,6 +16,7 @@ import { Section } from "@/components/ui/section";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { compileMDX, extractHeadings } from "@/lib/mdx";
 import { createMetadata } from "@/lib/metadata";
+import { createBlogPostStructuredData } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
 type BlogPostPageProps = {
@@ -43,7 +45,11 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
-    image: post.image,
+    image: `/blog/${post.slug}/opengraph-image`,
+    type: "article",
+    publishedTime: post.date,
+    section: "Blog",
+    tags: post.tags,
   });
 }
 
@@ -63,9 +69,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     getRelatedPosts(post.slug, 3),
   ]);
   const headings = extractHeadings(post.content);
+  const structuredData = createBlogPostStructuredData(post);
 
   return (
     <>
+      <JsonLd data={structuredData} />
       <ReadingProgress />
       <Section className="pt-16 md:pt-20 lg:pt-24">
         <Container className="space-y-10 md:space-y-12">

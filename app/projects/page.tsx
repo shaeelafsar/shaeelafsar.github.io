@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { FadeIn, StaggerChildren } from "@/components/animation";
 import { ProjectFilter, type ProjectFilterOption } from "@/components/projects/project-filter";
 import { ProjectCard } from "@/components/projects/project-card";
@@ -16,12 +15,11 @@ type ProjectsPageProps = {
   searchParams: Promise<{ tag?: string | string[] | undefined }>;
 };
 
-export const generateMetadata = async (): Promise<Metadata> =>
-  createMetadata({
-    title: "Projects",
-    description: "Selected frontend, backend, and full-stack case studies by Shaeel Afsar.",
-    path: "/projects",
-  });
+export const metadata = createMetadata({
+  title: "Projects",
+  description: "Selected frontend, backend, and full-stack case studies by Shaeel Afsar.",
+  path: "/projects",
+});
 
 function getFilterOptions(categories: string[]): ProjectFilterOption[] {
   return categories
