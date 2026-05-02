@@ -23,3 +23,29 @@
 - **2026-05-02T20:42:05Z** — Architecture and specifications ready for team review at `.squad/architecture.md` and `.squad/specs/`. See `.squad/orchestration-log/2026-05-02T2042-deckard.md` for details.
 - **2026-05-02T21:10:31Z** — Frontend review complete. Rachael identified 5 key blockers: client/server boundary strategy, server-driven filtering, contact form contract, hardcoded copy centralization, and long-form reading scoping. Updates merged to `.squad/decisions.md`.
 - **2026-05-02T21:10:31Z** — Testing review complete. Roy evaluated all 31 specs: 13 ✅, 18 ⚠️. Proposed shared fixture content set and deterministic QA hooks. Details in `.squad/orchestration-log/2026-05-02T21:10:31Z-roy.md`.
+
+## Design System Proposal — 2026-05-02
+
+**Status:** Proposed for team adoption
+
+**Font stack:** Space Grotesk (display), Inter (body/UI), JetBrains Mono (code/metadata)
+
+**Expanded token set:**
+- Keep accepted background/text/accent foundations
+- Add explicit tokens: surfaces, stronger borders, soft accent fills, shadows, blur, radius tiers
+- Motion scale: 150ms micro, 300ms UI, 600ms section entry; default easing `[0.21, 0.47, 0.32, 0.98]`
+
+**Art direction:**
+- Minimal editorial layout; restrained blue glow accents
+- Glass header/mobile menu; generous whitespace
+- Dual Shiki themes for long-form content (light + dark mode consistency)
+
+**Why shared:**
+- Gives Rachael concrete token contract for Tailwind/CSS variables
+- Keeps Roy's dark-mode and reduced-motion coverage deterministic
+- Ensures visual language consistency before implementation
+
+**Implementation notes:**
+- Tokens in `globals.css` and Tailwind v4 `@theme inline` aliases
+- Motion: Framer Motion first, CSS-only hover effects
+- CTA sections accent-led in both themes with white text for contrast safety

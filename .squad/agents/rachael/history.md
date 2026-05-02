@@ -18,3 +18,28 @@
 - **2026-05-02T20:42:05Z** — Architecture and specifications ready for team review at `.squad/architecture.md` and `.squad/specs/`. See `.squad/orchestration-log/2026-05-02T2042-deckard.md` for details.
 - **2026-05-02T21:10:31Z** — Design review complete. Pris flagged 5 key areas: shared visual tokens, motion timing normalization, shadow/color animation constraints, Shiki theming, and page-level art direction. Updates merged to `.squad/decisions.md`.
 - **2026-05-02T21:10:31Z** — Testing review complete. Roy evaluated all 31 specs: 13 ✅, 18 ⚠️. Proposed shared fixture content set and deterministic QA hooks. Details in `.squad/orchestration-log/2026-05-02T21:10:31Z-roy.md`.
+
+## Implementability Review (rachael-1) — 2026-05-02
+
+**Verdict:** NEEDS REVISION
+
+**Review scope:** Wireframe implementability across 8 pages + design system + animation map.
+
+**Cross-cutting issues:**
+- Breakpoint intent 375/768/1280 but missing explicit behavior for 1024-1279 range
+- Server/Client boundaries implied, not locked. Need explicit marking: `ThemeToggle`, `MobileMenu`, `ProjectFilter`, `ReadingProgress`, `TableOfContents`, `ContactForm`
+- Data-source annotations inconsistent; should label as MDX, frontmatter, static config, or URL-query
+- App Router edge states under-documented (loading, error, not-found, empty results, external-link failures)
+
+**Critical blockers:**
+- **ContactForm** — Submission contract undefined: Server Action vs third-party endpoint, success payload, validation schema, spam protection, env requirements. Form states incomplete (idle, typing, field error, submit pending, success, error, disabled).
+- **ProjectFilter** — No defined state matrix for selected/hover/focus/active/disabled; zero-results handling vague
+- **Blog** — CategoryRail ambiguous (decorative vs filter control); data-flow and featured-post handling unclear
+
+**Conditional concerns:**
+- home.md: Header client/server ownership unclear; AboutTeaser breakpoint loose; data-source notes needed
+- about.md: Multiple layout options vs one final; responsive behavior soft
+- blog-post.md: TOC collapsed pattern undefined; Lenis scroll offset behavior unclear
+- design-system.md: Missing container widths, max-width, z-index tokens; focus styling incomplete
+
+**Verdict:** Would NOT start full implementation until contact form contract finalized and responsive/client-state ambiguities locked down.

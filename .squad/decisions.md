@@ -144,6 +144,121 @@
 2. Treat third-party validators as release checks, not primary acceptance
 3. Add deterministic QA hooks for hard-to-trigger flows
 
+## Agent Reviews — Wireframes (2026-05-02)
+
+### Deckard — Wireframe & Design System Review
+
+**Date:** 2026-05-02  
+**Status:** APPROVED WITH NOTES
+
+Review of 8 page wireframes, design system, animation map, architecture.md, active decisions, and relevant specs.
+
+**Page-by-page assessments:**
+
+- **home.md** — ✅ Strong alignment with route structure and component hierarchy
+- **about.md** — ⚠️ Mobile intro order conflicts with spec; global frame underspecified on tablet/desktop
+- **projects.md** — ✅ Route and hierarchy alignment solid; filter URL state represented
+- **project-detail.md** — ⚠️ Tech stack/metadata block not explicit; "Related/Next CTA" too vague; footer/global frame unclear
+- **blog.md** — ⚠️ `CategoryRail` not clearly defined; tag implementation direction unresolved
+- **blog-post.md** — ✅ Strong alignment with blog architecture; animation behavior matches decisions
+- **resume.md** — ⚠️ Download action placement inconsistent; global frame not as explicit as other pages
+- **contact.md** — ✅ Good alignment with contact page architecture; responsive behavior matches spec
+- **design-system.md** — ⚠️ Missing explicit breakpoint section with canonical responsive breakpoints
+- **animation-map.md** — ✅ Aligned with ADRs and architecture decisions
+
+**Key consistency issues:**
+1. Global frame inconsistency — add short `Global frame` section to every wireframe
+2. Naming consistency drift — normalize to architecture/spec names or formally add new names
+3. Footer visibility drift — either show footer in all frame sets or adopt consistent shorthand
+
+**Verdict:** The system is close and largely architecture-aligned. Would not block implementation, but naming ambiguity, breakpoint omission, and page-level consistency issues should be cleaned up before treating docs as locked.
+
+### Pris — Design System & Visual Tokens
+
+**Date:** 2026-05-02  
+**From:** Pris (Designer)
+
+**Proposed design clarifications:**
+
+1. **Expand shared visual tokens** — Add explicit tokens for radius, shadows, overlay/backdrop surfaces, focus rings, and image corner treatments
+2. **Standardize motion timings** — One default enter easing `[0.21, 0.47, 0.32, 0.98]` and timing scale: 150ms micro, 300ms UI, 600ms section reveals
+3. **Avoid non-essential shadow/color animation** — Prefer transform + opacity layers for premium interactions
+4. **Lock long-form theming** — Dual Shiki themes for code blocks; convert MDX callouts to design tokens
+5. **Add page-level art direction notes** — Hero accent language, CTA treatment, resume timeline, project/blog media rhythm, mobile menu overlay
+
+**Font stack proposal:** `Space Grotesk` (display), `Inter` (body/UI), `JetBrains Mono` (code/metadata)
+
+**Motion scale:** `150ms` micro, `300ms` UI, `600ms` section entry, with standardized easing.
+
+**Why this should be shared:** Gives Rachael a concrete token contract; keeps Roy's dark-mode/reduced-motion coverage deterministic; ensures visual language consistency before implementation.
+
+### Rachael — Wireframe Implementability Review
+
+**Date:** 2026-05-02  
+**Status:** NEEDS REVISION
+
+**Cross-cutting frontend notes:**
+
+- Breakpoint intent mostly 375/768/1280, but handoff needs explicit behavior for `1024-1279` range and exact switch points for nav/sidebars/2-col vs 3-col grids
+- Server/Client boundaries implied, not locked. Mark these explicitly: `ThemeToggle`, `MobileMenu`, `ProjectFilter`, `ReadingProgress`, `TableOfContents`, `ContactForm`
+- Data-source annotations inconsistent; label each section as MDX, frontmatter, static config, or URL-query-driven
+- App Router edge states under-documented: `loading`, `error`, `not-found`, empty filtered results, external-link failure
+
+**Page-by-page:**
+
+- **home.md** ⚠️ — Header ownership of interactive islands needs explicit; AboutTeaser breakpoint is too loose; FeaturedProjects/BlogTeaser need data-source notes; hero decorative z-index behavior undocumented
+- **about.md** ⚠️ — Multiple layout options instead of one final; TechnologiesSection data source undefined; responsive portrait block underspecified; no hover/focus treatment
+- **projects.md** ⚠️ — ProjectFilter states not shown; invalid tag handling undefined; sticky row optional; 1024-1279 column behavior unspecified
+- **project-detail.md** ⚠️ — Header should separate static metadata from optional external actions; MDX block inventory not locked; route-state notes missing; related navigation vague
+- **blog.md** ⚠️ — CategoryRail ambiguous; PostList needs empty-state and pagination direction; data-sort and featured-post handling undefined; keyboard/focus behavior not documented
+- **blog-post.md** ⚠️ — Tablet TOC collapsed pattern undefined; active heading/hash-link/Lenis offset behavior missing; route-level notes absent
+- **resume.md** ✅ — Main boundaries clear; only note resume data-source split needed
+- **contact.md** ❌ — **BLOCKER:** ContactForm submission contract undefined (Server Action vs third-party, success payload, validation schema, spam protection, env); form states incomplete; tablet layout "above or beside" not concrete; accessibility interactions not specified
+- **design-system.md** ⚠️ — Alias radius/shadow/spacing/motion tokens into theme layer; container widths, max-width, z-index, exact breakpoint tokens missing; focus styling needs full shared recipe
+- **animation-map.md** ⚠️ — Need explicit client-wrapper ownership; theme-switch/mobile-menu/form animation rules missing; scroll-reset/page-transition hash-link interaction undefined
+
+**Verdict:** Wireframes close and mostly buildable. Would NOT start full implementation until contact form contract is finalized and responsive/client-state ambiguities are locked.
+
+### Roy — Wireframe & Design System Testability Review
+
+**Date:** 2026-05-02  
+**Status:** NEEDS REVISION
+
+**Review summary:** 13 ✅, 18 ⚠️, 0 ❌ across 31 specs. Strong baseline; several cross-cutting specs need edge-state definitions for deterministic E2E.
+
+**Shared test infrastructure needed:**
+- Seed content fixtures (blog posts, projects, MDX edge cases, malformed data)
+- Stable browser fixtures for mobile/tablet/desktop
+- Playwright runs in light/dark theme and `reducedMotion: 'reduce'`
+- Contact form mocks (success, failure, loading)
+- Deterministic hooks for error boundary testing
+- Assertions for XML, metadata, JSON-LD, headers, sitemap
+
+**Page-by-page:**
+
+- **home.md** ⚠️ — Missing loading/empty/error states for FeaturedProjects and BlogTeaser; shared shell behavior underspecified; responsive assertions too ambiguous; add stable selectors
+- **about.md** ⚠️ — Empty/fallback rendering undefined; accessibility markers missing; responsive "beside or below" too soft; add stable selectors
+- **projects.md** ❌ — **BLOCKER:** ProjectFilter has no defined selected/hover/focus/active/disabled states; no zero-results state for tag combinations; filter update pending UI/scroll retention/focus undefined; sticky optional; missing selectors
+- **project-detail.md** ⚠️ — Missing edge cases (invalid slug, missing image, absent links); long MDX handling open-ended; accessibility markers missing; add selectors
+- **blog.md** ❌ — **BLOCKER:** CategoryRail ambiguous (decorative vs filter); no empty-state or pagination direction; loading/error behavior missing; responsive rhythm undefined; missing selectors
+- **blog-post.md** ⚠️ — Edge cases missing (no cover, no related, long headings, wide tables); TOC keyboard/active-state/focus semantics undefined; accessibility markers missing; add selectors
+- **resume.md** ⚠️ — DownloadButton missing loading/error/missing-file behavior; ExperienceTimeline needs long-entry rules; accessibility markers missing; add selectors
+- **contact.md** ❌ — **BLOCKER:** Validation contract missing (required fields, email rules, length limits, error copy, inline error timing); loading/submitting/success/error/retry states undefined; field reset and focus movement unclear; missing selectors
+- **design-system.md** ⚠️ — Missing state matrix for interactive components; breakpoint tokens not centralized; focus styling rules incomplete; missing QA-oriented appendix
+- **animation-map.md** ⚠️ — Reduced-motion guidance solid but animation specs need test assertions; page transition fallback acceptance criteria missing; focus-visible parity missing; missing QA hooks
+
+**Cross-page consistency:**
+- Define one canonical Header/Nav/ThemeToggle/MobileMenu/Footer behavior spec
+- Standardize page landmarks and shared keyboard flows
+- Use consistent selectors across pages
+
+**Proposed decisions:**
+1. Adopt shared fixture content set for consistent blog/projects/resume testing
+2. Treat third-party validators as release checks, not primary acceptance
+3. Add deterministic QA hooks for hard-to-trigger flows
+
+**Verdict:** Docs are visually strong but test coverage blocked by ambiguous filter behavior, incomplete form-state definitions, and missing shared accessibility/consistency contracts. Once state matrices, empty/error paths, and shared shell behavior locked, these wireframes will support deterministic E2E and accessibility testing.
+
 ## Governance
 
 - All meaningful changes require team consensus

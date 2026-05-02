@@ -57,3 +57,24 @@ All original specs received: acceptance criteria, dependencies, accessibility se
 - ADR-013: `@media (hover: hover)` required on ALL hover effects to prevent sticky hover on touch devices
 
 **Total spec count:** 28 files in `.squad/specs/`
+
+### 2026-05-02 — Wireframe Architecture Review (deckard-2)
+
+**Verdict:** APPROVED WITH NOTES
+
+**Review scope:** 8 page wireframes, design system, animation map, architecture.md, active decisions, spec alignment.
+
+**Key findings:**
+- 4 specs fully aligned ✅, 3 need minor improvements ⚠️
+- Strong route/hierarchy alignment; animation markers consistent with Framer Motion + Lenis strategy
+- Global frame inconsistency across wireframes; footer visibility unclear in some pages
+- Design system missing explicit breakpoint section (canonical responsive breakpoints needed)
+- Naming consistency drift: `CategoryRail`, `Related/Next CTA` need formalization or clear decisions
+
+**Recommendations:**
+1. Add `Global frame` section to every wireframe using consistent convention (like home.md)
+2. Normalize component names to match architecture/spec or formally add new names
+3. Add explicit breakpoints section to design system
+4. Lock project-detail tech/metadata block and blog tag filtering behavior before implementation
+
+**Approval status:** System is architecture-aligned; would not block implementation, but naming/consistency issues should be cleaned up before docs are locked.
