@@ -1,0 +1,36 @@
+{
+  "agents": {
+    "deckard": {
+      "persistent_name": "Deckard",
+      "universe": "Blade Runner",
+      "role": "Lead",
+      "created_at": "2026-05-02T15:27:41Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "rachael": {
+      "persistent_name": "Rachael",
+      "universe": "Blade Runner",
+      "role": "Frontend Dev",
+      "created_at": "2026-05-02T15:27:41Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "pris": {
+      "persistent_name": "Pris",
+      "universe": "Blade Runner",
+      "role": "Designer",
+      "created_at": "2026-05-02T15:27:41Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "roy": {
+      "persistent_name": "Roy",
+      "universe": "Blade Runner",
+      "role": "Tester",
+      "created_at": "2026-05-02T15:27:41Z",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}
