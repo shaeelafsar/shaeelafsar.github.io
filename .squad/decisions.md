@@ -259,6 +259,60 @@ Review of 8 page wireframes, design system, animation map, architecture.md, acti
 
 **Verdict:** Docs are visually strong but test coverage blocked by ambiguous filter behavior, incomplete form-state definitions, and missing shared accessibility/consistency contracts. Once state matrices, empty/error paths, and shared shell behavior locked, these wireframes will support deterministic E2E and accessibility testing.
 
+### ADR-011: ContactForm submission contract
+
+**Date:** 2026-05-02 · **Status:** Accepted · **Author:** Deckard
+
+- **Context:** Contact form submission flow, validation, and security requirements.
+- **Decision:** `ContactForm [client]` submits to a Next.js **Server Action** that validates input, applies spam checks, then sends the message through the **Resend email API**. No public client-side email key, no API route required for v1.
+- **Rationale:** Server Actions provide secure handling of sensitive operations without exposing API keys. Honeypot + rate limiting prevent spam. Validation schema ensures data integrity.
+- **Contract:**
+  - Client component: `ContactForm [client]`
+  - Server entrypoint: `sendContactMessage(formData)` in `app/contact/actions.ts`
+  - Provider: `resend.emails.send(...)`
+  - Response: `{ ok: boolean; status: 'success' | 'validation_error' | 'rate_limited' | 'provider_error'; message: string; fieldErrors?: Record<string, string>; }`
+- **Validation schema:** name (1-100), email (valid), subject (0-120, optional), message (10-500), honeypot company field (must be empty).
+- **Spam protection:** Honeypot field + rate limiting (5 submissions per 10 minutes, keyed by IP + email hash).
+- **State machine:** `idle → typing → validating → submitting → success/error → retry`
+- **UX:** Inline field errors on blur/submit, focus management on error/success, fields disabled during submit, status region with `role="status"` (success) or `role="alert"` (error).
+- **Environment:** `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, `CONTACT_RATE_LIMIT_MAX` (default 5), `CONTACT_RATE_LIMIT_WINDOW_MS` (default 600000).
+
+### ADR-012: TagList (formerly CategoryRail) as decorative metadata
+
+**Date:** 2026-05-02 · **Status:** Accepted · **Author:** Deckard
+
+- **Context:** Blog categorization and filtering strategy.
+- **Decision:** `CategoryRail` renamed to `TagList`. v1 tags are **decorative metadata only** on post cards and blog listing. No filtering, no client state, no URL params.
+- **Rationale:** Keeps v1 simple; filtering can be added later via optional `?tag=` params without changing card metadata.
+- **Note:** `ProjectFilter` owns all interactive filtering on `/projects`.
+
+### ADR-013: ProjectFilter and URL sync for tag filtering
+
+**Date:** 2026-05-02 · **Status:** Accepted · **Author:** Deckard
+
+- **Context:** Projects page filtering and sticky behavior.
+- **Decision:** `ProjectFilter [client]` is the only interactive filter surface on `/projects` and owns URL sync for `?tag=`.
+- **State contract:** `idle` (default, All selected), `hover` (pointer only), `focus-visible` (keyboard focus ring), `active/selected` (highlighted, `aria-pressed="true"`), `loading/pending` (grid dims, active pill visible), `zero-results` (empty state), `keyboard-nav` (arrow keys move focus, Home/End jump, Enter/Space selects).
+- **Sticky behavior:** Desktop (`lg` / 1024px+) only; sticky below header. Mobile/tablet: not sticky.
+- **URL behavior:** Selecting tag updates to `/projects?tag={slug}`. Invalid or missing `?tag=` renders all projects. Clearing returns to `/projects`. Focus stays on pill; no scroll jump.
+
+### ADR-014: Motion package alignment with `motion/react`
+
+**Date:** 2026-05-02 · **Status:** Accepted · **Author:** Pris & Rachael
+
+- **Context:** Animation library imports need standardization.
+- **Decision:** Use `motion` package directly; treat `motion/react` as the canonical import path for all animation primitives.
+- **Rationale:** Keeps implementation aligned with team animation contract, avoids mixed import styles, ensures shared primitives consistent across contributors.
+- **Note:** All animation wrappers (FadeIn, StaggerChildren, Parallax, etc.) use Motion v12 syntax via `motion/react`.
+
+### ADR-015: Next.js 16 View Transition API configuration
+
+**Date:** 2026-05-02 · **Status:** Accepted · **Author:** Rachael
+
+- **Context:** Next.js 16 exposes `experimental.viewTransition` (singular), not plural form.
+- **Decision:** Foundation scaffolding uses `experimental.viewTransition: true` to compile against current Next.js 16 API.
+- **Rationale:** Preserves team intent to enable native View Transitions while matching framework API. Config key will be updated if Deckard revises ADR-010 wording.
+
 ## Governance
 
 - All meaningful changes require team consensus
