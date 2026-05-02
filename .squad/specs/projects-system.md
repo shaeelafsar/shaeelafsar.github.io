@@ -106,3 +106,38 @@ Full case study layout. Header section with title, date, tags, links (live URL, 
 - Grid cards: `StaggerChildren` on view
 - Cards: hover `scale(1.02)` + shadow lift via CSS
 - Detail page: `FadeIn` sections for content blocks, parallax on hero image
+
+## Accessibility
+
+- Project grid uses semantic list (`<ul>`) or CSS grid with proper roles
+- Each project card is a single link (entire card clickable)
+- Filter buttons have clear active/selected state
+- Filter uses URL search params (shareable, bookmarkable)
+- Project detail: proper heading hierarchy, links open in new tab where appropriate
+- Images have descriptive `alt` text
+
+## Dependencies
+
+- UI components (1.3) — `Card`, `Badge`, `Section`, `Container`, `Heading`, `OptimizedImage`, `Button`
+- Animation primitives (1.7) — `FadeIn`, `StaggerChildren`
+- Content pipeline (1.8) — `lib/projects.ts`
+- Type definitions (1.9) — `Project`, `ProjectDetail`
+- MDX components (3.1) — for project detail case study rendering
+
+## Acceptance Criteria
+
+1. `/projects` lists all projects sorted by date (featured first)
+2. `ProjectFilter` shows all unique tags as filter buttons
+3. Clicking a filter button shows only projects with that tag
+4. "All" filter shows all projects
+5. Filter state persists in URL search params (`?tag=react`)
+6. Each `ProjectCard` shows: cover image, title, excerpt, tags, date
+7. Clicking a card navigates to `/projects/[slug]`
+8. `/projects/[slug]` renders full MDX case study with header and body
+9. Project detail shows: title, date, tags, live URL (if any), GitHub URL (if any), hero image, MDX content
+10. `generateStaticParams` returns all project slugs
+11. `generateMetadata` returns project-specific title, description, OG tags
+12. Grid is responsive: 1-col mobile, 2-col tablet, 3-col desktop
+13. Cards animate in with `StaggerChildren` on scroll
+14. Cards have hover scale + shadow effect (desktop only, via CSS)
+15. Dark mode: cards, badges, and images all render correctly

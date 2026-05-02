@@ -136,3 +136,37 @@ export function cn(...inputs: ClassValue[]) {
 ```
 
 Used by all components for conditional class merging.
+
+---
+
+## Dependencies
+
+- `clsx` and `tailwind-merge` packages (1.1)
+- `next/image` for `OptimizedImage`
+- `next/link` for `Button` with `href`
+- CSS custom properties from `globals.css` (1.2)
+
+## Accessibility
+
+- `Button`: uses native `<button>` or `<a>` (semantic HTML)
+- `Button` with `disabled`: has `aria-disabled="true"` and prevents interaction
+- `Heading`: renders correct semantic heading level (`h1`–`h4`)
+- `OptimizedImage`: requires `alt` prop (enforced by TypeScript)
+- `Card` with `href`: entire card is a single `<a>` (not nested links)
+- All interactive elements have visible focus ring (`:focus-visible`)
+
+## Acceptance Criteria
+
+1. All components render correctly as Server Components (no `'use client'` needed)
+2. `Button` renders as `<a>` when `href` provided, `<button>` otherwise
+3. `Button` displays all 4 variants with distinct visual styles
+4. `Button` sizes (`sm`, `md`, `lg`) have appropriate padding and font sizes
+5. `Card` shows hover effect (scale + shadow) when `hover` is true
+6. `Card` wraps in `<a>` when `href` provided (whole card clickable)
+7. `Section` provides consistent vertical spacing (`py-24 md:py-32 lg:py-40`)
+8. `Container` constrains width correctly for all 3 sizes
+9. `Heading` uses fluid `clamp()` sizing for all size variants
+10. `OptimizedImage` renders `next/image` with blur placeholder and responsive `sizes`
+11. All components pass `className` through via `cn()` for override support
+12. All components use CSS custom properties (no hard-coded colors)
+13. Dark mode: all components look correct without additional props

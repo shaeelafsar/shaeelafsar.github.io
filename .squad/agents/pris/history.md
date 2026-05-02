@@ -14,6 +14,10 @@
 - **2026-05-02T16:10:31-05:00** — Several page specs are wireframe-ready structurally but still need art-direction calls for hero accents, CTA treatments, timeline visuals, filter states, mobile menu overlay styling, and blog/project detail media rhythm to feel cohesive.
 - **2026-05-02T16:10:31-05:00** — MDX/blog styling needs one firm theming decision: dual Shiki themes plus token-based callout colors will keep long-form content visually consistent in light and dark mode.
 
+- **2026-05-02T16:18:40-05:00** — Locked a cinematic editorial system around Space Grotesk, Inter, and JetBrains Mono so headings feel premium while body copy stays crisp and technical.
+- **2026-05-02T16:18:40-05:00** — Expanded the shared token language beyond base colors to include glass surfaces, stronger borders, shadow tiers, blur values, and radius tiers for consistent UI implementation.
+- **2026-05-02T16:18:40-05:00** — Standardized motion handoff patterns around TextReveal for hero moments, 600ms section reveals, 100ms card staggers, and static reduced-motion fallbacks across all primary routes.
+
 ## Notifications
 
 - **2026-05-02T20:42:05Z** — Architecture and specifications ready for team review at `.squad/architecture.md` and `.squad/specs/`. See `.squad/orchestration-log/2026-05-02T2042-deckard.md` for details.

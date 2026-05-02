@@ -130,3 +130,39 @@ Route handler that generates RSS 2.0 XML from all published blog posts. Includes
 - Post list: `StaggerChildren` on cards
 - Post body: `FadeIn` on content sections
 - TOC: active item highlight transition (CSS `transition`)
+
+## Accessibility
+
+- Blog listing: each `PostCard` is a link with descriptive content
+- Post page: proper heading hierarchy (`h1` for title, `h2`/`h3` in body)
+- Tags are visually distinct but not links (or optionally filterable links)
+- Reading time and date displayed as text (not just icons)
+- Code blocks have proper `<pre>` / `<code>` semantics
+- TOC: `<nav>` with `aria-label` (see table-of-contents spec)
+
+## Dependencies
+
+- UI components (1.3) — `Section`, `Container`, `Heading`, `Badge`, `Card`, `OptimizedImage`
+- Animation primitives (1.7) — `FadeIn`, `StaggerChildren`
+- Content pipeline (1.8) — `lib/blog.ts`, `lib/mdx.ts`
+- Type definitions (1.9) — `BlogPost`, `BlogPostDetail`, `Heading`
+- MDX components (3.1) — custom component map for rendering
+- Table of contents (3.4) — sidebar navigation
+- Reading progress bar (3.5) — scroll progress indicator
+
+## Acceptance Criteria
+
+1. `/blog` lists all published posts sorted by date (newest first)
+2. Unpublished posts (where `published: false`) do NOT appear
+3. Each `PostCard` shows: title, date, reading time, excerpt, tags
+4. Clicking a post card navigates to `/blog/[slug]`
+5. `/blog/[slug]` renders full MDX content with custom components
+6. Blog post page has: PostHeader (title, date, reading time, tags), MDX body, TOC sidebar
+7. `generateStaticParams` returns all published post slugs
+8. `generateMetadata` returns post-specific title, description, OG tags
+9. Reading progress bar appears on post pages
+10. Table of contents highlights current section on scroll (desktop)
+11. Posts render correctly in both light and dark mode
+12. Code blocks have syntax highlighting via Shiki
+13. Post list uses `StaggerChildren` for card entrance animation
+14. Related posts section shows 2-3 posts with matching tags (optional for MVP)

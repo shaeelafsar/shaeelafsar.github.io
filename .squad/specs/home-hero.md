@@ -64,3 +64,25 @@ Full-viewport hero section — the first thing visitors see. Sets the tone for t
 - CTA buttons are `<a>` (link to pages) or `<button>`
 - No essential content hidden by animations — content is in DOM immediately
 - Skip-to-content link targets main content below hero
+- Decorative accents use `aria-hidden="true"`
+- All animations respect `prefers-reduced-motion` (content visible immediately)
+
+## Dependencies
+
+- Layout components (1.4) — Header wraps above this
+- Animation primitives (1.7) — `TextReveal`, `FadeIn`, `Parallax`
+- UI components (1.3) — `Section`, `Container`, `Button`
+
+## Acceptance Criteria
+
+1. Hero section is full viewport height (`100dvh`)
+2. Headline renders as `<h1>` with text reveal animation on mount
+3. Subtitle fades in after headline (0.5s delay)
+4. CTA buttons fade in after subtitle (0.8s delay)
+5. "View Work" links to `/projects`, "Get in Touch" links to `/contact`
+6. Decorative accents have parallax effect on scroll (desktop only)
+7. Mobile: accents hidden, CTAs full-width, headline uses `clamp()` sizing
+8. `prefers-reduced-motion`: all content visible immediately, no animations
+9. Content is in DOM before animations start (not conditionally rendered)
+10. No layout shift during animation sequence (CLS = 0)
+11. Section scrolls out with subtle parallax as user scrolls down

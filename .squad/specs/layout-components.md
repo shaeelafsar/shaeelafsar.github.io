@@ -105,3 +105,38 @@ Site footer with:
   </Container>
 </footer>
 ```
+
+---
+
+## Dependencies
+
+- UI components (1.3) — `Container`, `Button`
+- Animation primitives (1.7) — Framer Motion for scroll behavior, mobile menu, theme toggle
+- `next/link` for navigation links
+- `next/navigation` — `usePathname()` for active state
+
+## Accessibility
+
+- `<header>` landmark for the header
+- `<nav>` with `aria-label="Main navigation"` for desktop nav
+- `<footer>` landmark for the footer
+- Skip-to-content link is the first focusable element
+- Mobile menu: focus trap, `aria-expanded`, `aria-label` (see mobile-menu spec)
+- Theme toggle: `aria-label` with dynamic text (see theme-toggle spec)
+- All nav links are keyboard-accessible
+- Active link has `aria-current="page"`
+
+## Acceptance Criteria
+
+1. Header renders on all pages with logo, nav, theme toggle
+2. Header hides on scroll down, shows on scroll up (desktop)
+3. Header gains `backdrop-blur` background after scrolling past hero
+4. Desktop nav shows all 5 links with active state highlighting
+5. Mobile: hamburger visible, desktop nav hidden (below `lg`)
+6. Desktop: hamburger hidden, full nav visible (at `lg+`)
+7. Footer renders on all pages with social links and copyright
+8. Footer social icons link to correct external URLs
+9. Logo links back to `/`
+10. Active nav link is visually distinct and has `aria-current="page"`
+11. All layout components use CSS custom properties (theme-aware)
+12. `prefers-reduced-motion`: header scroll-hide behavior is instant (no transition)

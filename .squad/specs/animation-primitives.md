@@ -130,3 +130,24 @@ if (prefersReducedMotion) {
   return <div className={className}>{children}</div>;
 }
 ```
+
+## Dependencies
+
+- `motion` (Framer Motion v12) — primary animation library
+- `@studio-freight/lenis` — smooth scroll (for `SmoothScrollProvider`)
+- Project scaffold (1.1) — all packages installed
+
+## Acceptance Criteria
+
+1. `FadeIn` animates children from transparent to opaque with directional translate
+2. `FadeIn` triggers on viewport entry (not on mount, except above-the-fold)
+3. `StaggerChildren` delays each child's entrance by `staggerDelay`
+4. `TextReveal` splits text and reveals word-by-word (or char-by-char)
+5. `Parallax` creates scroll-linked vertical offset on children
+6. `SmoothScrollProvider` enables Lenis smooth scrolling globally
+7. `PageTransition` animates page enter/exit on route change
+8. ALL components return plain `<div>` (no animation) when `prefers-reduced-motion` is active
+9. All animations use only `transform` and `opacity` (no layout properties)
+10. `viewport={{ once: true }}` is default — animations don't replay on re-scroll
+11. Custom easing `[0.21, 0.47, 0.32, 0.98]` used consistently across components
+12. Each component accepts `className` prop for external styling

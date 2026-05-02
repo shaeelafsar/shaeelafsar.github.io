@@ -36,3 +36,24 @@
 - Shaeel wants award-worthy, cinematic feel
 - Full-featured: portfolio, blog (MDX), resume, scroll animations, dark mode
 - Next.js 16, TypeScript strict, Tailwind v4, Vercel deployment
+
+### 2026-05-02 — Specs Expansion
+
+**New specs created (18 additional):**
+- Phase 1: `project-scaffold.md`, `root-layout.md`, `theme-toggle.md`, `mobile-menu.md`, `type-definitions.md`, `utility-functions.md`
+- Phase 2: `home-sections.md`, `custom-404.md`, `error-boundary.md`
+- Phase 3: `mdx-components.md`, `table-of-contents.md`, `reading-progress.md`, `rss-feed.md`
+- Phase 4: `page-transitions.md`, `hover-interactions.md`, `dark-mode-audit.md`, `reduced-motion.md`
+- Phase 5: `seo-metadata.md`, `og-images.md`, `structured-data.md`, `vercel-deployment.md`
+
+**Existing specs expanded (10):**
+All original specs received: acceptance criteria, dependencies, accessibility sections, and responsive breakpoint tables where missing.
+
+**Key decisions made during expansion:**
+- ADR-009: CSS transitions preferred over Framer Motion for hover effects (keeps components as Server Components)
+- ADR-010: View Transitions API as primary page transition mechanism, AnimatePresence as fallback
+- ADR-011: Dark OG image background (#0a0a0a) for all auto-generated social images — looks good on all platforms
+- ADR-012: Global CSS `@media (prefers-reduced-motion: reduce)` as safety net in addition to per-component JS checks
+- ADR-013: `@media (hover: hover)` required on ALL hover effects to prevent sticky hover on touch devices
+
+**Total spec count:** 28 files in `.squad/specs/`

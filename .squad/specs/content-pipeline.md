@@ -92,3 +92,31 @@ function constructMetadata(params: {
 ## File System Pattern
 
 All content functions use `fs.readFile` and `fs.readdir` from `node:fs/promises` with `path.join(process.cwd(), 'content', ...)`. This works because all pages are statically generated — file system access happens at build time only.
+
+---
+
+## Dependencies
+
+- `next-mdx-remote` (RSC variant) — MDX compilation
+- `gray-matter` — frontmatter parsing
+- `rehype-pretty-code` + `shiki` — syntax highlighting
+- `rehype-slug` — heading ID generation
+- `remark-gfm` — GitHub-flavored markdown support
+- `zod` — runtime validation of resume JSON
+
+## Acceptance Criteria
+
+1. `getAllPosts()` returns all published posts sorted by date desc
+2. `getAllPosts()` filters out posts with `published: false`
+3. `getPostBySlug()` returns compiled MDX content for a valid slug
+4. `getPostBySlug()` returns `null` for invalid slug (no crash)
+5. `getAllProjects()` returns all projects sorted by date (featured first)
+6. `getFeaturedProjects()` returns only projects where `featured: true`
+7. `getProjectBySlug()` returns compiled MDX content for a valid slug
+8. `getAllProjectTags()` returns unique, deduplicated tag list
+9. `getResume()` returns parsed and validated resume data
+10. `getResume()` throws helpful error if `resume.json` is malformed
+11. Heading extraction returns array of `{ text, slug, level }` for h2/h3
+12. MDX compilation includes all rehype/remark plugins
+13. All functions are `async` and handle file system errors gracefully
+14. Reading time is calculated correctly (words / 200, rounded up, min 1)

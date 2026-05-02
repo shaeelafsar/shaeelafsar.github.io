@@ -78,3 +78,29 @@ Each link: icon + label. Icons from a lightweight icon set (Lucide or inline SVG
 - Error messages linked via `aria-describedby`
 - Submit button disabled during submission
 - Focus moves to success/error message after submission
+- Form has `aria-label="Contact form"`
+- Required fields marked with `aria-required="true"`
+- Social links have meaningful `aria-label` (e.g., "Visit GitHub profile")
+
+## Dependencies
+
+- UI components (1.3) — `Section`, `Container`, `Heading`, `Button`
+- Animation primitives (1.7) — `StaggerChildren` for form field entrance
+- `zod`, `react-hook-form`, `@hookform/resolvers` packages (1.1)
+- Server Action or external API endpoint for form submission
+
+## Acceptance Criteria
+
+1. Page renders at `/contact` with correct metadata
+2. Form has 4 fields: name, email, subject (optional), message
+3. Client-side validation shows inline errors on blur
+4. Invalid email format shows error message
+5. Successful submission shows success toast/message and resets form
+6. Failed submission shows error message and preserves form data
+7. Submit button shows loading state during submission
+8. All form fields disabled during submission (prevent double-submit)
+9. Social links section renders with icons and correct URLs
+10. Layout switches from stacked (mobile) to two-column (desktop)
+11. Form is keyboard-navigable (Tab through fields, Enter to submit)
+12. Screen reader correctly announces errors via `aria-describedby`
+13. Dark mode: input borders, focus rings, and placeholder text all visible

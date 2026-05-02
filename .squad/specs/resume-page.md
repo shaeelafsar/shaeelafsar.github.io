@@ -122,3 +122,34 @@ Styled button linking to the PDF resume. Uses `<a>` with `download` attribute.
 - Timeline cards: `FadeIn` with alternating left/right direction
 - Skills grid: `StaggerChildren`
 - Section headings: `TextReveal` or `FadeIn`
+
+## Accessibility
+
+- Timeline uses semantic markup: `<ol>` for ordered experience list
+- Each timeline entry has date information accessible to screen readers
+- Skills use `<ul>` list semantics
+- Download button has `aria-label="Download resume as PDF"`
+- Proper heading hierarchy: `h1` → `h2` for each section
+
+## Dependencies
+
+- UI components (1.3) — `Section`, `Container`, `Heading`, `Badge`, `Button`
+- Animation primitives (1.7) — `FadeIn`, `StaggerChildren`
+- Content pipeline (1.8) — `lib/resume.ts` + `content/resume.json`
+- Type definitions (1.9) — `Resume`, `WorkExperience`, etc.
+- PDF resume in `public/resume.pdf`
+
+## Acceptance Criteria
+
+1. Page renders at `/resume` with correct metadata
+2. Experience timeline shows all work entries in chronological order
+3. Timeline alternates left/right on desktop, single-column on mobile
+4. Current position shows "Present" instead of end date
+5. Skills grid renders all categories with keyword badges
+6. Education section renders all entries
+7. Download button links to `/resume.pdf` and triggers download
+8. Timeline cards animate in with alternating direction on scroll
+9. Skills grid uses `StaggerChildren` for entrance animation
+10. All data comes from `content/resume.json` (not hardcoded)
+11. Dark mode: timeline line, dots, cards, and badges all look correct
+12. `prefers-reduced-motion` shows all content without animation
