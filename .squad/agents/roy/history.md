@@ -12,6 +12,7 @@
 - **2026-05-02T16:10:31-05:00** — Most specs are testable enough to start, but cross-cutting systems need tighter edge-state definitions so Playwright assertions stay deterministic.
 - **2026-05-02T16:10:31-05:00** — Shared fixture content is the biggest testing dependency: unpublished/published posts, featured/non-featured projects, long titles, special characters, malformed content, and MDX heading/code/table cases.
 - **2026-05-02T16:10:31-05:00** — External validators (RSS, rich results, social preview tools, Lighthouse portals) should backstop local assertions, not replace explicit acceptance criteria.
+- **2026-05-02T17:18:28-05:00** — Next build type-checks root-level test files in this repo, so Vitest matcher types and an explicit E2E exclude in `vitest.config.ts` are required to keep unit tests and Playwright specs from colliding.
 
 ## Notifications
 
