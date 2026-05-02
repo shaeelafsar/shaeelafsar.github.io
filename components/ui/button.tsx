@@ -1,7 +1,9 @@
-import type {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  ReactNode,
+import {
+  forwardRef,
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+  type Ref,
 } from "react";
 import { cn } from "@/lib/utils";
 
@@ -48,30 +50,41 @@ type ButtonAsAnchor = SharedProps &
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
-export function Button(props: ButtonProps) {
-  const {
-    variant = "primary",
-    size = "md",
-    className,
-    children,
-    ...restProps
-  } = props;
+export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(
+  function Button(props, ref) {
+    const {
+      variant = "primary",
+      size = "md",
+      className,
+      children,
+      ...restProps
+    } = props;
 
-  const classes = cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
+    const classes = cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
 
-  if (props.as === "a") {
+    if (props.as === "a") {
+      return (
+        <a
+          ref={ref as Ref<HTMLAnchorElement>}
+          className={classes}
+          {...(restProps as AnchorHTMLAttributes<HTMLAnchorElement>)}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    const buttonProps = restProps as ButtonHTMLAttributes<HTMLButtonElement>;
+
     return (
-      <a className={classes} {...(restProps as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <button
+        ref={ref as Ref<HTMLButtonElement>}
+        className={classes}
+        type={buttonProps.type ?? "button"}
+        {...buttonProps}
+      >
         {children}
-      </a>
+      </button>
     );
-  }
-
-  const buttonProps = restProps as ButtonHTMLAttributes<HTMLButtonElement>;
-
-  return (
-    <button className={classes} type={buttonProps.type ?? "button"} {...buttonProps}>
-      {children}
-    </button>
-  );
-}
+  },
+);

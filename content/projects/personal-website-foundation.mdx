@@ -2,27 +2,64 @@
 title: "Personal website foundation"
 slug: "personal-website-foundation"
 date: "2026-05-02T17:18:28-05:00"
-excerpt: "A sample case study describing the layout system, reusable UI, and early content pipeline."
+excerpt: "Designing and building the portfolio platform that now powers Shaeel Afsar's writing, project archive, and long-form case studies."
+category: "Full Stack"
 tags:
   - nextjs
   - tailwind
-  - content-strategy
-image: "/images/projects/personal-website-foundation.jpg"
+  - mdx
+  - framer-motion
+image: "/images/projects/personal-website-foundation.svg"
 featured: true
 liveUrl: "https://shaeelafsar.com"
 githubUrl: "https://github.com/shaeelafsar/personal-website"
 ---
 
-## Overview
+## Problem
 
-This project entry is a placeholder case study for the file-based project pipeline.
+The site needed to feel editorial and technical at the same time: a calm shell for writing, a rigid grid for projects, and a content system that would not require a CMS before launch.
 
-### Scope
+### What success looked like
 
-- Root shell with header, footer, theme toggle, and mobile menu
-- Shared UI primitives aligned to the design system
-- MDX and JSON content utilities for blog, projects, and resume data
+- Ship an App Router foundation with Server Components by default.
+- Make portfolio and blog entries file-based so publishing stays lightweight.
+- Keep the visual system consistent through reusable tokens and shared UI primitives.
 
-### Outcome
+<Callout tone="info" title="Why MDX first?">
+A file-based pipeline made it possible to prototype pages, metadata, and long-form content together before any admin tooling existed.
+</Callout>
 
-The implementation establishes a clean baseline for future page work without adding a CMS or client-side data fetching.
+## Process
+
+I started by building the shared shell: header, footer, navigation, theme handling, and the spacing system that every page relies on.
+
+### Architecture choices
+
+| Area | Decision | Benefit |
+| --- | --- | --- |
+| Routing | Next.js App Router | Server-first page architecture |
+| Styling | Tailwind + CSS custom properties | Stable design tokens across themes |
+| Content | MDX + JSON files | Predictable authoring without a CMS |
+
+```ts
+export const foundation = {
+  rendering: "server-components-first",
+  content: "mdx-plus-json",
+  motion: "framer-motion-islands",
+};
+```
+
+### Implementation details
+
+The build includes reusable cards, buttons, badges, sections, and prose primitives. Those primitives keep layout decisions centralized so new pages can focus on content structure instead of one-off styling.
+
+## Outcome
+
+The result is a scalable publishing platform with room for case studies, essays, resume data, and more interactive work later.
+
+### What shipped
+
+- Shared shell and navigation system
+- Content pipeline for blog and project MDX
+- Motion-safe animations aligned to reduced-motion preferences
+- SEO metadata helpers for consistent page-level sharing

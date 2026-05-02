@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, type Variants } from "motion/react";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Nav } from "@/components/layout/nav";
 import { siteConfig } from "@/lib/metadata";
 import { cn } from "@/lib/utils";

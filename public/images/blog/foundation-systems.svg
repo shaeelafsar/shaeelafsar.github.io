@@ -1,0 +1,13 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#0F172A"/>
+  <rect x="78" y="78" width="1444" height="744" rx="28" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <rect x="136" y="146" width="580" height="608" rx="24" fill="#020617" stroke="#1E293B"/>
+  <rect x="764" y="146" width="620" height="120" rx="20" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="764" y="298" width="620" height="120" rx="20" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="764" y="450" width="620" height="120" rx="20" fill="#0B1220" stroke="#1E293B"/>
+  <text x="184" y="254" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700">Foundation systems</text>
+  <text x="184" y="336" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="30">Tokens, layout, and content architecture</text>
+  <text x="816" y="222" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Design tokens</text>
+  <text x="816" y="374" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Server-first composition</text>
+  <text x="816" y="526" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">MDX content model</text>
+</svg>

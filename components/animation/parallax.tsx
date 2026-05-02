@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type PropsWithChildren } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 

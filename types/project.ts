@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   date: string;
   excerpt: string;
+  category: string;
   tags: string[];
   image: string;
   featured: boolean;

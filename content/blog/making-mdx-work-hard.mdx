@@ -1,0 +1,57 @@
+---
+title: "Making MDX work hard for technical writing"
+slug: "making-mdx-work-hard"
+date: "2026-04-08T07:45:00-05:00"
+excerpt: "The content patterns I reach for when a blog post needs code, tables, callouts, and strong navigation without becoming a maintenance burden."
+tags:
+  - mdx
+  - content-strategy
+  - nextjs
+published: true
+featured: false
+image: "/images/blog/making-mdx-work-hard.svg"
+---
+
+## Why MDX keeps winning
+
+Plain markdown is great until a post needs richer structure. The moment you want callouts, better code presentation, or inline components, MDX starts to feel like the natural next step.
+
+### Content patterns I rely on
+
+- Reusable callout boxes for caveats and implementation notes
+- Syntax-highlighted code blocks for technical explanations
+- Structured headings that feed a table of contents automatically
+
+## Authoring should stay lightweight
+
+A content system only works if it stays pleasant to use. I want the writing format to disappear so attention can stay on the argument.
+
+### Example snippet
+
+```ts
+export function estimateReadingTime(words: number) {
+  return `${Math.max(1, Math.round(words / 220))} min read`;
+}
+```
+
+<Callout tone="warning" title="What I avoid">
+If a post requires bespoke markup every time, the format starts competing with the writing itself. That is usually a sign the component API needs to be simplified.
+</Callout>
+
+## Navigation matters for long posts
+
+Long-form content gets easier to trust when readers can scan the structure quickly.
+
+### TOC-friendly structure
+
+| Need | Pattern |
+| --- | --- |
+| Skimmability | Clear h2 and h3 hierarchy |
+| Return visits | Stable anchors and metadata |
+| Depth | Callouts, quotes, and tables |
+
+> Good technical writing makes the reader feel oriented at every step.
+
+## The result
+
+With the right component map, MDX becomes more than markdown with extras. It becomes a practical content system for real product and engineering writing.

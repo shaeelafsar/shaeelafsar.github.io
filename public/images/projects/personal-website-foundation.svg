@@ -1,0 +1,16 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#0F172A"/>
+  <rect x="72" y="72" width="1456" height="756" rx="28" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <rect x="132" y="142" width="460" height="520" rx="24" fill="#020617" stroke="#1E293B"/>
+  <rect x="648" y="142" width="820" height="110" rx="18" fill="#111827" stroke="#334155"/>
+  <rect x="648" y="282" width="820" height="190" rx="18" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="648" y="504" width="390" height="158" rx="18" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="1078" y="504" width="390" height="158" rx="18" fill="#0B1220" stroke="#1E293B"/>
+  <circle cx="1420" cy="164" r="12" fill="#60A5FA"/>
+  <text x="180" y="244" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="700">Portfolio platform</text>
+  <text x="180" y="320" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="32">Projects · Blog · Resume · Contact</text>
+  <text x="694" y="214" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="600">Calm, technical shell</text>
+  <text x="694" y="354" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Server Components</text>
+  <text x="694" y="406" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="28">MDX content pipeline</text>
+  <text x="694" y="458" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="28">Design tokens + motion system</text>
+</svg>

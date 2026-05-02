@@ -1,0 +1,58 @@
+---
+title: "API observability platform"
+slug: "api-observability-platform"
+date: "2026-03-01T09:30:00-05:00"
+excerpt: "A backend-oriented platform that turned trace data, contract drift, and delivery metrics into one searchable internal product."
+category: "Backend"
+tags:
+  - nodejs
+  - postgres
+  - openapi
+  - observability
+image: "/images/projects/api-observability-platform.svg"
+featured: false
+liveUrl: "https://example.com/api-observability"
+githubUrl: "https://github.com/shaeelafsar/api-observability-platform"
+---
+
+## Problem
+
+Platform teams had traces, logs, and API contracts stored across separate systems. Investigating a regression meant hopping between dashboards and manually reconciling timestamps.
+
+### Product brief
+
+The internal tool needed to correlate delivery events, schema changes, and runtime failures into a single narrative view engineers could trust.
+
+## Process
+
+I designed the content model first: services, environments, contracts, and incidents all needed consistent identifiers so the frontend could query them predictably.
+
+### Platform design
+
+| Layer | Responsibility |
+| --- | --- |
+| Ingestion | Normalized traces, logs, and deploy events |
+| Storage | Postgres-backed relational model for lookups |
+| Presentation | Search-first interface with team-friendly summaries |
+
+### Implementation notes
+
+<Callout tone="warning" title="Trade-off">
+We intentionally delayed real-time updates in favor of stronger data reconciliation. Fresh but wrong data would have created more confusion than value.
+</Callout>
+
+```ts
+export function summarizeIncident(service: string, errorRate: number) {
+  return `${service} is degrading at ${errorRate}% error rate`;
+}
+```
+
+## Outcome
+
+The platform turned backend telemetry into an internal product that felt legible, making regressions easier to explain and prioritize.
+
+### Impact
+
+- Faster incident write-ups with shared language across teams
+- Better visibility into contract drift before releases
+- Cleaner handoff between platform and product engineering

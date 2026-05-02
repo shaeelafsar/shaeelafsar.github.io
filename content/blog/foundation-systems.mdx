@@ -2,25 +2,33 @@
 title: "Designing the foundation for a calm, technical portfolio"
 slug: "foundation-systems"
 date: "2026-05-02T17:18:28-05:00"
-excerpt: "A first post for the content pipeline, focused on tokens, layout, and content architecture."
+excerpt: "A look at the design-system and architecture choices behind a portfolio that needs to feel cinematic, minimal, and maintainable."
 tags:
   - design-system
   - nextjs
   - mdx
 published: true
 featured: true
-image: "/images/blog/foundation-systems.jpg"
+image: "/images/blog/foundation-systems.svg"
 ---
 
 ## Why this foundation matters
 
-This placeholder post exists so the content pipeline can validate real MDX parsing, frontmatter loading, and syntax highlighting.
+A personal site looks small from the outside, but it still needs a durable system underneath it. Portfolio entries, essays, metadata, motion, and responsive behavior all start to overlap quickly.
 
-### The stack choices
+### The emotional target
 
-- App Router with Server Components by default
-- File-based content in `content/`
-- Shared design tokens in CSS custom properties
+The site should feel calm and technical rather than loud. That meant prioritizing whitespace, typography, and restrained accent color before adding any flourish.
+
+## The stack choices
+
+I wanted a stack that made content editing easy while preserving modern frontend patterns.
+
+### What made the cut
+
+- Next.js App Router for server-first page composition
+- Tailwind with CSS custom properties for design tokens
+- MDX for long-form content with embedded components
 
 ```ts
 export const foundation = {
@@ -30,4 +38,24 @@ export const foundation = {
 };
 ```
 
+<Callout tone="info" title="A practical rule">
+If a decision improved both authoring and presentation, it stayed. If it only made the implementation feel clever, it usually got cut.
+</Callout>
+
+## Design tokens before components
+
+The fastest way to keep pages coherent was to define the shared language first: colors, spacing, container widths, shadows, and motion timing.
+
+### A token mindset
+
+| Token family | Why it mattered |
+| --- | --- |
+| Color | Establish contrast and calm accent use |
+| Spacing | Keep rhythm consistent across every page |
+| Motion | Avoid one-off animation behavior |
+
 > Strong foundations make later page work faster, calmer, and easier to reason about.
+
+## What this unlocked
+
+The result is a site that can grow without feeling stitched together. New pages inherit the same visual rules, metadata defaults, and long-form content behaviors by default.

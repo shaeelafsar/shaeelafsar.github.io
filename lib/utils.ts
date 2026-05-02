@@ -13,6 +13,13 @@ export function formatDate(date: string | Date, locale = "en-US") {
   }).format(typeof date === "string" ? new Date(date) : date);
 }
 
+export function formatMonthYear(date: string | Date, locale = "en-US") {
+  return new Intl.DateTimeFormat(locale, {
+    month: "short",
+    year: "numeric",
+  }).format(typeof date === "string" ? new Date(date) : date);
+}
+
 export function slugify(value: string) {
   return value
     .normalize("NFKD")

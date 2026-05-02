@@ -1,7 +1,7 @@
 "use client";
 
 import { Children, type PropsWithChildren } from "react";
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,8 @@ import { DURATION_ENTER, EASE_STANDARD, STAGGER_DEFAULT } from "./tokens";
 export type StaggerChildrenProps = PropsWithChildren<{
   staggerDelay?: number;
   className?: string;
+  id?: string;
+  "data-testid"?: string;
 }>;
 
 const containerVariants = (staggerDelay: number): Variants => ({
@@ -40,16 +42,24 @@ export function StaggerChildren({
   children,
   staggerDelay = STAGGER_DEFAULT,
   className,
+  id,
+  "data-testid": dataTestId,
 }: StaggerChildrenProps) {
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
-    return <div className={cn(className)}>{children}</div>;
+    return (
+      <div className={cn(className)} id={id} data-testid={dataTestId}>
+        {children}
+      </div>
+    );
   }
 
   return (
     <motion.div
       className={cn(className)}
+      id={id}
+      data-testid={dataTestId}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

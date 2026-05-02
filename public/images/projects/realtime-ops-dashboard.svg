@@ -1,0 +1,17 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#020617"/>
+  <rect x="60" y="60" width="1480" height="780" rx="28" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="116" y="136" width="1368" height="96" rx="20" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="116" y="280" width="432" height="216" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="584" y="280" width="432" height="216" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="1052" y="280" width="432" height="216" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="116" y="540" width="900" height="224" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="1052" y="540" width="432" height="224" rx="24" fill="#111827" stroke="#334155"/>
+  <circle cx="204" cy="184" r="18" fill="#F87171"/>
+  <circle cx="258" cy="184" r="18" fill="#FBBF24"/>
+  <circle cx="312" cy="184" r="18" fill="#4ADE80"/>
+  <text x="382" y="196" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Realtime ops dashboard</text>
+  <text x="156" y="374" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="30">Alert stream</text>
+  <text x="624" y="374" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="30">Health metrics</text>
+  <text x="1092" y="374" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="30">Deploy timeline</text>
+</svg>

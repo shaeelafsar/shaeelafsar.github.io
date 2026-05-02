@@ -1,0 +1,13 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#08111F"/>
+  <rect x="70" y="70" width="1460" height="760" rx="28" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="132" y="140" width="560" height="620" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="744" y="140" width="662" height="144" rx="24" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="744" y="334" width="662" height="144" rx="24" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="744" y="528" width="662" height="144" rx="24" fill="#0B1220" stroke="#1E293B"/>
+  <text x="188" y="256" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="700">Making MDX work hard</text>
+  <text x="188" y="338" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="30">Code blocks, callouts, tables, and anchors</text>
+  <text x="794" y="228" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Custom component map</text>
+  <text x="794" y="422" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">TOC-friendly structure</text>
+  <text x="794" y="616" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Authoring without friction</text>
+</svg>

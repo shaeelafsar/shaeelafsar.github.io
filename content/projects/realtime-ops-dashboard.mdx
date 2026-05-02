@@ -1,0 +1,60 @@
+---
+title: "Realtime ops dashboard"
+slug: "realtime-ops-dashboard"
+date: "2026-04-12T10:00:00-05:00"
+excerpt: "A frontend-heavy monitoring console for operations teams, optimized for fast scanning, live updates, and trustworthy alert states."
+category: "Frontend"
+tags:
+  - react
+  - typescript
+  - websockets
+  - design-system
+image: "/images/projects/realtime-ops-dashboard.svg"
+featured: false
+liveUrl: "https://example.com/ops-dashboard"
+githubUrl: "https://github.com/shaeelafsar/realtime-ops-dashboard"
+---
+
+## Problem
+
+Operations teams were juggling multiple tools to understand system health. The dashboard needed to compress a noisy stream of events into a UI that felt immediate without becoming visually frantic.
+
+### Constraints
+
+- Data could spike unpredictably during incidents.
+- Teams needed quick status recognition from mobile through widescreen monitors.
+- Alert states had to remain accessible in both light and dark themes.
+
+## Process
+
+I focused on information hierarchy before animation, then layered motion only where it clarified a state change.
+
+### UI system
+
+The dashboard uses a modular card system, color-tokenized status badges, and a predictable typographic rhythm so operators can compare metrics without reorienting on every refresh.
+
+<Callout tone="success" title="Interaction rule">
+Animation was limited to opacity and transform, which kept the interface performant even when live panels refreshed in bursts.
+</Callout>
+
+### Delivery notes
+
+```ts
+const alertPanel = {
+  refreshStrategy: "event-driven",
+  priorityOrder: ["critical", "warning", "healthy"],
+  interactionModel: "keyboard-and-pointer",
+};
+```
+
+## Outcome
+
+The shipped UI reduced context switching and gave teams a single place to watch active incidents, recent deploys, and recovery progress.
+
+### Results
+
+| Metric | Before | After |
+| --- | --- | --- |
+| Tools open during triage | 4 | 1 |
+| Time to spot active incident | ~90s | ~20s |
+| Layout breakpoints supported | 2 | 4 |

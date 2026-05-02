@@ -20,8 +20,9 @@ export const getProjectBySlug = cache(async (slug: string): Promise<Project | nu
       title: frontmatter.title ?? slug,
       date: frontmatter.date ?? "2026-05-02T17:18:28-05:00",
       excerpt: frontmatter.excerpt ?? "",
+      category: frontmatter.category ?? "Full Stack",
       tags: frontmatter.tags ?? [],
-      image: frontmatter.image ?? "/images/projects/placeholder.jpg",
+      image: frontmatter.image ?? "/images/projects/placeholder.svg",
       featured: frontmatter.featured ?? false,
       liveUrl: frontmatter.liveUrl,
       githubUrl: frontmatter.githubUrl,
@@ -42,7 +43,13 @@ export const getAllProjects = cache(async (): Promise<Project[]> => {
 
     return projects
       .filter((project): project is Project => project !== null)
-      .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime());
+      .sort((left, right) => {
+        if (left.featured !== right.featured) {
+          return Number(right.featured) - Number(left.featured);
+        }
+
+        return new Date(right.date).getTime() - new Date(left.date).getTime();
+      });
   } catch {
     return [];
   }

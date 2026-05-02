@@ -49,7 +49,7 @@ export function createMetadata({
   title,
   description = siteConfig.description,
   path = "/",
-  image = "/og/default.png",
+  image = "/og/default.svg",
 }: CreateMetadataOptions = {}): Metadata {
   const metadataTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
   const canonicalUrl = new URL(path, siteConfig.url).toString();

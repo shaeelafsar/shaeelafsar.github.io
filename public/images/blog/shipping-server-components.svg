@@ -1,0 +1,12 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#020617"/>
+  <rect x="74" y="74" width="1452" height="752" rx="28" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="134" y="142" width="1332" height="120" rx="20" fill="#0B1220" stroke="#1E293B"/>
+  <rect x="134" y="318" width="644" height="406" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="822" y="318" width="644" height="188" rx="24" fill="#111827" stroke="#334155"/>
+  <rect x="822" y="536" width="644" height="188" rx="24" fill="#111827" stroke="#334155"/>
+  <text x="186" y="214" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="60" font-weight="700">Shipping server components</text>
+  <text x="186" y="402" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Server-first shell</text>
+  <text x="874" y="402" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">URL state island</text>
+  <text x="874" y="620" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="34">Reading progress + TOC</text>
+</svg>

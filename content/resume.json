@@ -1,34 +1,76 @@
 {
   "name": "Shaeel Afsar",
-  "title": "Frontend Engineer",
-  "summary": "Placeholder resume data for the Phase 1 content pipeline.",
+  "title": "Frontend Engineer & Product-Focused Software Developer",
+  "summary": "Frontend-leaning software engineer building performant, content-rich web products with Next.js, TypeScript, and thoughtful product systems. I enjoy pairing strong UX craft with pragmatic architecture, clear documentation, and reliable delivery.",
   "location": "Chicago, IL",
   "email": "hello@shaeelafsar.com",
   "website": "https://shaeelafsar.com",
   "experience": [
     {
-      "company": "Placeholder Studio",
-      "role": "Senior Frontend Engineer",
+      "company": "Independent Consulting",
+      "role": "Senior Software Engineer",
       "location": "Remote",
-      "startDate": "2026-05-02T17:18:28-05:00",
-      "endDate": "2026-05-02T17:18:28-05:00",
-      "summary": "Built polished React and Next.js interfaces with a focus on system quality.",
+      "startDate": "2024-01-01",
+      "summary": "Partner with founders and small teams to design, build, and ship modern web platforms with a focus on product clarity, performance, and maintainable frontends.",
       "highlights": [
-        "Created reusable UI systems for content-rich product surfaces.",
-        "Partnered across design and engineering to ship responsive web experiences."
+        "Delivered marketing, portfolio, and SaaS surfaces in Next.js with accessible component systems and reusable content models.",
+        "Defined design-token foundations, motion patterns, and page-building primitives that reduced implementation churn across launches.",
+        "Improved Lighthouse scores, perceived load time, and authoring workflows by simplifying data fetching and content publishing paths."
       ],
-      "techStack": ["Next.js", "TypeScript", "Tailwind CSS"]
+      "techStack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX", "Vercel"]
+    },
+    {
+      "company": "Product Studio Collective",
+      "role": "Frontend Engineer",
+      "location": "Remote",
+      "startDate": "2021-06-01",
+      "endDate": "2023-12-01",
+      "summary": "Built polished product experiences for client engagements spanning dashboards, marketing sites, and editorial content systems.",
+      "highlights": [
+        "Implemented component-driven design systems that supported shared patterns across multiple product teams and campaigns.",
+        "Shipped high-trust contact, onboarding, and conversion flows with strong validation, analytics hooks, and responsive behavior.",
+        "Collaborated with designers to translate wireframes into production-ready interfaces while keeping motion subtle and performant."
+      ],
+      "techStack": ["React", "Next.js", "TypeScript", "Storybook", "Tailwind CSS", "Framer Motion"]
+    },
+    {
+      "company": "Civic Data Labs",
+      "role": "Software Engineer",
+      "location": "Chicago, IL",
+      "startDate": "2019-03-01",
+      "endDate": "2021-05-01",
+      "summary": "Contributed across frontend and backend systems for internal tools and public-facing data products used by operations and policy teams.",
+      "highlights": [
+        "Built React interfaces for search, filtering, and reporting workflows that made dense operational data easier to act on.",
+        "Created API integrations and background processing pipelines to synchronize datasets from third-party services.",
+        "Helped improve release reliability with stronger typing, CI checks, and clearer handoff documentation."
+      ],
+      "techStack": ["React", "Node.js", "Express", "PostgreSQL", "Docker", "GitHub Actions"]
+    },
+    {
+      "company": "Freelance Web Development",
+      "role": "Frontend Developer",
+      "location": "Remote",
+      "startDate": "2016-01-01",
+      "endDate": "2019-02-01",
+      "summary": "Designed and launched websites for individuals and small businesses, balancing visual polish, CMS practicality, and straightforward maintenance.",
+      "highlights": [
+        "Created responsive marketing and portfolio sites with custom theming, content architecture, and SEO-friendly page structure.",
+        "Managed projects end-to-end, from discovery and prototyping through implementation, deployment, and iteration.",
+        "Established a durable foundation in client communication, estimation, and translating goals into shipped product decisions."
+      ],
+      "techStack": ["JavaScript", "TypeScript", "HTML", "CSS", "WordPress", "Netlify"]
     }
   ],
   "education": [
     {
-      "institution": "Placeholder University",
+      "institution": "University of Illinois Chicago",
       "degree": "Bachelor of Science",
       "fieldOfStudy": "Computer Science",
-      "location": "Illinois",
-      "startDate": "2026-05-02T17:18:28-05:00",
-      "endDate": "2026-05-02T17:18:28-05:00",
-      "summary": "Placeholder education entry for structured resume rendering."
+      "location": "Chicago, IL",
+      "startDate": "2012-08-01",
+      "endDate": "2016-05-01",
+      "summary": "Coursework emphasized software engineering, human-computer interaction, data structures, and web application development."
     }
   ],
   "skillCategories": [
@@ -37,14 +79,41 @@
       "skills": [
         { "name": "React", "level": "advanced" },
         { "name": "Next.js", "level": "advanced" },
-        { "name": "Tailwind CSS", "level": "advanced" }
+        { "name": "TypeScript", "level": "advanced" },
+        { "name": "Tailwind CSS", "level": "advanced" },
+        { "name": "Framer Motion", "level": "advanced" },
+        { "name": "Accessibility", "level": "advanced" }
       ]
     },
     {
-      "title": "Content",
+      "title": "Backend",
       "skills": [
+        { "name": "Node.js", "level": "advanced" },
+        { "name": "Express", "level": "advanced" },
+        { "name": "PostgreSQL", "level": "intermediate" },
+        { "name": "REST APIs", "level": "advanced" },
+        { "name": "Server Actions", "level": "intermediate" }
+      ]
+    },
+    {
+      "title": "DevOps & Tooling",
+      "skills": [
+        { "name": "GitHub Actions", "level": "advanced" },
+        { "name": "Docker", "level": "intermediate" },
+        { "name": "Vercel", "level": "advanced" },
+        { "name": "pnpm", "level": "advanced" },
+        { "name": "Playwright", "level": "intermediate" },
+        { "name": "Vitest", "level": "intermediate" }
+      ]
+    },
+    {
+      "title": "Languages & Content",
+      "skills": [
+        { "name": "JavaScript", "level": "advanced" },
+        { "name": "TypeScript", "level": "advanced" },
+        { "name": "SQL", "level": "intermediate" },
         { "name": "MDX", "level": "advanced" },
-        { "name": "Structured content modeling", "level": "advanced" }
+        { "name": "Technical Writing", "level": "advanced" }
       ]
     }
   ]
