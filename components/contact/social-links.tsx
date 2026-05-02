@@ -82,11 +82,11 @@ export function SocialLinks() {
                   href={link.href}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noreferrer" : undefined}
-                  className="flex items-center justify-between gap-4 rounded-[var(--radius-md)] border border-border bg-background-secondary/50 px-4 py-4 transition-[transform,border-color,background-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] hover:border-border-strong hover:bg-card"
+                  className="group flex items-center justify-between gap-4 rounded-[var(--radius-md)] border border-border bg-background-secondary/50 px-4 py-4 transition-[transform,border-color,background-color,color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] hover:border-accent/30 hover:bg-card hover:text-accent motion-safe:hover:-translate-y-0.5"
                 >
                   <span className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card">
-                      <Icon className="h-5 w-5 text-foreground" />
+                      <Icon className="h-5 w-5 text-foreground transition-colors duration-[var(--duration-ui)] group-hover:text-accent" />
                     </span>
                     <span>
                       <span className="block font-medium text-foreground">{link.label}</span>

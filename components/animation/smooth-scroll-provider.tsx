@@ -9,7 +9,7 @@ import {
   type MutableRefObject,
   type PropsWithChildren,
 } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "motion/react";
 
 type LenisRef = MutableRefObject<Lenis | null>;
 

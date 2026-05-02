@@ -62,7 +62,7 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <div className="flex min-h-dvh flex-col">
             <Header />
-            <main id="main-content" className="flex-1">
+            <main id="main-content" className="flex-1" style={{ viewTransitionName: "site-content" }}>
               {children}
             </main>
             <Footer />

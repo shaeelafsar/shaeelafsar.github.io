@@ -64,12 +64,12 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
               Selected work
             </p>
           </FadeIn>
-          <FadeIn delay={0.08}>
+          <FadeIn delay={0.15}>
             <Heading as="h1" size="display-lg" className="max-w-4xl text-balance">
               Projects built with product clarity and a frontend-first eye.
             </Heading>
           </FadeIn>
-          <FadeIn delay={0.16}>
+          <FadeIn delay={0.3}>
             <p className="max-w-3xl text-[length:var(--text-body-lg)] leading-8 text-muted-foreground">
               A growing archive of interface systems, backend platforms, and full-stack products. Filter by discipline to browse the case studies most relevant to the work ahead.
             </p>

@@ -18,7 +18,7 @@ const projectDateFormatter = new Intl.DateTimeFormat("en-US", {
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
-    <Section className="bg-background-secondary/55" data-testid="featured-projects-section">
+    <Section id="featured-projects" className="bg-background-secondary/55" data-testid="featured-projects-section">
       <Container className="space-y-12">
         <FadeIn className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl space-y-4">

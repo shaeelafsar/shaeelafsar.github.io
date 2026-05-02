@@ -56,7 +56,7 @@ export function ProjectFilter({
         aria-label="Filter projects by tag"
         className={cn(
           "flex gap-3 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible",
-          isPending && "opacity-90",
+          isPending && "opacity-70",
         )}
         role="toolbar"
       >

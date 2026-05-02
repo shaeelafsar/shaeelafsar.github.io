@@ -22,7 +22,7 @@ export function Card({
   return (
     <Component
       className={cn(
-        "group flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border bg-card shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] motion-safe:hover:-translate-y-1 motion-safe:hover:border-border-strong motion-safe:hover:shadow-[var(--shadow-lg)]",
+        "group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border/80 bg-card/92 shadow-[var(--shadow-sm)] ring-1 ring-white/55 backdrop-blur-[var(--blur-sm)] transition-[transform,box-shadow,border-color,background-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] dark:ring-white/5 motion-safe:hover:-translate-y-1 motion-safe:hover:border-border-strong motion-safe:hover:shadow-[var(--shadow-lg)]",
         className,
       )}
       {...props}
@@ -37,12 +37,26 @@ export function CardImage({ className, children }: CardSlotProps) {
 }
 
 export function CardContent({ className, children }: CardSlotProps) {
-  return <div className={cn("flex flex-1 flex-col gap-4 p-6 md:p-8", className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        "flex flex-1 flex-col gap-4 p-[var(--card-padding)] md:p-[var(--card-padding-md)]",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 
 export function CardFooter({ className, children }: CardSlotProps) {
   return (
-    <div className={cn("mt-auto flex items-center gap-3 px-6 pb-6 md:px-8 md:pb-8", className)}>
+    <div
+      className={cn(
+        "mt-auto flex items-center gap-3 px-[var(--card-padding)] pb-[var(--card-padding)] md:px-[var(--card-padding-md)] md:pb-[var(--card-padding-md)]",
+        className,
+      )}
+    >
       {children}
     </div>
   );

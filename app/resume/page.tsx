@@ -24,7 +24,7 @@ export default async function ResumePage() {
 
   return (
     <>
-      <Section className="pt-20 md:pt-24 lg:pt-28">
+      <Section className="pt-16 md:pt-20 lg:pt-24">
         <Container>
           <FadeIn>
             <div className="grid gap-8 rounded-[var(--radius-xl)] border border-border bg-card/85 p-8 shadow-[var(--shadow-md)] md:p-10 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-start">
@@ -77,7 +77,7 @@ export default async function ResumePage() {
                 </Heading>
               </div>
             </FadeIn>
-            <FadeIn delay={0.08}>
+            <FadeIn delay={0.15}>
               <ExperienceTimeline experiences={resume.experience} />
             </FadeIn>
           </Container>
@@ -97,7 +97,7 @@ export default async function ResumePage() {
                 </Heading>
               </div>
             </FadeIn>
-            <FadeIn delay={0.08}>
+            <FadeIn delay={0.15}>
               <SkillsGrid categories={resume.skillCategories} />
             </FadeIn>
           </Container>
@@ -105,7 +105,7 @@ export default async function ResumePage() {
       ) : null}
 
       {resume.education.length > 0 ? (
-        <Section className="pt-20 md:pt-24 lg:pt-28">
+        <Section className="pt-16 md:pt-20 lg:pt-24">
           <Container className="space-y-10">
             <FadeIn>
               <div className="space-y-4">
@@ -117,7 +117,7 @@ export default async function ResumePage() {
                 </Heading>
               </div>
             </FadeIn>
-            <FadeIn delay={0.08}>
+            <FadeIn delay={0.15}>
               <EducationSection entries={resume.education} />
             </FadeIn>
           </Container>

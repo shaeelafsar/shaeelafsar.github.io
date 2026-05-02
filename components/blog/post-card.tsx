@@ -13,9 +13,9 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="block rounded-[var(--radius-lg)] focus-visible:rounded-[var(--radius-lg)]"
+      className="group block rounded-[var(--radius-lg)] focus-visible:rounded-[var(--radius-lg)]"
     >
-      <Card className="h-full bg-card/85">
+      <Card className="h-full bg-card/85 motion-safe:group-hover:scale-[1.02] motion-safe:group-hover:border-accent/35 motion-safe:group-hover:shadow-[var(--shadow-lg)]">
         <CardContent className="gap-6">
           <div className="flex flex-wrap items-center gap-3 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.14em] text-muted-foreground">
             <span>{formatDate(post.date)}</span>

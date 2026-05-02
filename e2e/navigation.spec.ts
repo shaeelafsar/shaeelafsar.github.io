@@ -1,38 +1,39 @@
 import { expect, test } from "@playwright/test";
+import { expectRouteContent, gotoPage, navigationRoutes, pageRoutes, viewports } from "./test-helpers";
 
-const routes = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "/blog" },
-  { label: "Resume", href: "/resume" },
-  { label: "Contact", href: "/contact" },
-] as const;
+const homeRoute = pageRoutes[0]!;
 
 test.describe("navigation", () => {
+  test.use({ reducedMotion: "reduce" });
+
   test("all nav links navigate to the expected pages", async ({ page }) => {
-    for (const route of routes) {
-      await page.goto("/");
-      await page.getByTestId("site-nav").getByRole("link", { name: route.label }).click();
-      await expect(page).toHaveURL(route.href);
+    await page.setViewportSize(viewports.xl);
+    await gotoPage(page, homeRoute);
+
+    for (const route of [...navigationRoutes.slice(1), homeRoute]) {
+      await page.getByTestId("site-nav").getByRole("link", { name: route.navLabel! }).click();
+      await expect(page).toHaveURL(route.path);
+      await expectRouteContent(page, route);
     }
   });
 
   test("404 page renders for unknown routes", async ({ page }) => {
-    const response = await page.goto("/missing-route");
+    const notFoundRoute = pageRoutes.find((route) => route.name === "404")!;
 
-    expect(response?.status()).toBe(404);
-    await expect(page.getByText("This page could not be found.")).toBeVisible();
+    await gotoPage(page, notFoundRoute);
+    await expectRouteContent(page, notFoundRoute);
   });
 
   test("back navigation returns to the previous page", async ({ page }) => {
-    await page.goto("/");
+    await page.setViewportSize(viewports.xl);
+    await gotoPage(page, homeRoute);
     await page.getByTestId("site-nav").getByRole("link", { name: "About" }).click();
     await expect(page).toHaveURL("/about");
 
     await page.goBack();
+    await page.waitForLoadState("networkidle");
 
     await expect(page).toHaveURL("/");
-    await expect(page.getByRole("heading", { level: 1, name: "Shaeel Afsar" })).toBeVisible();
+    await expectRouteContent(page, homeRoute);
   });
 });

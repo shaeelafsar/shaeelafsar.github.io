@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   forwardRef,
   type AnchorHTMLAttributes,
@@ -11,7 +12,7 @@ type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
 type ButtonSize = "sm" | "md" | "lg";
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-[var(--radius-pill)] border text-sm font-medium transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] disabled:pointer-events-none disabled:opacity-50 motion-safe:hover:-translate-y-0.5 active:translate-y-0 focus-visible:border-accent";
+  "inline-flex items-center justify-center rounded-[var(--radius-pill)] border text-sm font-medium transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] disabled:pointer-events-none disabled:opacity-50 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] focus-visible:border-accent";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -57,18 +58,40 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
       size = "md",
       className,
       children,
+      as = "button",
       ...restProps
     } = props;
 
     const classes = cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
 
-    if (props.as === "a") {
+    if (as === "a") {
+      const { href, ...anchorProps } = restProps as Omit<
+        AnchorHTMLAttributes<HTMLAnchorElement>,
+        "href"
+      > & {
+        href: string;
+      };
+      const shouldUseLink =
+        href.startsWith("/") &&
+        !href.startsWith("//") &&
+        !href.startsWith("/resume.pdf") &&
+        !/^\/[\w-]+\.[a-z0-9]+(?:$|[?#])/i.test(href);
+
+      if (shouldUseLink) {
+        return (
+          <Link
+            ref={ref as Ref<HTMLAnchorElement>}
+            className={classes}
+            href={href}
+            {...anchorProps}
+          >
+            {children}
+          </Link>
+        );
+      }
+
       return (
-        <a
-          ref={ref as Ref<HTMLAnchorElement>}
-          className={classes}
-          {...(restProps as AnchorHTMLAttributes<HTMLAnchorElement>)}
-        >
+        <a ref={ref as Ref<HTMLAnchorElement>} className={classes} {...anchorProps}>
           {children}
         </a>
       );

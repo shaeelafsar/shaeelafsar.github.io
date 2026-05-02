@@ -7,8 +7,9 @@ import { Container } from "@/components/ui/container";
 export function Header() {
   return (
     <header
-      className="sticky top-0 z-[var(--z-header)] border-b border-border/80 bg-surface/85 backdrop-blur-[var(--blur-md)]"
+      className="sticky top-0 z-[var(--z-header)] border-b border-border/80 bg-surface/78 shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-[var(--blur-lg)]"
       data-testid="site-header"
+      style={{ viewTransitionName: "site-header" }}
     >
       <Container className="flex min-h-20 items-center justify-between gap-4 py-4">
         <div className="flex items-center gap-8">

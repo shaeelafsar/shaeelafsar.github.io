@@ -65,7 +65,7 @@ export default async function AboutPage() {
               </Button>
             </div>
           </FadeIn>
-          <FadeIn delay={0.15} direction="left">
+          <FadeIn delay={0.3} direction="left">
             <div
               role="img"
               aria-label="Portrait placeholder for Shaeel Afsar"
@@ -94,7 +94,7 @@ export default async function AboutPage() {
               I approach software as a blend of product judgment, engineering discipline, and visual craft.
             </Heading>
           </FadeIn>
-          <FadeIn delay={0.1} className="space-y-6">
+          <FadeIn delay={0.15} className="space-y-6">
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
               The best frontend work helps users feel oriented immediately. That means hierarchy that reads clearly, interactions that never fight the task, and systems underneath that make iteration easier for the team.
             </p>

@@ -2,50 +2,61 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "motion/react";
 import { Nav } from "@/components/layout/nav";
 import { siteConfig } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 const standardEase = [0.21, 0.47, 0.32, 0.98] as const;
 
-const panelVariants: Variants = {
-  hidden: { opacity: 0, x: 32 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3, ease: standardEase },
-  },
-  exit: {
-    opacity: 0,
-    x: 32,
-    transition: { duration: 0.22, ease: standardEase },
-  },
-};
-
-const listVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.08,
-      staggerChildren: 0.06,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: 16 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.24, ease: standardEase },
-  },
-};
-
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const wasOpenRef = useRef(false);
+  const prefersReducedMotion = useReducedMotion();
+
+  const panelOffset = prefersReducedMotion ? 0 : 24;
+  const panelVariants: Variants = {
+    hidden: { opacity: prefersReducedMotion ? 1 : 0, x: panelOffset },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: prefersReducedMotion ? 0 : 0.24,
+        ease: standardEase,
+      },
+    },
+    exit: {
+      opacity: prefersReducedMotion ? 1 : 0,
+      x: panelOffset,
+      transition: {
+        duration: prefersReducedMotion ? 0 : 0.18,
+        ease: standardEase,
+      },
+    },
+  };
+
+  const listVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: prefersReducedMotion ? 0 : 0.06,
+        staggerChildren: prefersReducedMotion ? 0 : 0.06,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: prefersReducedMotion ? 1 : 0, x: prefersReducedMotion ? 0 : 12 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: prefersReducedMotion ? 0 : 0.22,
+        ease: standardEase,
+      },
+    },
+  };
 
   useEffect(() => {
     if (!open && wasOpenRef.current) {
@@ -112,10 +123,10 @@ export function MobileMenu() {
       <AnimatePresence>
         {open ? (
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            exit={{ opacity: prefersReducedMotion ? 1 : 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.18, ease: standardEase }}
             className="fixed inset-0 z-[var(--z-mobile-menu)] lg:hidden"
           >
             <button

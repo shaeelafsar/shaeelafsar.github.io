@@ -18,14 +18,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="block h-full rounded-[var(--radius-lg)] focus-visible:rounded-[var(--radius-lg)]"
+      className="group block h-full rounded-[var(--radius-lg)] focus-visible:rounded-[var(--radius-lg)]"
     >
-      <Card className="h-full">
+      <Card className="h-full motion-safe:group-hover:scale-[1.02] motion-safe:group-hover:border-accent/35 motion-safe:group-hover:shadow-[var(--shadow-lg)]">
         <CardImage>
           <div className="relative aspect-[16/10] overflow-hidden bg-card-muted">
             <Image
               alt={`Preview of ${project.title}`}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease-standard)] motion-safe:group-hover:scale-[1.04]"
               height={900}
               priority={project.featured}
               sizes="(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw"

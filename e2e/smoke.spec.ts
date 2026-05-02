@@ -1,17 +1,22 @@
 import { expect, test } from "@playwright/test";
+import { gotoPage, pageRoutes, viewports } from "./test-helpers";
 
 const navLabels = ["Home", "About", "Projects", "Blog", "Resume", "Contact"];
+const homeRoute = pageRoutes[0]!;
 
 test.describe("smoke", () => {
-  test("home page loads without errors", async ({ page }) => {
-    const response = await page.goto("/");
+  test.use({ reducedMotion: "reduce" });
 
-    expect(response?.ok()).toBeTruthy();
+  test("home page loads without errors", async ({ page }) => {
+    await page.setViewportSize(viewports.xl);
+    await gotoPage(page, homeRoute);
+
     await expect(page.getByRole("heading", { level: 1, name: "Shaeel Afsar" })).toBeVisible();
   });
 
   test("navigation links are present and visible", async ({ page }) => {
-    await page.goto("/");
+    await page.setViewportSize(viewports.xl);
+    await gotoPage(page, homeRoute);
 
     const nav = page.getByTestId("site-nav");
     await expect(nav).toBeVisible();
@@ -22,17 +27,19 @@ test.describe("smoke", () => {
   });
 
   test("header and footer are rendered", async ({ page }) => {
-    await page.goto("/");
+    await page.setViewportSize(viewports.xl);
+    await gotoPage(page, homeRoute);
 
     await expect(page.getByTestId("site-header")).toBeVisible();
     await expect(page.getByTestId("site-footer")).toBeVisible();
   });
 
   test("dark mode toggle updates the html class", async ({ page }) => {
+    await page.setViewportSize(viewports.xl);
     await page.addInitScript(() => {
       window.localStorage.setItem("theme", "light");
     });
-    await page.goto("/");
+    await gotoPage(page, homeRoute);
 
     const html = page.locator("html");
     const toggle = page.getByTestId("theme-toggle");
@@ -45,8 +52,8 @@ test.describe("smoke", () => {
   });
 
   test("mobile menu opens and closes", async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/");
+    await page.setViewportSize(viewports.sm);
+    await gotoPage(page, homeRoute);
 
     const trigger = page.getByTestId("mobile-menu-trigger");
     await trigger.click();
@@ -57,12 +64,13 @@ test.describe("smoke", () => {
   });
 
   test("page title and meta description are set", async ({ page }) => {
-    await page.goto("/");
+    await page.setViewportSize(viewports.xl);
+    await gotoPage(page, homeRoute);
 
-    await expect(page).toHaveTitle("Shaeel Afsar");
+    await expect(page).toHaveTitle("Home | Shaeel Afsar");
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       "content",
-      "Personal professional website, portfolio, blog, and resume for Shaeel Afsar.",
+      "Cinematic portfolio home for Shaeel Afsar featuring selected work, writing, and a clear path to connect.",
     );
   });
 });

@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function ContactPage() {
   return (
     <>
-      <Section className="pt-20 md:pt-24 lg:pt-28">
+      <Section className="pt-16 md:pt-20 lg:pt-24">
         <Container>
           <FadeIn>
             <div className="max-w-3xl space-y-5" data-testid="contact-hero">
@@ -42,7 +42,7 @@ export default function ContactPage() {
             <FadeIn className="order-1 lg:order-2">
               <SocialLinks />
             </FadeIn>
-            <FadeIn delay={0.08} className="order-2 lg:order-1">
+            <FadeIn delay={0.15} className="order-2 lg:order-1">
               <ContactForm />
             </FadeIn>
           </div>

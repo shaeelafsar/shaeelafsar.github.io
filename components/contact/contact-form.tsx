@@ -9,7 +9,7 @@ import { initialContactActionState } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
 const inputClasses =
-  "w-full rounded-[var(--radius-md)] border bg-background px-4 py-3 text-base text-foreground transition-[border-color,box-shadow,background-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:opacity-60";
+  "w-full rounded-[var(--radius-md)] border border-border bg-card/70 px-4 py-3 text-base text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-[border-color,box-shadow,background-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:bg-background-secondary/60";
 
 function FieldError({ id, error }: { id: string; error?: string }) {
   if (!error) {

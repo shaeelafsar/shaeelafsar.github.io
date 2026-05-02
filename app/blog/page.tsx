@@ -28,12 +28,12 @@ export default async function BlogPage() {
               Notes from the build
             </p>
           </FadeIn>
-          <FadeIn delay={0.08}>
+          <FadeIn delay={0.15}>
             <Heading as="h1" size="display-lg" className="max-w-4xl text-balance">
               Essays about frontend craft, technical systems, and the product choices behind them.
             </Heading>
           </FadeIn>
-          <FadeIn delay={0.16}>
+          <FadeIn delay={0.3}>
             <p className="max-w-3xl text-[length:var(--text-body-lg)] leading-8 text-muted-foreground">
               A running archive of process notes, implementation decisions, and the quieter lessons that make polished software feel inevitable.
             </p>

@@ -120,7 +120,7 @@ export function TableOfContents({
   }
 
   return (
-    <aside className="hidden lg:block">
+    <div className="hidden lg:block">
       <nav
         aria-label="Table of contents"
         className="sticky top-28 rounded-[var(--radius-lg)] border border-border bg-card/70 p-5"
@@ -131,6 +131,6 @@ export function TableOfContents({
         </p>
         {list}
       </nav>
-    </aside>
+    </div>
   );
 }

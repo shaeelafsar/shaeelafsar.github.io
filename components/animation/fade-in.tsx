@@ -1,7 +1,7 @@
 "use client";
 
-import type { PropsWithChildren } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState, type PropsWithChildren } from "react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -33,6 +33,32 @@ function getDirectionalOffset(direction: FadeDirection, distance: number) {
   }
 }
 
+function useResponsiveDistance(distance: number) {
+  const [resolvedDistance, setResolvedDistance] = useState(() => {
+    if (typeof window === "undefined") {
+      return distance;
+    }
+
+    return window.matchMedia("(max-width: 767px)").matches ? Math.min(distance, 20) : distance;
+  });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateDistance = () => {
+      setResolvedDistance(mediaQuery.matches ? Math.min(distance, 20) : distance);
+    };
+
+    updateDistance();
+    mediaQuery.addEventListener("change", updateDistance);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateDistance);
+    };
+  }, [distance]);
+
+  return resolvedDistance;
+}
+
 export function FadeIn({
   children,
   delay = 0,
@@ -42,19 +68,20 @@ export function FadeIn({
   className,
 }: FadeInProps) {
   const prefersReducedMotion = useReducedMotion();
+  const resolvedDistance = useResponsiveDistance(distance);
 
   if (prefersReducedMotion) {
     return <div className={cn(className)}>{children}</div>;
   }
 
-  const { x, y } = getDirectionalOffset(direction, distance);
+  const { x, y } = getDirectionalOffset(direction, resolvedDistance);
 
   return (
     <motion.div
       className={cn(className)}
       initial={{ opacity: 0, x, y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration, delay, ease: EASE_STANDARD }}
     >
       {children}

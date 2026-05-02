@@ -1,7 +1,7 @@
 "use client";
 
-import { Children, type PropsWithChildren } from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { Children, useEffect, useState, type PropsWithChildren } from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -23,20 +23,48 @@ const containerVariants = (staggerDelay: number): Variants => ({
   },
 });
 
-const childVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: DURATION_ENTER,
-      ease: EASE_STANDARD,
+function childVariants(distance: number): Variants {
+  return {
+    hidden: {
+      opacity: 0,
+      y: distance,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: DURATION_ENTER,
+        ease: EASE_STANDARD,
+      },
+    },
+  };
+}
+
+function useResponsiveDistance() {
+  const [distance, setDistance] = useState(() => {
+    if (typeof window === "undefined") {
+      return 28;
+    }
+
+    return window.matchMedia("(max-width: 767px)").matches ? 18 : 28;
+  });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateDistance = () => {
+      setDistance(mediaQuery.matches ? 18 : 28);
+    };
+
+    updateDistance();
+    mediaQuery.addEventListener("change", updateDistance);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateDistance);
+    };
+  }, []);
+
+  return distance;
+}
 
 export function StaggerChildren({
   children,
@@ -46,6 +74,7 @@ export function StaggerChildren({
   "data-testid": dataTestId,
 }: StaggerChildrenProps) {
   const prefersReducedMotion = useReducedMotion();
+  const distance = useResponsiveDistance();
 
   if (prefersReducedMotion) {
     return (
@@ -62,11 +91,11 @@ export function StaggerChildren({
       data-testid={dataTestId}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants(staggerDelay)}
     >
       {Children.toArray(children).map((child, index) => (
-        <motion.div key={index} variants={childVariants}>
+        <motion.div key={index} variants={childVariants(distance)}>
           {child}
         </motion.div>
       ))}
