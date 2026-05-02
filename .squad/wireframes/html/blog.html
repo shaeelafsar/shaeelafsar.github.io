@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Wireframe Mockup</title>
+  <style>
+    :root {
+      --color-bg: #0a0a0a;
+      --color-bg-secondary: #171717;
+      --color-surface: rgba(23, 23, 23, 0.72);
+      --color-surface-strong: rgba(20, 20, 20, 0.9);
+      --color-card: #141414;
+      --color-card-muted: #101826;
+      --color-text: #fafafa;
+      --color-text-secondary: #a3a3a3;
+      --color-text-tertiary: #737373;
+      --color-border: #262626;
+      --color-border-strong: #3f3f46;
+      --color-accent: #3b82f6;
+      --color-accent-hover: #60a5fa;
+      --color-accent-soft: rgba(59, 130, 246, 0.16);
+      --color-accent-glow: rgba(96, 165, 250, 0.24);
+      --color-success: #4ade80;
+      --color-warning: #fbbf24;
+      --color-info: #38bdf8;
+      --color-selection: rgba(59, 130, 246, 0.24);
+      --container-narrow: 72ch;
+      --container-content: 80rem;
+      --container-wide: 90rem;
+      --radius-sm: 0.75rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --radius-pill: 999px;
+      --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.16);
+      --shadow-md: 0 24px 80px rgba(0, 0, 0, 0.28);
+      --shadow-focus: 0 0 0 3px var(--color-accent-soft);
+      --text-display-lg: clamp(2.75rem, 6vw, 5rem);
+      --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+      --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+      --text-body-lg: clamp(1.125rem, 1.3vw, 1.375rem);
+      --text-body: clamp(1rem, 1vw, 1.125rem);
+      --text-meta: clamp(0.75rem, 0.7vw, 0.875rem);
+      --ease-standard: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+      --ease-snappy: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --duration-micro: 150ms;
+      --duration-ui: 300ms;
+      --duration-enter: 600ms;
+      --z-header: 40;
+      --z-mobile-menu: 50;
+    }
+
+    html.light {
+      --color-bg: #fafafa;
+      --color-bg-secondary: #f1f5f9;
+      --color-surface: rgba(255, 255, 255, 0.72);
+      --color-surface-strong: rgba(255, 255, 255, 0.9);
+      --color-card: #ffffff;
+      --color-card-muted: #f8fafc;
+      --color-text: #171717;
+      --color-text-secondary: #525252;
+      --color-text-tertiary: #737373;
+      --color-border: #e5e7eb;
+      --color-border-strong: #d4d4d8;
+      --color-accent: #2563eb;
+      --color-accent-hover: #1d4ed8;
+      --color-accent-soft: rgba(37, 99, 235, 0.12);
+      --color-accent-glow: rgba(37, 99, 235, 0.22);
+      --color-success: #15803d;
+      --color-warning: #b45309;
+      --color-info: #0369a1;
+      --color-selection: rgba(37, 99, 235, 0.16);
+      --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 24px 80px rgba(15, 23, 42, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 30%),
+        linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 12%, var(--color-bg) 100%);
+      color: var(--color-text);
+      min-height: 100vh;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    }
+    ::selection { background: var(--color-selection); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; }
+
+    .page-shell {
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--container-content));
+      margin: 0 auto;
+    }
+
+    .section {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .component-label {
+      position: absolute;
+      top: 0.9rem;
+      left: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      background: color-mix(in srgb, var(--color-bg-secondary) 86%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 0.28rem 0.58rem;
+      z-index: 3;
+    }
+
+    .client-boundary {
+      border: 1px dashed color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+
+    .client-boundary > .component-label {
+      color: var(--color-accent-hover);
+    }
+
+    .anim-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .fade-badge {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--color-info);
+      border-color: rgba(56, 189, 248, 0.28);
+    }
+
+    .stagger-badge {
+      background: rgba(251, 191, 36, 0.12);
+      color: var(--color-warning);
+      border-color: rgba(251, 191, 36, 0.28);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-header);
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .header-inner {
+      width: min(100% - 2rem, var(--container-wide));
+      margin: 0 auto;
+      min-height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand strong {
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .site-nav {
+      display: none;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .site-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.92rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid transparent;
+      transition: color var(--duration-ui) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy);
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible,
+    .site-nav a[aria-current="page"] {
+      color: var(--color-text);
+      border-color: var(--color-accent);
+      outline: none;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .icon-button {
+      min-width: 2.6rem;
+      min-height: 2.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: var(--color-card);
+      color: var(--color-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform var(--duration-micro) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy);
+    }
+
+    .icon-button:hover { transform: translateY(-1px); border-color: var(--color-border-strong); background: var(--color-card-muted); }
+    .icon-button:focus-visible {
+      outline: 2px solid transparent;
+      box-shadow: var(--shadow-focus);
+      border-color: var(--color-accent);
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      left: 1rem;
+      right: 1rem;
+      z-index: var(--z-mobile-menu);
+      background: color-mix(in srgb, var(--color-surface-strong) 96%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-menu[data-open="true"] { display: flex; }
+
+    .mobile-menu a {
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:focus-visible,
+    .mobile-menu a[aria-current="page"] {
+      color: var(--color-text);
+      background: var(--color-accent-soft);
+      border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+      outline: none;
+    }
+
+    .hero {
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+    }
+
+    .hero-panel,
+    .tag-strip,
+    .post-card,
+    .footer-panel {
+      position: relative;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-panel {
+      padding: 4.5rem 1.25rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.76rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: var(--text-display-lg);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    .hero-copy {
+      margin-top: 1.25rem;
+      max-width: 62ch;
+      color: var(--color-text-secondary);
+      font-size: var(--text-body-lg);
+    }
+
+    .hero-meta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      color: var(--color-text-secondary);
+      font-size: var(--text-meta);
+    }
+
+    .tag-strip {
+      margin-top: 1rem;
+      padding: 3.5rem 1rem 1rem;
+    }
+
+    .strip-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .strip-copy {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-card-muted) 68%, transparent);
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      transition: transform var(--duration-micro) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy), color var(--duration-ui) var(--ease-snappy);
+      cursor: default;
+    }
+
+    .tag-pill:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      background: var(--color-accent-soft);
+      color: var(--color-text);
+    }
+
+    .posts {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .post-card {
+      padding: 4rem 1.1rem 1.2rem;
+      transition: transform var(--duration-ui) var(--ease-standard), border-color var(--duration-ui) var(--ease-standard), box-shadow var(--duration-ui) var(--ease-standard);
+      overflow: hidden;
+    }
+
+    .post-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 14rem;
+      height: 14rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--color-accent-glow), transparent 68%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .post-card:hover,
+    .post-card:focus-within {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      box-shadow: var(--shadow-md);
+    }
+
+    .post-link {
+      display: grid;
+      gap: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--color-text-secondary);
+      font-size: var(--text-meta);
+    }
+
+    .card-title-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .post-card h2 {
+      margin: 0;
+      font-size: var(--text-h3);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 22ch;
+    }
+
+    .post-card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      max-width: 62ch;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card-footer .pill-row { gap: 0.55rem; }
+
+    .read-link {
+      color: var(--color-accent-hover);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .footer-panel {
+      padding: 3.7rem 1rem 1.25rem;
+      margin: 1rem auto 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+      color: var(--color-text-secondary);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid transparent;
+      transition: color var(--duration-ui) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy);
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--color-text);
+      border-color: var(--color-accent);
+      outline: none;
+    }
+
+    .muted { color: var(--color-text-secondary); }
+
+    @media (min-width: 768px) {
+      .container { width: min(100% - 3rem, var(--container-content)); }
+      .hero { padding-top: 4rem; }
+      .hero-panel { padding: 5rem 2rem 2rem; }
+      .tag-strip { padding: 3.8rem 1.5rem 1.25rem; }
+      .strip-row { gap: 1.25rem; }
+      .post-card { padding: 4.4rem 1.6rem 1.5rem; }
+      .post-link { gap: 1.5rem; }
+      .footer-panel { padding: 4rem 1.6rem 1.5rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .site-nav { display: flex; }
+      .menu-toggle { display: none; }
+      .mobile-menu { display: none !important; }
+      .hero-panel { padding: 5.5rem 2.25rem 2.4rem; }
+      .strip-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .container { width: min(100% - 5rem, var(--container-content)); }
+      .section { padding: 2.4rem 0; }
+      .hero-panel { padding: 6.25rem 3rem 2.75rem; }
+      .tag-strip { padding: 4rem 2rem 1.35rem; }
+      .post-card {
+        padding: 4.75rem 2rem 1.75rem;
+      }
+      .card-title-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+      }
+      .footer-panel { padding: 4.2rem 2rem 1.6rem; }
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr;
+        align-items: end;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="page-shell">
+    <header class="site-header section" data-testid="site-header">
+      <span class="component-label">Header</span>
+      <div class="header-inner">
+        <a class="brand" href="blog.html" aria-label="Go to blog index mockup">
+          <strong>Shaeel Afsar</strong>
+          <span>Editorial Mockup</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary" data-testid="site-nav">
+          <a href="blog.html" aria-current="page">Blog</a>
+          <a href="blog-post.html">Featured Post</a>
+          <a href="#post-list">Latest Essays</a>
+          <a href="#site-footer">Footer</a>
+        </nav>
+        <div class="header-actions">
+          <div class="client-boundary">
+            <span class="component-label">ThemeToggle [client]</span>
+            <button class="icon-button theme-toggle" type="button" data-testid="theme-toggle" aria-label="Toggle color theme">◐</button>
+          </div>
+          <div class="client-boundary menu-toggle">
+            <span class="component-label">MobileMenu [client]</span>
+            <button class="icon-button mobile-menu-trigger" type="button" data-testid="mobile-menu-trigger" aria-expanded="false" aria-controls="mobile-menu-panel" aria-label="Toggle mobile navigation">☰</button>
+          </div>
+        </div>
+        <div class="mobile-menu client-boundary" id="mobile-menu-panel" data-open="false">
+          <span class="component-label">MobileMenu [client]</span>
+          <a href="blog.html" aria-current="page">Blog</a>
+          <a href="blog-post.html">Featured Post</a>
+          <a href="#post-list">Latest Essays</a>
+          <a href="#site-footer">Footer</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero" data-testid="blog-hero">
+        <div class="container">
+          <div class="hero-panel">
+            <span class="component-label">BlogHero</span>
+            <span class="eyebrow">Reading-optimized archive</span>
+            <div class="card-top">
+              <span class="anim-badge fade-badge">[fade-in]</span>
+            </div>
+            <h1>Blog</h1>
+            <p class="hero-copy">Notes on frontend architecture, accessibility, developer tooling, and the systems work that makes polished products feel effortless.</p>
+            <div class="hero-meta">
+              <span>12 published essays</span>
+              <span>Updated every few weeks</span>
+              <span>Long-form, code-heavy, developer-first</span>
+            </div>
+          </div>
+
+          <div class="tag-strip section" data-testid="blog-tag-list">
+            <span class="component-label">TagList</span>
+            <div class="strip-row">
+              <div>
+                <div class="card-top" style="margin-bottom: 0.85rem;">
+                  <span class="anim-badge fade-badge">[fade-in]</span>
+                  <span id="blog-post-count">12 posts · curated by topic</span>
+                </div>
+                <p class="strip-copy">Decorative metadata strip inspired by the wireframe: tags stay non-interactive in v1, but still get clear hover affordances for presentation review.</p>
+              </div>
+              <div class="pill-row" aria-label="Decorative topic pills">
+                <span class="tag-pill">Accessibility</span>
+                <span class="tag-pill">React</span>
+                <span class="tag-pill">Rust</span>
+                <span class="tag-pill">Design Systems</span>
+                <span class="tag-pill">TypeScript</span>
+                <span class="tag-pill">Performance</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="posts" id="post-list" data-testid="blog-post-list">
+            <article class="post-card">
+              <span class="component-label">PostCard</span>
+              <a class="post-link" href="blog-post.html">
+                <div class="card-top">
+                  <span class="anim-badge stagger-badge">[stagger]</span>
+                  <span>May 2, 2026</span>
+                  <span>8 min read</span>
+                </div>
+                <div class="card-title-row">
+                  <div>
+                    <h2>Building Accessible React Components Without Slowing Down Shipping</h2>
+                    <p>I distilled the guardrails, API patterns, and review heuristics our team uses so keyboard support and semantics become the default, not cleanup work.</p>
+                  </div>
+                  <span class="read-link">Open mockup ↗</span>
+                </div>
+                <div class="card-footer">
+                  <div class="pill-row">
+                    <span class="tag-pill">Accessibility</span>
+                    <span class="tag-pill">React</span>
+                    <span class="tag-pill">Design Review</span>
+                  </div>
+                  <span class="muted">Published · featured post</span>
+                </div>
+              </a>
+            </article>
+
+            <article class="post-card">
+              <span class="component-label">PostCard</span>
+              <a class="post-link" href="blog-post.html#rust-journey">
+                <div class="card-top">
+                  <span class="anim-badge stagger-badge">[stagger]</span>
+                  <span>Apr 18, 2026</span>
+                  <span>6 min read</span>
+                </div>
+                <div class="card-title-row">
+                  <div>
+                    <h2>My Journey with Rust: From Fear of the Borrow Checker to Loving the Compiler</h2>
+                    <p>A developer diary on rebuilding tiny tools in Rust, choosing ergonomic crates, and using compiler feedback as a design partner.</p>
+                  </div>
+                  <span class="read-link">Read case study ↗</span>
+                </div>
+                <div class="card-footer">
+                  <div class="pill-row">
+                    <span class="tag-pill">Rust</span>
+                    <span class="tag-pill">Systems</span>
+                    <span class="tag-pill">Learning</span>
+                  </div>
+                  <span class="muted">Editorial note · hands-on</span>
+                </div>
+              </a>
+            </article>
+
+            <article class="post-card">
+              <span class="component-label">PostCard</span>
+              <a class="post-link" href="blog-post.html#systems-scale">
+                <div class="card-top">
+                  <span class="anim-badge stagger-badge">[stagger]</span>
+                  <span>Mar 29, 2026</span>
+                  <span>11 min read</span>
+                </div>
+                <div class="card-title-row">
+                  <div>
+                    <h2>Design Systems at Scale: Tokens, Ownership, and the Work After the Launch Post</h2>
+                    <p>What changed once the library shipped: governance rituals, semantic tokens, visual regression discipline, and how we kept momentum without central bottlenecks.</p>
+                  </div>
+                  <span class="read-link">View article ↗</span>
+                </div>
+                <div class="card-footer">
+                  <div class="pill-row">
+                    <span class="tag-pill">Design Systems</span>
+                    <span class="tag-pill">Tokens</span>
+                    <span class="tag-pill">Operations</span>
+                  </div>
+                  <span class="muted">Popular · team process</span>
+                </div>
+              </a>
+            </article>
+
+            <article class="post-card">
+              <span class="component-label">PostCard</span>
+              <a class="post-link" href="blog-post.html">
+                <div class="card-top">
+                  <span class="anim-badge stagger-badge">[stagger]</span>
+                  <span>Mar 2, 2026</span>
+                  <span>7 min read</span>
+                </div>
+                <div class="card-title-row">
+                  <div>
+                    <h2>Profiling Hydration Costs in Modern React Apps</h2>
+                    <p>A practical walk-through for spotting expensive client boundaries, trimming bundle weight, and deciding when server rendering should stay server-only.</p>
+                  </div>
+                  <span class="read-link">Inspect post ↗</span>
+                </div>
+                <div class="card-footer">
+                  <div class="pill-row">
+                    <span class="tag-pill">Performance</span>
+                    <span class="tag-pill">Next.js</span>
+                    <span class="tag-pill">Metrics</span>
+                  </div>
+                  <span class="muted">Field notes · frontend perf</span>
+                </div>
+              </a>
+            </article>
+
+            <article class="post-card">
+              <span class="component-label">PostCard</span>
+              <a class="post-link" href="blog-post.html">
+                <div class="card-top">
+                  <span class="anim-badge stagger-badge">[stagger]</span>
+                  <span>Feb 12, 2026</span>
+                  <span>9 min read</span>
+                </div>
+                <div class="card-title-row">
+                  <div>
+                    <h2>Type-Safe UX Copy Pipelines With TypeScript and Content Schemas</h2>
+                    <p>Keeping product copy flexible without breaking contracts, plus the small content tooling choices that prevented runtime surprises.</p>
+                  </div>
+                  <span class="read-link">Explore post ↗</span>
+                </div>
+                <div class="card-footer">
+                  <div class="pill-row">
+                    <span class="tag-pill">TypeScript</span>
+                    <span class="tag-pill">Content</span>
+                    <span class="tag-pill">DX</span>
+                  </div>
+                  <span class="muted">Implementation detail · docs-heavy</span>
+                </div>
+              </a>
+            </article>
+
+            <article class="post-card">
+              <span class="component-label">PostCard</span>
+              <a class="post-link" href="blog-post.html">
+                <div class="card-top">
+                  <span class="anim-badge stagger-badge">[stagger]</span>
+                  <span>Jan 24, 2026</span>
+                  <span>5 min read</span>
+                </div>
+                <div class="card-title-row">
+                  <div>
+                    <h2>Shipping Calm Interfaces: Small Interaction Details That Build Trust</h2>
+                    <p>Subtle focus states, honest loading feedback, and motion restraint can make complex products feel thoughtful before a user reads a single paragraph.</p>
+                  </div>
+                  <span class="read-link">See mockup ↗</span>
+                </div>
+                <div class="card-footer">
+                  <div class="pill-row">
+                    <span class="tag-pill">UX</span>
+                    <span class="tag-pill">Motion</span>
+                    <span class="tag-pill">Craft</span>
+                  </div>
+                  <span class="muted">Short read · product thinking</span>
+                </div>
+              </a>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container" id="site-footer" data-testid="site-footer">
+      <div class="footer-panel section">
+        <span class="component-label">Footer</span>
+        <div class="footer-grid">
+          <div>
+            <strong style="display:block; margin-bottom: 0.55rem; font-size: 1.05rem;">Built for reading, reviewing, and iterating.</strong>
+            <p class="muted" style="margin:0; max-width: 56ch;">This standalone mockup translates the blog wireframe into a browser-ready artifact with responsive states, client boundaries, motion markers, and navigation between page prototypes.</p>
+          </div>
+          <div>
+            <div class="footer-links">
+              <a href="blog.html">Blog index</a>
+              <a href="blog-post.html">Featured article</a>
+              <a href="#top">Back to top</a>
+            </div>
+            <p class="muted" style="margin: 1rem 0 0; font-size: 0.85rem;">Dark-first · editorial whitespace · token-aligned</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.querySelector('.theme-toggle');
+    const menuButton = document.querySelector('.mobile-menu-trigger');
+    const mobileMenu = document.getElementById('mobile-menu-panel');
+
+    themeToggle?.addEventListener('click', () => {
+      root.classList.toggle('light');
+      root.classList.toggle('dark');
+    });
+
+    menuButton?.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.setAttribute('data-open', String(!isOpen));
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuButton?.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('data-open', 'false');
+      });
+    });
+  </script>
+</body>
+</html>

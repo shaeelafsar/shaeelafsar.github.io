@@ -4,7 +4,7 @@
 
 - **Mood:** cinematic, minimal, technical, calm confidence
 - **Visual language:** bold type, restrained blue accent, soft glass surfaces, subtle grain, high whitespace
-- **Interaction rule:** animate only `transform` and `opacity`; color changes may transition softly
+- **Interaction rule:** animate `transform` and `opacity` first; color can transition softly for state change
 
 ## Tailwind + CSS Token Strategy
 
@@ -62,21 +62,42 @@ Use CSS custom properties in `app/globals.css`, then alias them into Tailwind v4
 }
 ```
 
-```css
-@theme inline {
-  --color-background: var(--color-bg);
-  --color-background-secondary: var(--color-bg-secondary);
-  --color-surface: var(--color-surface);
-  --color-card: var(--color-card);
-  --color-foreground: var(--color-text);
-  --color-muted-foreground: var(--color-text-secondary);
-  --color-border: var(--color-border);
-  --color-accent: var(--color-accent);
-  --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-}
-```
+## Breakpoints
+
+| Token | Min width | Usage |
+|---|---:|---|
+| `sm` | `640px` | spacious mobile / small tablets |
+| `md` | `768px` | tablet layouts begin |
+| `lg` | `1024px` | compact desktop, sticky rails/filter bars begin |
+| `xl` | `1280px` | wide desktop layouts |
+| `2xl` | `1536px` | large-display breathing room only |
+
+**Responsive contract:** ambiguous handoff ranges are locked as `<768`, `768-1023`, `1024-1279`, and `1280+`.
+
+## Container + max-width tokens
+
+| Token | Value | Primary usage |
+|---|---:|---|
+| `--container-narrow` | `72ch` | long-form article / case-study copy |
+| `--container-content` | `80rem` | standard page content |
+| `--container-wide` | `90rem` | hero and large media sections |
+| `--container-full` | `100%` | edge-to-edge accents / backgrounds |
+
+- Default page container: `max-w-[var(--container-content)] mx-auto px-6 md:px-8 xl:px-10`
+- Long-form container: `max-w-[var(--container-narrow)]`
+- TOC rail width: `250px`
+
+## Z-index layer scale
+
+| Token | Value | Usage |
+|---|---:|---|
+| `--z-base` | `0` | page content |
+| `--z-decorative` | `10` | halos, grains, non-interactive art |
+| `--z-header` | `40` | sticky header |
+| `--z-mobile-menu` | `50` | mobile menu overlay |
+| `--z-reading-progress` | `60` | reading progress above header |
+| `--z-toast` | `70` | transient status/toast surfaces |
+| `--z-debug` | `80` | QA/debug overlays only |
 
 ## Color Palette
 
@@ -93,39 +114,13 @@ Use CSS custom properties in `app/globals.css`, then alias them into Tailwind v4
 | `--color-text-tertiary` | `#737373` | `#737373` | Eyebrows/meta |
 | `--color-border` | `#e5e7eb` | `#262626` | Standard borders |
 | `--color-border-strong` | `#d4d4d8` | `#3f3f46` | Hover/focus border state |
-| `--color-primary` | `#171717` | `#fafafa` | High-contrast fills/text |
-| `--color-secondary` | `#475569` | `#cbd5e1` | Quiet utility text |
 | `--color-accent` | `#2563eb` | `#3b82f6` | Links, progress, active states |
 | `--color-accent-hover` | `#1d4ed8` | `#60a5fa` | Hover state |
-| `--color-accent-soft` | `rgba(37,99,235,0.12)` | `rgba(59,130,246,0.16)` | Pills, selection, subtle fills |
-| `--color-accent-glow` | `rgba(37,99,235,0.22)` | `rgba(96,165,250,0.24)` | Gradient halos |
 | `--color-success` | `#15803d` | `#4ade80` | Success states |
 | `--color-warning` | `#b45309` | `#fbbf24` | Warning states |
 | `--color-error` | `#b91c1c` | `#f87171` | Error states |
-| `--color-info` | `#0369a1` | `#38bdf8` | Info/callouts |
-
-### Gradient + texture usage
-
-- **Hero glow:** `radial-gradient(circle at 70% 20%, var(--color-accent-glow), transparent 45%)`
-- **CTA wash:** accent-to-accent-hover linear gradient at low angle
-- **Grain overlay:** monochrome noise layer at `opacity: 0.03` light / `0.05` dark
-- **Glass border:** `1px solid color-mix(in srgb, var(--color-border) 65%, transparent)`
 
 ## Typography
-
-### Font stack (`next/font`)
-
-- **Display / headings:** `Space_Grotesk` variable → `--font-display`
-- **Body / UI:** `Inter` variable → `--font-sans`
-- **Code / metadata:** `JetBrains_Mono` variable → `--font-mono`
-
-### Hierarchy rules
-
-- Headlines feel editorial: tighter tracking, stronger weight, shorter measure
-- Body copy stays highly readable: `65-72ch` max for long-form text
-- Metadata and tags use mono sparingly for technical flavor
-
-### Fluid type scale
 
 | Token | Clamp | Use |
 |---|---|---|
@@ -136,184 +131,75 @@ Use CSS custom properties in `app/globals.css`, then alias them into Tailwind v4
 | `--text-h3` | `clamp(1.25rem, 2vw, 1.75rem)` | Card titles/subsections |
 | `--text-body-lg` | `clamp(1.125rem, 1.3vw, 1.375rem)` | Hero subtitle/intros |
 | `--text-body` | `clamp(1rem, 1vw, 1.125rem)` | Body copy |
-| `--text-body-sm` | `clamp(0.9375rem, 0.9vw, 1rem)` | Supporting text |
 | `--text-meta` | `clamp(0.75rem, 0.7vw, 0.875rem)` | Labels, dates, tags |
 
-### Weights + leading
+## Spacing + surface tokens
 
-| Role | Font | Weight | Line-height |
-|---|---|---|---|
-| Display | `var(--font-display)` | 600-700 | `0.95-1.02` |
-| Section heading | `var(--font-display)` | 600 | `1.05-1.1` |
-| Body intro | `var(--font-sans)` | 400-500 | `1.45` |
-| Body copy | `var(--font-sans)` | 400 | `1.6-1.75` |
-| Labels/meta | `var(--font-mono)` or `var(--font-sans)` | 500 | `1.4` |
-
-## Spacing Scale
-
-Use an 8pt rhythm with a few editorial steps.
-
-| Token | Value | Tailwind fit |
-|---|---|---|
-| `--space-2` | `0.5rem` | `2` |
-| `--space-3` | `0.75rem` | `3` |
-| `--space-4` | `1rem` | `4` |
-| `--space-6` | `1.5rem` | `6` |
-| `--space-8` | `2rem` | `8` |
-| `--space-10` | `2.5rem` | `10` |
-| `--space-12` | `3rem` | `12` |
-| `--space-16` | `4rem` | `16` |
-| `--space-20` | `5rem` | `20` |
-| `--space-24` | `6rem` | `24` |
-| `--space-32` | `8rem` | `32` |
-| `--space-40` | `10rem` | `40` |
-
-### Layout rhythm
-
-- `Section`: `py-24 md:py-32 lg:py-40`
-- Hero internal stack: `gap-6 md:gap-8`
-- Card internal padding: `p-6 md:p-8`
+- Section rhythm: `py-24 md:py-32 lg:py-40`
+- Card padding: `p-6 md:p-8`
 - Grid gaps: `gap-6 md:gap-8 lg:gap-10`
-- Sticky header offset for anchors: `scroll-mt-24`
+- Anchor offset: `scroll-mt-24`
+- Radius: `sm 0.75rem`, `md 1rem`, `lg 1.5rem`, `xl 2rem`, `pill 999px`
+- Shadows: `sm`, `md`, `lg`, `focus`
+- Blur: `12px`, `18px`, `24px`
 
-## Component Tokens
-
-### Radius
-
-| Token | Value | Usage |
-|---|---|---|
-| `--radius-sm` | `0.75rem` | Badges, inputs |
-| `--radius-md` | `1rem` | Buttons, callouts |
-| `--radius-lg` | `1.5rem` | Cards, images |
-| `--radius-xl` | `2rem` | Hero media, CTA surfaces |
-| `--radius-pill` | `999px` | Filter pills |
-
-### Shadows
-
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `--shadow-sm` | `0 10px 30px -18px rgba(15,23,42,0.16)` | `0 10px 30px -18px rgba(0,0,0,0.45)` | Buttons/floating UI |
-| `--shadow-md` | `0 20px 50px -24px rgba(15,23,42,0.18)` | `0 20px 50px -24px rgba(0,0,0,0.55)` | Cards |
-| `--shadow-lg` | `0 30px 80px -32px rgba(15,23,42,0.22)` | `0 30px 80px -32px rgba(0,0,0,0.62)` | Hero image / CTA spotlight |
-| `--shadow-focus` | `0 0 0 3px var(--color-accent-soft)` | same | Focus ring halo |
-
-### Surface + blur
-
-- `--backdrop-blur-sm: 12px`
-- `--backdrop-blur-md: 18px`
-- `--backdrop-blur-lg: 24px`
-- Header uses `backdrop-blur-md`
-- Mobile menu and glass cards use `backdrop-blur-lg`
-
-### Transition tokens
+## Motion tokens
 
 | Token | Value | Use |
 |---|---|---|
-| `--ease-standard` | `cubic-bezier(0.21, 0.47, 0.32, 0.98)` | Section entrances |
-| `--ease-snappy` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Hover/UI transitions |
-| `--duration-micro` | `150ms` | Buttons, icon taps |
-| `--duration-ui` | `300ms` | Nav underline, theme, panels |
-| `--duration-enter` | `600ms` | Section reveals |
-| `--duration-slow` | `900ms` | Hero ambient motion |
+| `--ease-standard` | `cubic-bezier(0.21, 0.47, 0.32, 0.98)` | section entrances |
+| `--ease-snappy` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | UI transitions |
+| `--duration-micro` | `150ms` | buttons, icon taps |
+| `--duration-ui` | `300ms` | nav underline, theme, panels |
+| `--duration-enter` | `600ms` | section reveals |
+| `--duration-slow` | `900ms` | ambient hero motion |
 
-## Component Styling Guidance
+## Interactive state matrix
 
-### Header / nav
+| Component | Rest | Hover | Focus-visible | Active / Pressed | Disabled / Loading | Selected |
+|---|---|---|---|---|---|---|
+| Button | base fill/border | raise contrast only on hover-capable devices | shared focus ring recipe | slight scale-down or darker fill | reduced opacity, no hover lift, spinner allowed | n/a |
+| Input / textarea | card surface + border | border strengthens slightly | accent ring + stronger border | caret active, no extra animation | muted text, blocked pointer interaction | n/a |
+| Nav link | quiet text | accent underline + stronger text | underline + focus ring parity | pressed state keeps underline compact | n/a | current route uses accent text + underline |
+| Filter pill | outlined pill | soft accent fill on pointer devices | ring + border parity | pressed state shortens transition | pending disables repeat click | active tag uses selected fill + `aria-pressed` |
+| Theme toggle | neutral icon button | soft surface tint | ring visible in both themes | icon swap / pressed tint | loading not used | current theme is exposed by aria label, not color alone |
+| Card | card surface + border | slight lift + deeper shadow | outline/ring parity with no hover requirement | pressed links remove lift | disabled cards should not exist in v1 | n/a |
 
-- Fixed glass bar with border-bottom using `--color-border`
-- Active nav uses accent underline and high-contrast text
-- Scrolled state gets stronger surface opacity and blur
+## Focus styling recipe
 
-### Buttons
+- Remove browser default outline only when replaced with an equal-or-better custom treatment
+- Base recipe: `outline: 2px solid transparent` + `box-shadow: 0 0 0 3px var(--color-accent-soft)` + border shift to `--color-accent`
+- Dark mode keeps the same halo size but uses the dark accent token values for parity
+- Focus styles appear for keyboard focus (`:focus-visible`) and must not depend on hover support
+- Minimum visible contrast target: AA against both surface and background tokens
 
-- Primary: accent fill + white text
-- Secondary: `--color-bg-secondary` fill
-- Outline: transparent + border
-- Ghost: transparent, text-led, used for tertiary actions
-- Buttons should feel dense and premium, never oversized and bubbly
+## Component styling guidance
 
-### Cards
+- **Header / nav:** fixed glass bar, active route underline, stronger surface on scroll
+- **Buttons:** dense, premium, never overly rounded or bubbly
+- **Cards:** visible border, subtle default shadow, media corners clipped to container
+- **Forms:** clear labels, muted placeholder, accent focus state, semantic success/error colors
+- **Long-form:** `72ch` max measure, `250px` TOC rail, tinted semantic callouts
 
-- Use `--color-card` background, `--radius-lg`, `--shadow-md`
-- Border always visible; shadow is subtle until hover
-- Media corners match card corners; image zoom stays clipped inside container
+## Dark mode strategy
 
-### Forms
+- Keep structure identical across themes; only tokens swap
+- Dark mode uses denser surfaces and slightly brighter accent, not a naive inversion
+- Hero gradients remain subtle in both modes; code blocks use dual Shiki themes
 
-- Inputs use `--color-card` / `--color-surface-strong`
-- Border default `--color-border`, focus `--color-accent`
-- Placeholder uses `--color-text-tertiary`
-
-### Long-form content
-
-- MDX body max width: `72ch`
-- TOC width: `250px`
-- Code blocks use `--color-card-muted`
-- Callouts map to semantic colors with soft tinted backgrounds, not saturated fills
-
-## Animation Choreography Standards
-
-### Global timing
-
-| Pattern | Duration | Notes |
-|---|---|---|
-| TextReveal word stagger | `0.08s` | Hero and key h1 moments |
-| FadeIn default | `0.6s` | `y: 32-40px` |
-| Stagger children | `0.1s` | Cards, badges, form fields |
-| Page enter | `0.3s` | View Transition / AnimatePresence fallback |
-| Page exit | `0.2s` | Slight upward drift |
-| Hover lift | `0.15-0.3s` | CSS only |
-| Parallax drift | scroll-linked | max ±48px desktop |
-
-### Scroll trigger thresholds
-
-- Standard reveal viewport margin: `-80px`
-- Section triggers when content enters top 70-75% of viewport
-- Sticky TOC observes headings with `rootMargin: -80px 0px -60% 0px`
-- Resume timeline reveals one card at a time with alternating direction
-- Hero accents/parallax disabled on mobile and reduced motion
-
-### Allowed motion vocabulary
-
-- `opacity`
-- `translateY`
-- `translateX`
-- `scale`
-- `rotate` only for tiny icon swaps, never for core content
-
-## Dark Mode Strategy
-
-### Mapping approach
-
-- Keep **structure** identical across modes; only tokens swap
-- Dark mode is not inverted light mode; it uses denser surfaces and brighter accent
-- Maintain constant hierarchy:
-  - background < secondary background < card < surface overlay
-  - tertiary text < secondary text < primary text
-  - accent soft < accent < accent hover
-
-### Per-surface behavior
-
-| Surface | Light mode | Dark mode |
-|---|---|---|
-| Page background | airy off-white | near-black neutral |
-| Secondary sections | cool mist | charcoal |
-| Card | white | graphite |
-| Glass overlay | white transparency | soot transparency |
-| Border | cool gray | muted charcoal |
-| Shadows | soft navy-gray | deep black |
-
-### Content-specific notes
-
-- Hero gradients stay subtle in both modes; only glow intensity shifts slightly higher in dark mode
-- CTA section can stay accent-led in both themes; copy remains white with 80% secondary white text
-- Images should receive a very subtle overlay in dark mode only when needed for text contrast
-- Code blocks should use dual Shiki themes: `github-light` + `github-dark`
-
-## Shared Art Direction Notes
+## Shared art direction notes
 
 - **Home:** big-name hero, restrained glow accents, asymmetrical about teaser
-- **Projects:** rigid grid with generous gutters; tags feel like technical metadata
-- **Blog:** editorial; more white space, narrow reading column, precise TOC rail
-- **Resume:** timeline feels architectural, not infographic-heavy
-- **Contact:** calm, conversational, high-trust form layout with visible social proof
+- **Projects:** rigid grid, generous gutters, technical metadata tags
+- **Blog:** editorial whitespace, narrow reading column, precise TOC rail
+- **Resume:** architectural timeline, not infographic-heavy
+- **Contact:** calm, high-trust form layout with strong state clarity
+
+## Appendix — `data-testid` convention
+
+- Shared shell: `site-header`, `site-nav`, `theme-toggle`, `mobile-menu-trigger`, `mobile-menu-panel`, `site-footer`
+- Pages: `{page}-{section}` (`home-hero`, `projects-grid`, `contact-form`)
+- Repeated controls: `{component}-{variant}` (`filter-pill-all`, `filter-pill-next-js`)
+- Collections: `{page}-{collection}` (`blog-post-list`, `featured-projects-grid`)
+- Status regions: `{page}-status` or `{component}-status`
+- Keep IDs stable, lowercase, and kebab-case; never encode copy text or index-based meaning unless order is the feature under test

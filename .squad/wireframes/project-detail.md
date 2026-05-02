@@ -1,8 +1,29 @@
 # Project Detail (`/projects/[slug]`) Wireframe
 
+## Global Frame
+
+- Persistent shell on every breakpoint: `Header` → page `<main>` → `Footer`
+- `Header` contains `Nav`, `ThemeToggle [client]`, and `MobileMenu [client]`
+- Breakpoint contract:
+  - `< 768`: stacked header/meta/actions
+  - `768-1023`: narrow article with full-width hero image
+  - `1024-1279`: compact desktop two-column header, narrow article body
+  - `1280+`: wide desktop two-column header with generous media spacing
+- Shared test IDs: `site-header`, `site-nav`, `theme-toggle`, `mobile-menu-trigger`, `site-footer`
+
 ## Page stack
 
-`ProjectDetailHeader` → `HeroImage` → `MDX case study blocks` → `Related/Next CTA`
+`ProjectDetailHeader` → `HeroImage` → `ProjectMetadataBlock` → `MDX case study blocks` → `BackToProjects + ContactCTA`
+
+## Client / server ownership
+
+- Server sections: `ProjectDetailHeader`, `HeroImage`, `ProjectMetadataBlock`, MDX body, CTA row
+- Client islands in shell only: `ThemeToggle [client]`, `MobileMenu [client]`
+
+## Data flow
+
+- Route data: `content/projects/[slug].mdx` frontmatter + MDX body via `lib/projects.ts` / `lib/mdx.ts`
+- Metadata block is explicit and separate from body content: date, tags, role/platform/stack labels, optional external actions
 
 ## Mobile — 375px
 
@@ -10,67 +31,109 @@
 ┌─────────────────────────────────────┐
 │ Header                              │
 ├─────────────────────────────────────┤
-│ ProjectDetail header                │
+│ ProjectDetailHeader                 │
 │ [fade-in] title                     │
-│ [fade-in] date / Badge tags         │
-│ [fade-in] liveUrl / githubUrl       │
+│ [fade-in] excerpt                   │
+│ [fade-in] date / tags               │
+│ [fade-in] external actions if any   │
 ├─────────────────────────────────────┤
-│ [parallax disabled mobile]          │
 │ HeroImage                           │
+│ fallback frame if image missing     │
+├─────────────────────────────────────┤
+│ ProjectMetadataBlock                │
+│ Tech stack / role / platform        │
 ├─────────────────────────────────────┤
 │ Article / MDX body                  │
-│ [fade-in] problem block             │
-│ [fade-in] process block             │
-│ [fade-in] outcome block             │
+│ problem / process / outcome         │
 │ media / quotes / callouts           │
 ├─────────────────────────────────────┤
-│ Next CTA                            │
-│ [fade-in] Button Back to Projects   │
+│ BackToProjects + ContactCTA         │
 └─────────────────────────────────────┘
 ```
 
-## Tablet — 768px
+## Tablet — 768-1023px
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
-│ ProjectDetail header                                         │
-│ [fade-in] title + meta                                       │
-│ [fade-in] action links                                       │
+│ ProjectDetailHeader                                          │
+│ stacked title, metadata, action links                        │
 ├──────────────────────────────────────────────────────────────┤
-│ [parallax] HeroImage full-width                              │
+│ HeroImage full-width                                         │
+├──────────────────────────────────────────────────────────────┤
+│ ProjectMetadataBlock in 2-col definition list                │
 ├──────────────────────────────────────────────────────────────┤
 │ MDX body in narrow container                                 │
-│ [fade-in] sequential content sections                        │
-│ inline media breaks rhythm every 2-3 text blocks             │
+├──────────────────────────────────────────────────────────────┤
+│ BackToProjects + ContactCTA                                  │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## Desktop — 1280px
+## Compact desktop — 1024-1279px
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ ProjectDetail header                                                         │
-│ ┌────────────────────────────────────┬─────────────────────────────────────┐ │
-│ │ [fade-in] title / excerpt          │ [fade-in] date, tags, action links │ │
-│ │ intro context                      │ liveUrl / githubUrl                 │ │
-│ └────────────────────────────────────┴─────────────────────────────────────┘ │
+│ ProjectDetailHeader                                                          │
+│ title/excerpt left | meta/actions right                                      │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ [parallax] HeroImage                                                          │
+│ HeroImage                                                                    │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ Article / project-detail.tsx layout                                           │
-│ [fade-in] MDX block                                                            │
-│ [fade-in] image gallery or metrics rail                                        │
-│ [fade-in] quote / callout                                                      │
-│ [fade-in] closing result / next step                                           │
+│ ProjectMetadataBlock / 3-4 metadata cells                                    │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ Related navigation                                                             │
-│ [fade-in] Back to Projects / Contact CTA                                       │
+│ MDX article                                                                  │
+│ wide tables and long code blocks scroll inside their own containers          │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ BackToProjects + ContactCTA                                                  │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Navigation flow
+## Wide desktop — 1280px+
 
-- Header nav persists
-- `liveUrl` opens external destination
-- `githubUrl` opens source repository
-- Back/adjacent CTA returns to `/projects` or encourages `/contact`
+```text
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ProjectDetailHeader                                                          │
+│ title/excerpt left | date/tags/actions right                                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ HeroImage with subtle desktop parallax                                       │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ ProjectMetadataBlock                                                         │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Article / project-detail layout                                              │
+│ MDX blocks, gallery, metrics rail, quote/callout                             │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ BackToProjects + ContactCTA                                                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Footer                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+## States
+
+- Missing slug: route resolves to `not-found` with a return link to `/projects`
+- Malformed frontmatter / asset failure: page-level error boundary with retry copy
+- Missing hero image: render the metadata block and article normally; hero slot becomes a neutral framed placeholder
+- Missing `liveUrl`: omit live button entirely
+- Missing `githubUrl`: omit GitHub button entirely
+- No adjacent/related item: CTA row still shows `Back to Projects` and `Contact`
+
+## Content handling notes
+
+- MDX supports gallery, metrics rail, callout, blockquote, and images
+- Video/embed is deferred out of v1 unless explicitly authored as a supported MDX component later
+- Anchor links inside the article respect sticky-header offset and keep focus visible
+
+## Accessibility + interaction notes
+
+- Landmarks: `header`, `main`, `article`, `footer`
+- External links announce destination and new-tab behavior
+- Hero/media assets require alt text or decorative opt-out
+- Focus order: shell → project header → external actions → hero/media → article → CTA row
+
+## Suggested test IDs
+
+- `project-detail-header`
+- `project-hero-image`
+- `project-metadata-block`
+- `project-mdx-body`
+- `project-live-link`
+- `project-github-link`
+- `project-detail-cta`

@@ -1,9 +1,32 @@
 # Home (`/`) Wireframe
 
-## Global frame
+## Global Frame
 
-- Persistent: `Header` / `Nav` / `ThemeToggle` / `MobileMenu` / `Footer`
-- Page stack: `Hero` → `FeaturedProjects` → `AboutTeaser` → `BlogTeaser` → `CTASection`
+- Persistent shell on every breakpoint: `Header` → page `<main>` → `Footer`
+- `Header` contains `Nav`, `ThemeToggle [client]`, and `MobileMenu [client]`
+- Breakpoint contract:
+  - `< 768`: logo + `ThemeToggle [client]` + menu trigger, no inline nav
+  - `768-1023`: same as mobile, tablet spacing only
+  - `1024-1279`: inline `Nav` appears, `MobileMenu [client]` hidden, compact desktop gutters
+  - `1280+`: full desktop nav spacing and hero accent field
+- Shared keyboard/accessibility contract: skip link → header → main → footer; `MobileMenu [client]` traps focus when open, closes on Escape, and returns focus to its trigger; `ThemeToggle [client]` exposes pressed/label state
+- Shared test IDs: `site-header`, `site-nav`, `theme-toggle`, `mobile-menu-trigger`, `mobile-menu-panel`, `site-footer`
+
+## Page stack
+
+`Hero` → `FeaturedProjects` → `AboutTeaser` → `BlogTeaser` → `CTASection`
+
+## Client / server ownership
+
+- Server sections: `Hero`, `FeaturedProjects`, `AboutTeaser`, `BlogTeaser`, `CTASection`
+- Client islands inside the shell only: `ThemeToggle [client]`, `MobileMenu [client]`
+- Motion wrappers remain client-owned around server content
+
+## Data flow
+
+- `FeaturedProjects`: `lib/projects.ts` → top 3 `featured: true`, sorted by newest first
+- `BlogTeaser`: `lib/blog.ts` → latest 3 published posts, sorted by date desc
+- `AboutTeaser` + `CTASection`: static page copy + static image asset
 
 ## Mobile — 375px
 
@@ -12,110 +35,117 @@
 │ Header                              │
 │ [Logo]             [Theme][Menu]    │
 ├─────────────────────────────────────┤
-│ Hero / Section (100dvh)             │
+│ Hero / Section (100dvh min)         │
 │ [text-reveal] H1 Shaeel Afsar       │
 │ [fade-in] role / subtitle           │
-│ [fade-in] [Button View Work]        │
-│ [fade-in] [Button Get in Touch]     │
-│ [parallax-out desktop-only note]    │
+│ [fade-in] [View Work] [Get in Touch]│
 ├─────────────────────────────────────┤
-│ FeaturedProjects / Section          │
+│ FeaturedProjects                    │
 │ [fade-in] H2 Selected Work          │
-│ [fade-in] supporting copy           │
 │ [stagger] ProjectCard 01            │
 │ [stagger] ProjectCard 02            │
 │ [stagger] ProjectCard 03            │
-│ [fade-in] Button View All Projects  │
+│ [fade-in] View All Projects         │
 ├─────────────────────────────────────┤
-│ AboutTeaser / Section alt bg        │
+│ AboutTeaser                         │
 │ [fade-in] H2 About Me               │
 │ body copy                           │
-│ [ghost Button Learn More →]         │
-│ [fade-in] OptimizedImage            │
+│ [ghost] Learn More                  │
+│ [fade-in] image below text          │
 ├─────────────────────────────────────┤
-│ BlogTeaser / Section                │
-│ [fade-in] H2 Latest Writing         │
+│ BlogTeaser                          │
 │ [stagger] PostCard 01               │
 │ [stagger] PostCard 02               │
 │ [stagger] PostCard 03               │
-│ [fade-in] Button Read the Blog      │
+│ [fade-in] Read the Blog             │
 ├─────────────────────────────────────┤
-│ CTASection / Section accent surface │
-│ [fade-in] H2 Let's Work Together    │
-│ supporting copy                     │
-│ [fade-in] Button Get in Touch       │
+│ CTASection                          │
+│ [fade-in] Let's Work Together       │
+│ [fade-in] Get in Touch              │
 ├─────────────────────────────────────┤
 │ Footer                              │
 └─────────────────────────────────────┘
 ```
 
-## Tablet — 768px
+## Tablet — 768-1023px
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
-│ Header: [Logo] [Nav hidden]                [Theme][Menu]    │
+│ Header: [Logo]                           [Theme][Menu]       │
 ├──────────────────────────────────────────────────────────────┤
-│ Hero / Container                                                   │
-│ [text-reveal] H1 spans 8-10 cols                                  │
-│ [fade-in] subtitle max 60ch                                       │
-│ [fade-in] [View Work] [Get in Touch]                              │
+│ Hero: text stack only, max 10 cols                           │
 ├──────────────────────────────────────────────────────────────┤
-│ FeaturedProjects                                                  │
-│ [fade-in] intro                                                   │
-│ [stagger grid 2 cols] [ProjectCard] [ProjectCard]                 │
-│ [stagger grid wrap] [ProjectCard]                                 │
-│ [fade-in] centered CTA                                            │
+│ FeaturedProjects: 2-col grid, row 2 may contain single card  │
 ├──────────────────────────────────────────────────────────────┤
-│ AboutTeaser                                                       │
-│ [fade-in] text block                                              │
-│ [fade-in] image below or side-by-side if width allows             │
+│ AboutTeaser: locked stacked layout                           │
+│ text block first, image full-width below                     │
 ├──────────────────────────────────────────────────────────────┤
-│ BlogTeaser                                                        │
-│ [stagger grid 2 cols] PostCard / PostCard / PostCard              │
+│ BlogTeaser: 2-col grid with third card wrapping below        │
 ├──────────────────────────────────────────────────────────────┤
-│ CTASection centered stack                                         │
+│ CTASection centered stack                                    │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## Desktop — 1280px
+## Compact desktop — 1024-1279px
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ Header: [Logo] [Nav] [ThemeToggle]                                          │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Hero: 2-col layout; decorative accent layer visible, pointer-events none    │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ FeaturedProjects: locked 3-col grid                                         │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ AboutTeaser: locked 2-col layout, text left / image right                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ BlogTeaser: locked 3-col grid                                               │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ CTASection centered                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Wide desktop — 1280px+
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ Header                                                                       │
-│ [Logo]   [Nav: About Projects Blog Resume Contact]   [ThemeToggle]          │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ Hero / Section h-dvh                                                         │
-│ ┌────────────────────────────────────┬─────────────────────────────────────┐ │
-│ │ [text-reveal] H1 Shaeel Afsar      │ [parallax] Accent halo / grain /   │ │
-│ │ [fade-in] role statement           │ floating decorative shapes          │ │
-│ │ [fade-in] CTA row                  │                                     │ │
-│ │ subtle scroll-out parallax         │                                     │ │
-│ └────────────────────────────────────┴─────────────────────────────────────┘ │
+│ Hero / h-dvh                                                                 │
+│ text left, accent halo + grain right                                         │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ FeaturedProjects / Section                                                   │
-│ [fade-in] heading + copy                                                     │
-│ [stagger grid 3 cols] ProjectCard | ProjectCard | ProjectCard                │
-│ [fade-in] centered View All Projects                                         │
+│ FeaturedProjects / 3-col grid                                                │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ AboutTeaser / Section background-secondary                                   │
-│ [fade-in left] text / blurb / Learn More   [fade-in right] OptimizedImage    │
+│ AboutTeaser / 2-col split                                                    │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ BlogTeaser / Section                                                         │
-│ [fade-in] heading + copy                                                     │
-│ [stagger grid 3 cols] PostCard | PostCard | PostCard                         │
-│ [fade-in] centered Read the Blog                                             │
+│ BlogTeaser / 3-col grid                                                      │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │ CTASection / accent field                                                    │
-│ [fade-in] centered pitch + primary CTA                                       │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Footer                                                                       │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Navigation flow
+## States
 
-- `Header` logo → `/`
-- Hero CTA → `/projects`, `/contact`
-- `FeaturedProjects` CTA → `/projects`
-- `AboutTeaser` CTA → `/about`
-- `BlogTeaser` CTA → `/blog`
-- `CTASection` CTA → `/contact`
-- Persistent nav exposes `/about`, `/projects`, `/blog`, `/resume`, `/contact`
+- `FeaturedProjects` empty: render heading, helper copy, and CTA to `/projects`; no empty card shells
+- `FeaturedProjects` load/build failure: page-level error boundary renders retry copy and keeps shell visible
+- `BlogTeaser` empty: render heading, helper copy, and CTA to `/blog`
+- `BlogTeaser` load/build failure: page-level error boundary renders retry copy and keeps shell visible
+- Global loading: root loading shell keeps header/footer visible with section skeleton blocks
+
+## Accessibility + interaction notes
+
+- `Hero` is the only `h1`; downstream sections use `h2`
+- Decorative hero layer is `aria-hidden="true"`, `pointer-events: none`, and below header controls via z-index
+- `AboutTeaser` image uses meaningful alt text
+- Buttons/links follow visual tab order; no off-screen focus targets
+
+## Suggested test IDs
+
+- `home-hero`
+- `home-primary-cta`
+- `featured-projects-section`
+- `featured-projects-grid`
+- `about-teaser`
+- `blog-teaser-list`
+- `home-cta-section`

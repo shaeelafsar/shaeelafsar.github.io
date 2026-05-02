@@ -1,8 +1,29 @@
 # About (`/about`) Wireframe
 
+## Global Frame
+
+- Persistent shell on every breakpoint: `Header` → page `<main>` → `Footer`
+- `Header` contains `Nav`, `ThemeToggle [client]`, and `MobileMenu [client]`
+- Breakpoint contract:
+  - `< 768`: mobile shell, menu overlay available
+  - `768-1023`: tablet shell, menu overlay still primary nav
+  - `1024-1279`: compact desktop shell with inline nav
+  - `1280+`: wide desktop shell
+- Shared test IDs: `site-header`, `site-nav`, `theme-toggle`, `mobile-menu-trigger`, `site-footer`
+
 ## Page stack
 
 `AboutIntro` → `WhatIDoSection` → `TechnologiesSection` (`SkillsGrid`) → `BeyondCodeSection`
+
+## Client / server ownership
+
+- Server sections: `AboutIntro`, `WhatIDoSection`, `TechnologiesSection`, `BeyondCodeSection`
+- Client islands in shell only: `ThemeToggle [client]`, `MobileMenu [client]`
+
+## Data flow
+
+- `AboutIntro`, `WhatIDoSection`, `BeyondCodeSection`: static page copy + portrait asset
+- `TechnologiesSection` / `SkillsGrid`: shared structured skills data from `content/resume.json` via `lib/resume.ts`
 
 ## Mobile — 375px
 
@@ -10,10 +31,10 @@
 ┌─────────────────────────────────────┐
 │ Header                              │
 ├─────────────────────────────────────┤
-│ AboutIntro / Section                │
+│ AboutIntro                          │
+│ [fade-in] portrait image            │
 │ [fade-in] H1 About                  │
 │ [fade-in] extended bio              │
-│ [fade-in] OptimizedImage            │
 ├─────────────────────────────────────┤
 │ WhatIDoSection                      │
 │ [fade-in] H2 What I Do              │
@@ -21,63 +42,84 @@
 ├─────────────────────────────────────┤
 │ TechnologiesSection                 │
 │ [fade-in] H2 Technologies           │
-│ [stagger] SkillsGrid item 01        │
-│ [stagger] SkillsGrid item 02        │
-│ [stagger] SkillsGrid item 03        │
+│ [stagger] skills category 01        │
+│ [stagger] skills category 02        │
+│ [stagger] skills category 03        │
 ├─────────────────────────────────────┤
 │ BeyondCodeSection                   │
 │ [fade-in] H2 Beyond Code            │
-│ interests cards / copy              │
+│ stacked interest cards              │
 ├─────────────────────────────────────┤
 │ Footer                              │
 └─────────────────────────────────────┘
 ```
 
-## Tablet — 768px
+## Tablet — 768-1023px
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
 │ AboutIntro                                                   │
-│ [fade-in] H1 + bio                                           │
-│ [parallax-subtle] professional photo beside or below copy    │
+│ 2-col layout locked: text left, portrait right              │
 ├──────────────────────────────────────────────────────────────┤
-│ WhatIDoSection full-width narrative                          │
+│ WhatIDoSection full-width narrative                         │
 ├──────────────────────────────────────────────────────────────┤
-│ TechnologiesSection                                          │
-│ [stagger grid 2 cols] SkillsGrid categories                  │
+│ TechnologiesSection: locked 2-col skills grid              │
 ├──────────────────────────────────────────────────────────────┤
-│ BeyondCodeSection                                            │
-│ 2-col interest blocks / image + text                         │
+│ BeyondCodeSection: locked 2-col cards/image-text mix       │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## Desktop — 1280px
+## Compact desktop — 1024-1279px
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ AboutIntro / Section                                                        │
-│ ┌────────────────────────────────────┬─────────────────────────────────────┐ │
-│ │ [fade-in] H1 About                 │ [parallax] OptimizedImage          │ │
-│ │ extended bio / summary             │ portrait with soft frame           │ │
-│ │ optional mini fact list            │                                     │ │
-│ └────────────────────────────────────┴─────────────────────────────────────┘ │
+│ AboutIntro: 2-col split, portrait fixed to right column                     │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ WhatIDoSection                                                                │
-│ [fade-in] H2 What I Do                                                        │
-│ 2-column editorial copy / principles                                          │
+│ WhatIDoSection: 2-col editorial copy                                        │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ TechnologiesSection                                                           │
-│ [fade-in] H2 Technologies                                                     │
-│ [stagger grid 3 cols] SkillsGrid category | category | category               │
+│ TechnologiesSection: locked 3-col skills grid                               │
 ├──────────────────────────────────────────────────────────────────────────────┤
-│ BeyondCodeSection                                                             │
-│ [fade-in] H2 Beyond Code                                                      │
-│ 3-up interest cards or 2-col narrative + visual memorabilia                   │
+│ BeyondCodeSection: locked 3-up interest cards                               │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Navigation flow
+## Wide desktop — 1280px+
 
-- Header nav to all core routes
-- Inline links can point toward `/projects`, `/blog`, `/contact`
-- Footer repeats social/contact exits
+```text
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ AboutIntro                                                                   │
+│ text left / portrait right                                                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ WhatIDoSection                                                               │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ TechnologiesSection / 3-col SkillsGrid                                       │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ BeyondCodeSection / 3-up interest cards                                      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Footer                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+## States
+
+- Portrait missing: replace image slot with framed neutral placeholder and keep copy order unchanged
+- Skills data empty: render section heading plus "Skills details coming soon" copy instead of empty cards
+- Beyond-code content empty: render a short personality blurb, no blank card grid
+- Global loading: root loading shell with section placeholders
+- Global error: page-level error boundary keeps shell visible and swaps section bodies for recovery copy
+
+## Accessibility + interaction notes
+
+- Landmarks: `header`, `main`, four semantic `section`s, `footer`
+- Heading order is fixed: one `h1`, then `h2`s only for page sections
+- Portrait alt text is required and descriptive
+- Inline links in bio/interests follow visual reading order; no card is focusable unless it is a real link
+- Interest cards and inline links use shared hover/focus recipe from the design system
+
+## Suggested test IDs
+
+- `about-intro`
+- `about-portrait`
+- `what-i-do-section`
+- `skills-grid`
+- `beyond-code-section`

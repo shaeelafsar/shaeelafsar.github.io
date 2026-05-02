@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Wireframe Mockup</title>
+  <meta name="description" content="Interactive HTML mockup for the home wireframe." />
+  <style>
+:root {
+  --color-bg: #fafafa;
+  --color-bg-secondary: #f1f5f9;
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-surface-strong: rgba(255, 255, 255, 0.9);
+  --color-card: #ffffff;
+  --color-card-muted: #f8fafc;
+  --color-text: #171717;
+  --color-text-secondary: #525252;
+  --color-text-tertiary: #737373;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d4d4d8;
+  --color-primary: #171717;
+  --color-secondary: #475569;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-soft: rgba(37, 99, 235, 0.12);
+  --color-accent-glow: rgba(37, 99, 235, 0.22);
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-error: #b91c1c;
+  --color-info: #0369a1;
+  --color-selection: rgba(37, 99, 235, 0.16);
+  --container-narrow: 72ch;
+  --container-content: 80rem;
+  --container-wide: 90rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-pill: 999px;
+  --text-display-xl: clamp(3.5rem, 8vw, 7.5rem);
+  --text-display-lg: clamp(2.75rem, 6vw, 5rem);
+  --text-h1: clamp(2.25rem, 4vw, 3.75rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-body-lg: clamp(1.125rem, 1.3vw, 1.375rem);
+  --text-body: clamp(1rem, 1vw, 1.125rem);
+  --text-meta: clamp(0.75rem, 0.7vw, 0.875rem);
+  --ease-standard: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  --ease-snappy: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-micro: 150ms;
+  --duration-ui: 300ms;
+  --duration-enter: 600ms;
+  --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 22px 60px rgba(0, 0, 0, 0.14);
+  --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+html[data-theme="dark"] {
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #171717;
+  --color-surface: rgba(23, 23, 23, 0.72);
+  --color-surface-strong: rgba(20, 20, 20, 0.9);
+  --color-card: #141414;
+  --color-card-muted: #101826;
+  --color-text: #fafafa;
+  --color-text-secondary: #a3a3a3;
+  --color-text-tertiary: #737373;
+  --color-border: #262626;
+  --color-border-strong: #3f3f46;
+  --color-primary: #fafafa;
+  --color-secondary: #cbd5e1;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-accent-soft: rgba(59, 130, 246, 0.16);
+  --color-accent-glow: rgba(96, 165, 250, 0.24);
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-info: #38bdf8;
+  --color-selection: rgba(59, 130, 246, 0.24);
+  --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 22px 60px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top right, var(--color-accent-soft), transparent 24%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+  color: var(--color-text);
+  min-height: 100vh;
+  transition: background-color var(--duration-ui) var(--ease-snappy), color var(--duration-ui) var(--ease-snappy);
+}
+::selection { background: var(--color-selection); }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img { max-width: 100%; display: block; }
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-strong);
+  border: 1px solid var(--color-border-strong);
+  transform: translateY(-200%);
+  transition: transform var(--duration-ui) var(--ease-snappy);
+  z-index: 100;
+}
+.skip-link:focus { transform: translateY(0); }
+.site-shell { position: relative; overflow-x: clip; }
+.container {
+  width: min(calc(100% - 2rem), var(--container-content));
+  margin-inline: auto;
+}
+.section {
+  position: relative;
+  padding: 6rem 0;
+}
+.section + .section { border-top: 1px solid rgba(255,255,255,0.02); }
+.surface {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.component-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-card) 86%, transparent);
+  color: var(--color-text-secondary);
+  font-size: var(--text-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.anim-badge, .client-badge, .ghost-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.28rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+.anim-badge {
+  color: var(--color-accent-hover);
+  background: var(--color-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+.client-badge {
+  color: var(--color-warning);
+  background: color-mix(in srgb, var(--color-warning) 18%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--color-warning) 55%, transparent);
+}
+.ghost-badge {
+  color: var(--color-text-secondary);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border);
+}
+.kicker {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.section-title, .page-title {
+  margin: 0;
+  font-size: var(--text-h2);
+  line-height: 1.05;
+}
+.page-title { font-size: var(--text-h1); }
+.lead {
+  margin: 1.25rem 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+  max-width: 62ch;
+}
+.body-copy, .card-copy {
+  color: var(--color-text-secondary);
+  font-size: var(--text-body);
+  line-height: 1.75;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
+}
+.header-inner {
+  width: min(calc(100% - 1.25rem), var(--container-wide));
+  margin-inline: auto;
+  min-height: 4.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.brand-mark {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.brand-role {
+  color: var(--color-text-tertiary);
+  font-size: 0.8rem;
+}
+.desktop-nav { display: none; }
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav-link {
+  position: relative;
+  padding: 0.45rem 0;
+  color: var(--color-text-secondary);
+  font-size: 0.96rem;
+  transition: color var(--duration-micro) ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-ui) var(--ease-snappy);
+}
+.nav-link[aria-current="page"] {
+  color: var(--color-text);
+}
+.nav-link[aria-current="page"]::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.icon-button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface-strong) 94%, transparent);
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: transform var(--duration-micro) ease, background-color var(--duration-micro) ease, border-color var(--duration-micro) ease;
+}
+.toggle-text {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+.client-island {
+  position: relative;
+  border: 1px dashed color-mix(in srgb, var(--color-warning) 55%, transparent);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem;
+}
+.menu-trigger {
+  width: 44px;
+  padding-inline: 0;
+}
+.menu-bars {
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+.menu-bars span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform var(--duration-ui) var(--ease-snappy), opacity var(--duration-ui) var(--ease-snappy), top var(--duration-ui) var(--ease-snappy);
+}
+.menu-bars span:nth-child(1) { top: 0; }
+.menu-bars span:nth-child(2) { top: 6px; }
+.menu-bars span:nth-child(3) { top: 12px; }
+.menu-trigger[aria-expanded="true"] .menu-bars span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+.menu-trigger[aria-expanded="true"] .menu-bars span:nth-child(2) { opacity: 0; }
+.menu-trigger[aria-expanded="true"] .menu-bars span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+.mobile-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--color-bg) 94%, transparent);
+  backdrop-filter: blur(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-ui) var(--ease-snappy);
+}
+.mobile-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-panel-card {
+  width: min(100%, 32rem);
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-strong);
+  border: 1px dashed color-mix(in srgb, var(--color-warning) 55%, transparent);
+  box-shadow: var(--shadow-lg);
+}
+.mobile-panel nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.mobile-panel a {
+  display: block;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border);
+  font-size: 1.1rem;
+}
+.mobile-panel a[aria-current="page"] {
+  border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+  color: var(--color-accent-hover);
+}
+.hero-grid,
+.split-grid,
+.editorial-grid,
+.placeholder-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.hero {
+  min-height: calc(100dvh - 4.75rem);
+  display: flex;
+  align-items: center;
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+.hero-title {
+  margin: 0;
+  font-size: var(--text-display-xl);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  max-width: 9ch;
+}
+.hero-subtitle {
+  margin: 1.25rem 0 0;
+  max-width: 34rem;
+  color: var(--color-text-secondary);
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+}
+.hero-actions, .button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.95rem 1.2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: transform var(--duration-micro) ease, background-color var(--duration-micro) ease, border-color var(--duration-micro) ease, color var(--duration-micro) ease;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 18px 40px color-mix(in srgb, var(--color-accent-glow) 65%, transparent);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.02);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+.meta-pill {
+  padding: 0.38rem 0.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.02);
+  color: var(--color-text-secondary);
+  font-size: var(--text-meta);
+}
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.35rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-card) 100%, transparent), color-mix(in srgb, var(--color-card-muted) 30%, var(--color-card) 70%));
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms var(--ease-snappy), box-shadow 200ms var(--ease-snappy), border-color 200ms var(--ease-snappy);
+}
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.card h3 {
+  margin: 0;
+  font-size: var(--text-h3);
+  line-height: 1.15;
+}
+.card p { margin: 0.85rem 0 0; }
+.placeholder-image {
+  min-height: 14rem;
+  border-radius: calc(var(--radius-lg) - 0.4rem);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 70%, transparent);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 12px, rgba(255,255,255,0.06) 12px 24px);
+  color: var(--color-text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.card-image-wrap {
+  overflow: hidden;
+  border-radius: calc(var(--radius-lg) - 0.4rem);
+  margin-bottom: 1rem;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.stat {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.02);
+}
+.stat strong {
+  display: block;
+  font-size: 1.45rem;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.callout {
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--color-border) 70%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent-soft) 70%, transparent), transparent);
+}
+.skills-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.list-clean {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.list-clean li {
+  padding: 0.8rem 0.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.02);
+}
+.footer {
+  padding: 2.5rem 0 3rem;
+  border-top: 1px solid var(--color-border);
+}
+.footer-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.footer-copy {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+.footer-links a {
+  color: var(--color-text-secondary);
+  transition: color var(--duration-micro) ease, transform 200ms ease;
+}
+.placeholder-main {
+  padding-top: 2rem;
+}
+.placeholder-hero {
+  padding: 4rem 0 5rem;
+}
+.status-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed var(--color-border-strong);
+  color: var(--color-text-secondary);
+}
+.accent-orb {
+  display: none;
+}
+@media (hover: hover) {
+  .card:hover, .card:focus-within {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-strong);
+  }
+  .card-image-wrap:hover .placeholder-image { transform: scale(1.04); }
+  .btn:hover, .icon-button:hover { transform: scale(1.03); }
+  .nav-link:hover { color: var(--color-text); }
+  .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+  .footer-links a:hover { color: var(--color-accent-hover); transform: scale(1.05); }
+}
+.btn:active, .icon-button:active { transform: scale(0.98); }
+.placeholder-image { transition: transform 400ms var(--ease-snappy); }
+:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+  border-color: var(--color-accent) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+@media (min-width: 768px) {
+  .container { width: min(calc(100% - 3rem), var(--container-content)); }
+  .section { padding: 8rem 0; }
+  .card-grid.projects, .card-grid.blog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-grid { grid-template-columns: 1.3fr 1fr; align-items: start; }
+  .about-intro-grid, .beyond-grid.two-col, .placeholder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+@media (min-width: 1024px) {
+  .desktop-nav { display: block; }
+  .mobile-only { display: none !important; }
+  .header-inner { min-height: 5rem; }
+  .hero-grid, .split-grid { grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr); align-items: center; }
+  .editorial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card-grid.projects, .card-grid.blog, .skills-grid, .beyond-grid.three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about-teaser-grid { grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr); align-items: center; }
+  .accent-orb {
+    display: block;
+    position: absolute;
+    inset: 10% 0 auto auto;
+    width: clamp(16rem, 32vw, 28rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-accent-glow) 0%, rgba(59,130,246,0.05) 45%, transparent 72%);
+    filter: blur(16px);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+}
+@media (min-width: 1280px) {
+  .container { width: min(calc(100% - 5rem), var(--container-wide)); }
+  .section { padding: 10rem 0; }
+  .header-inner { width: min(calc(100% - 3rem), var(--container-wide)); }
+  .card { padding: 1.6rem; }
+  .hero-subtitle { max-width: 38rem; }
+}
+</style>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('wireframe-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-shell">
+    <header class="header" data-testid="site-header">
+      <div class="header-inner">
+        <a class="brand" href="home.html" aria-label="Go to Home wireframe">
+          <span class="brand-mark">Shaeel Afsar</span>
+          <span class="brand-role">Software Developer</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary navigation" data-testid="site-nav">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="home.html" aria-current="page">Home</a></li>
+<li><a class="nav-link" href="about.html">About</a></li>
+<li><a class="nav-link" href="projects.html">Projects</a></li>
+<li><a class="nav-link" href="project-detail.html">Project Detail</a></li>
+<li><a class="nav-link" href="blog.html">Blog</a></li>
+<li><a class="nav-link" href="blog-post.html">Blog Post</a></li>
+<li><a class="nav-link" href="resume.html">Resume</a></li>
+<li><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <div class="client-island">
+            <span class="client-badge">client</span>
+            <button class="icon-button" id="theme-toggle" type="button" data-testid="theme-toggle" aria-pressed="true" aria-label="Switch theme">
+              <span id="theme-icon" aria-hidden="true">☀︎</span>
+              <span id="theme-text" class="toggle-text">Dark</span>
+            </button>
+          </div>
+          <div class="client-island mobile-only">
+            <span class="client-badge">client</span>
+            <button class="icon-button menu-trigger" id="mobile-menu-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu-panel" data-testid="mobile-menu-trigger" aria-label="Open menu">
+              <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-panel" id="mobile-menu-panel" hidden data-testid="mobile-menu-panel">
+        <div class="mobile-panel-card">
+          <div class="component-label">MobileMenu <span class="client-badge">client</span><span class="anim-badge">stagger</span></div>
+          <div class="button-row" style="justify-content: space-between; margin-top: 0;">
+            <strong>Navigate</strong>
+            <button class="icon-button" id="mobile-menu-close" type="button">Close</button>
+          </div>
+          <nav aria-label="Mobile navigation">
+            <ul>
+              <li><a href="home.html" aria-current="page">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="project-detail.html">Project Detail</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="blog-post.html">Blog Post</a></li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main id="main-content">
+<section class="section hero" aria-labelledby="home-hero-heading" data-testid="home-hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="component-label">Hero <span class="anim-badge">text-reveal</span><span class="anim-badge">fade-in</span></div>
+      <p class="kicker">Designing calm, useful interfaces for the modern web</p>
+      <h1 class="hero-title" id="home-hero-heading">Shaeel Afsar</h1>
+      <p class="hero-subtitle">Software developer focused on thoughtful product engineering, resilient frontend systems, and polished developer experiences. The mobile hero stays text-first, while desktop opens into a cinematic split layout.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="projects.html" data-testid="home-primary-cta">View Work</a>
+        <a class="btn btn-secondary" href="contact.html">Get in Touch</a>
+      </div>
+      <div class="meta-row">
+        <span class="meta-pill">Product engineering</span>
+        <span class="meta-pill">Frontend systems</span>
+        <span class="meta-pill">DX-minded</span>
+      </div>
+    </div>
+    <div class="surface" aria-hidden="true" style="padding: 1.4rem; position: relative; overflow: hidden; min-height: 26rem;">
+      <div class="component-label">HeroAccentField <span class="anim-badge">parallax</span></div>
+      <div class="accent-orb"></div>
+      <div class="placeholder-image" style="min-height: 16rem; margin-top: 1rem;">Decorative halo + grain field</div>
+      <div class="stat-grid">
+        <div class="stat"><strong>8+</strong><span>years shipping digital products</span></div>
+        <div class="stat"><strong>3</strong><span>featured case studies highlighted below</span></div>
+      </div>
+      <div class="status-note">Desktop-only accent layer becomes more prominent at 1280px+, giving Shaeel a clear before/after resize moment.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-testid="featured-projects-section">
+  <div class="container">
+    <div class="component-label">FeaturedProjects <span class="anim-badge">fade-in</span><span class="anim-badge">stagger</span></div>
+    <p class="kicker">Selected work</p>
+    <h2 class="section-title">Recent projects with real product depth</h2>
+    <p class="lead">The grid stacks on mobile, shifts to two columns on tablet, and locks into a three-column showcase from compact desktop upward.</p>
+    <div class="card-grid projects" data-testid="featured-projects-grid">
+      <article class="card">
+        <div class="card-image-wrap"><div class="placeholder-image">Project cover placeholder</div></div>
+        <div class="card-header">
+          <div>
+            <div class="component-label">ProjectCard <span class="anim-badge">stagger</span></div>
+            <h3>Realtime Ops Dashboard</h3>
+          </div>
+          <span class="meta-pill">2026</span>
+        </div>
+        <p class="card-copy">A dark-data interface for monitoring platform health, incident readiness, and deployment confidence with clear alert semantics.</p>
+        <div class="meta-row"><span class="meta-pill">React</span><span class="meta-pill">TypeScript</span><span class="meta-pill">Data Viz</span></div>
+      </article>
+      <article class="card">
+        <div class="card-image-wrap"><div class="placeholder-image">Project cover placeholder</div></div>
+        <div class="card-header">
+          <div>
+            <div class="component-label">ProjectCard <span class="anim-badge">stagger</span></div>
+            <h3>Cloud Cost Explorer</h3>
+          </div>
+          <span class="meta-pill">2025</span>
+        </div>
+        <p class="card-copy">A reporting product that turns noisy infra spend into decision-ready insights for engineering managers and platform teams.</p>
+        <div class="meta-row"><span class="meta-pill">Next.js</span><span class="meta-pill">Node</span><span class="meta-pill">UX Strategy</span></div>
+      </article>
+      <article class="card">
+        <div class="card-image-wrap"><div class="placeholder-image">Project cover placeholder</div></div>
+        <div class="card-header">
+          <div>
+            <div class="component-label">ProjectCard <span class="anim-badge">stagger</span></div>
+            <h3>Personal Knowledge Engine</h3>
+          </div>
+          <span class="meta-pill">2024</span>
+        </div>
+        <p class="card-copy">A searchable thinking workspace blending notes, docs, and lightweight automation into one calm personal system.</p>
+        <div class="meta-row"><span class="meta-pill">Search</span><span class="meta-pill">AI Assist</span><span class="meta-pill">Content</span></div>
+      </article>
+    </div>
+    <div class="button-row"><a class="btn btn-ghost" href="projects.html">View All Projects</a></div>
+  </div>
+</section>
+
+<section class="section" data-testid="about-teaser">
+  <div class="container about-teaser-grid split-grid">
+    <div>
+      <div class="component-label">AboutTeaser <span class="anim-badge">fade-in</span><span class="ghost-badge">ghost CTA</span></div>
+      <p class="kicker">About me</p>
+      <h2 class="section-title">Engineering with clarity, curiosity, and restraint</h2>
+      <p class="lead">Shaeel blends frontend craft with systems thinking, building products that feel simple on the surface while staying maintainable under pressure.</p>
+      <p class="body-copy">He enjoys turning complex workflows into confident user journeys, collaborating early with design, and creating interfaces that feel calm even when the underlying logic is not.</p>
+      <div class="button-row"><a class="btn btn-ghost" href="about.html">Learn More</a></div>
+    </div>
+    <div>
+      <div class="component-label">AboutImage <span class="anim-badge">fade-in</span></div>
+      <div class="placeholder-image" style="min-height: 22rem;">Portrait / workspace image placeholder</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="component-label">BlogTeaser <span class="anim-badge">stagger</span><span class="anim-badge">fade-in</span></div>
+    <p class="kicker">Latest writing</p>
+    <h2 class="section-title">Notes on frontend architecture and product craft</h2>
+    <p class="lead">Each article card uses the same hover recipe as project cards, giving Shaeel a consistent sense of polish across collections.</p>
+    <div class="card-grid blog" data-testid="blog-teaser-list">
+      <article class="card">
+        <div class="component-label">PostCard <span class="anim-badge">stagger</span></div>
+        <h3>Designing portfolio pages that feel alive without feeling loud</h3>
+        <p class="card-copy">A practical breakdown of dark UI balance, motion restraint, and the value of whitespace in personal branding.</p>
+        <div class="meta-row"><span class="meta-pill">May 2026</span><span class="meta-pill">UI Systems</span></div>
+      </article>
+      <article class="card">
+        <div class="component-label">PostCard <span class="anim-badge">stagger</span></div>
+        <h3>Shipping responsive layouts with fewer surprise breakpoints</h3>
+        <p class="card-copy">How locking breakpoint contracts early makes design-to-build handoff cleaner for teams and solo builders alike.</p>
+        <div class="meta-row"><span class="meta-pill">April 2026</span><span class="meta-pill">Responsive Design</span></div>
+      </article>
+      <article class="card">
+        <div class="component-label">PostCard <span class="anim-badge">stagger</span></div>
+        <h3>What I learned from rebuilding my personal site from wireframes</h3>
+        <p class="card-copy">A reflection on simplifying decisions, tightening component boundaries, and treating the portfolio like a product.</p>
+        <div class="meta-row"><span class="meta-pill">March 2026</span><span class="meta-pill">Personal Website</span></div>
+      </article>
+    </div>
+    <div class="button-row"><a class="btn btn-ghost" href="blog.html">Read the Blog</a></div>
+  </div>
+</section>
+
+<section class="section" data-testid="home-cta-section">
+  <div class="container">
+    <div class="surface" style="padding: 2rem; text-align: center; background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent-soft) 75%, var(--color-card) 25%), var(--color-card));">
+      <div class="component-label">CTASection <span class="anim-badge">fade-in</span></div>
+      <p class="kicker">Open for thoughtful collaborations</p>
+      <h2 class="section-title">Let’s build something useful and beautifully engineered</h2>
+      <p class="lead" style="margin-inline: auto;">Whether it’s a product refresh, a frontend foundation, or a developer-facing workflow, Shaeel brings a calm, practical lens to complex work.</p>
+      <div class="button-row" style="justify-content: center;">
+        <a class="btn btn-primary" href="contact.html">Get in Touch</a>
+        <a class="btn btn-secondary" href="resume.html">View Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+    <footer class="footer" data-testid="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="component-label">Footer</div>
+          <p class="footer-copy">Dark-mode-first wireframe mockup for Shaeel Afsar’s personal site. The layout showcases responsive shell behavior, reusable section patterns, and linked page flows.</p>
+        </div>
+        <div>
+          <div class="component-label">FooterLinks</div>
+          <div class="footer-links"><a href="#">GitHub</a>
+<a href="#">LinkedIn</a>
+<a href="contact.html">Email</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+(function () {
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem('wireframe-theme');
+  const preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = storedTheme || (preferredDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', initialTheme);
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeText = document.getElementById('theme-text');
+  const menuTrigger = document.getElementById('mobile-menu-trigger');
+  const mobilePanel = document.getElementById('mobile-menu-panel');
+  const closeMenuButton = document.getElementById('mobile-menu-close');
+  let lastFocused = null;
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('wireframe-theme', theme);
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      themeToggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+    }
+    if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀︎' : '☾';
+    if (themeText) themeText.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  }
+
+  function getFocusable() {
+    if (!mobilePanel) return [];
+    return Array.from(mobilePanel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')).filter((el) => !el.hasAttribute('hidden'));
+  }
+
+  function closeMenu() {
+    if (!mobilePanel || !menuTrigger) return;
+    mobilePanel.classList.remove('is-open');
+    mobilePanel.setAttribute('hidden', '');
+    menuTrigger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  function openMenu() {
+    if (!mobilePanel || !menuTrigger) return;
+    lastFocused = document.activeElement;
+    mobilePanel.removeAttribute('hidden');
+    requestAnimationFrame(() => mobilePanel.classList.add('is-open'));
+    menuTrigger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    const focusable = getFocusable();
+    if (focusable.length) focusable[0].focus();
+  }
+
+  applyTheme(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  }
+
+  if (menuTrigger && mobilePanel) {
+    menuTrigger.addEventListener('click', function () {
+      const expanded = menuTrigger.getAttribute('aria-expanded') === 'true';
+      if (expanded) closeMenu(); else openMenu();
+    });
+
+    mobilePanel.addEventListener('click', function (event) {
+      if (event.target === mobilePanel) closeMenu();
+    });
+
+    mobilePanel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  if (closeMenuButton) closeMenuButton.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', function (event) {
+    if (!mobilePanel || mobilePanel.hasAttribute('hidden')) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

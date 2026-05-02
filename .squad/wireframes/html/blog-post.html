@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Post Wireframe Mockup</title>
+  <style>
+    :root {
+      --color-bg: #0a0a0a;
+      --color-bg-secondary: #171717;
+      --color-surface: rgba(23, 23, 23, 0.72);
+      --color-surface-strong: rgba(20, 20, 20, 0.9);
+      --color-card: #141414;
+      --color-card-muted: #101826;
+      --color-text: #fafafa;
+      --color-text-secondary: #a3a3a3;
+      --color-text-tertiary: #737373;
+      --color-border: #262626;
+      --color-border-strong: #3f3f46;
+      --color-accent: #3b82f6;
+      --color-accent-hover: #60a5fa;
+      --color-accent-soft: rgba(59, 130, 246, 0.16);
+      --color-accent-glow: rgba(96, 165, 250, 0.24);
+      --color-success: #4ade80;
+      --color-warning: #fbbf24;
+      --color-error: #f87171;
+      --color-info: #38bdf8;
+      --color-selection: rgba(59, 130, 246, 0.24);
+      --container-narrow: 72ch;
+      --container-content: 80rem;
+      --container-wide: 90rem;
+      --toc-rail: 250px;
+      --radius-sm: 0.75rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --radius-pill: 999px;
+      --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.16);
+      --shadow-md: 0 24px 80px rgba(0, 0, 0, 0.28);
+      --shadow-focus: 0 0 0 3px var(--color-accent-soft);
+      --text-display-lg: clamp(2.75rem, 6vw, 5rem);
+      --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+      --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+      --text-body-lg: clamp(1.125rem, 1.3vw, 1.375rem);
+      --text-body: clamp(1rem, 1vw, 1.125rem);
+      --text-meta: clamp(0.75rem, 0.7vw, 0.875rem);
+      --ease-standard: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+      --ease-snappy: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --duration-micro: 150ms;
+      --duration-ui: 300ms;
+      --duration-enter: 600ms;
+      --z-header: 40;
+      --z-mobile-menu: 50;
+      --z-reading-progress: 60;
+      --header-height: 72px;
+    }
+
+    html.light {
+      --color-bg: #fafafa;
+      --color-bg-secondary: #f1f5f9;
+      --color-surface: rgba(255, 255, 255, 0.72);
+      --color-surface-strong: rgba(255, 255, 255, 0.9);
+      --color-card: #ffffff;
+      --color-card-muted: #f8fafc;
+      --color-text: #171717;
+      --color-text-secondary: #525252;
+      --color-text-tertiary: #737373;
+      --color-border: #e5e7eb;
+      --color-border-strong: #d4d4d8;
+      --color-accent: #2563eb;
+      --color-accent-hover: #1d4ed8;
+      --color-accent-soft: rgba(37, 99, 235, 0.12);
+      --color-accent-glow: rgba(37, 99, 235, 0.22);
+      --color-success: #15803d;
+      --color-warning: #b45309;
+      --color-error: #b91c1c;
+      --color-info: #0369a1;
+      --color-selection: rgba(37, 99, 235, 0.16);
+      --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 24px 80px rgba(15, 23, 42, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 28%),
+        linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 12%, var(--color-bg) 100%);
+      color: var(--color-text);
+      min-height: 100vh;
+      line-height: 1.75;
+      letter-spacing: -0.01em;
+    }
+    ::selection { background: var(--color-selection); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+    .container {
+      width: min(100% - 2rem, var(--container-content));
+      margin: 0 auto;
+    }
+
+    .wide-container {
+      width: min(100% - 2rem, var(--container-wide));
+      margin: 0 auto;
+    }
+
+    .section { position: relative; }
+
+    .component-label {
+      position: absolute;
+      top: 0.9rem;
+      left: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      background: color-mix(in srgb, var(--color-bg-secondary) 86%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 0.28rem 0.58rem;
+      z-index: 4;
+    }
+
+    .client-boundary {
+      border: 1px dashed color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+
+    .client-boundary > .component-label { color: var(--color-accent-hover); }
+
+    .anim-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .fade-badge {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--color-info);
+      border-color: rgba(56, 189, 248, 0.28);
+    }
+
+    .stagger-badge {
+      background: rgba(251, 191, 36, 0.12);
+      color: var(--color-warning);
+      border-color: rgba(251, 191, 36, 0.28);
+    }
+
+    .reading-progress-shell {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: var(--z-reading-progress);
+      padding-top: 0.25rem;
+      pointer-events: none;
+    }
+
+    .reading-progress-track {
+      height: 4px;
+      background: color-mix(in srgb, var(--color-surface-strong) 70%, transparent);
+      overflow: hidden;
+      border-bottom: 1px dashed color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+    }
+
+    .reading-progress-bar {
+      width: 100%;
+      height: 100%;
+      transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+      box-shadow: 0 0 18px var(--color-accent-glow);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0.6rem;
+      background: var(--color-card);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 0.8rem;
+      transform: translateY(-140%);
+      transition: transform var(--duration-ui) var(--ease-snappy);
+      z-index: calc(var(--z-reading-progress) + 1);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      top: 0.25rem;
+      z-index: var(--z-header);
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      border-bottom: 1px solid var(--color-border);
+      margin-top: 0.25rem;
+    }
+
+    .header-inner {
+      min-height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand strong { font-size: 0.95rem; letter-spacing: 0.04em; }
+    .brand span { color: var(--color-text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; }
+
+    .site-nav {
+      display: none;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .site-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.92rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid transparent;
+      transition: color var(--duration-ui) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy);
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible,
+    .site-nav a[aria-current="page"] {
+      color: var(--color-text);
+      border-color: var(--color-accent);
+      outline: none;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .icon-button,
+    .toc-toggle {
+      min-height: 2.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: var(--color-card);
+      color: var(--color-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform var(--duration-micro) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy);
+    }
+
+    .icon-button { min-width: 2.7rem; }
+    .toc-toggle { width: 100%; justify-content: space-between; padding: 0 1rem; }
+
+    .icon-button:hover,
+    .toc-toggle:hover { transform: translateY(-1px); border-color: var(--color-border-strong); background: var(--color-card-muted); }
+
+    .icon-button:focus-visible,
+    .toc-toggle:focus-visible,
+    .toc-links a:focus-visible,
+    .article-body a:focus-visible,
+    .related-card a:focus-visible {
+      outline: 2px solid transparent;
+      box-shadow: var(--shadow-focus);
+      border-color: var(--color-accent);
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      left: 0;
+      right: 0;
+      z-index: var(--z-mobile-menu);
+      background: color-mix(in srgb, var(--color-surface-strong) 96%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 1rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-menu[data-open="true"] { display: flex; }
+
+    .mobile-menu a {
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a:focus-visible,
+    .mobile-menu a[aria-current="page"] {
+      color: var(--color-text);
+      background: var(--color-accent-soft);
+      border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+      outline: none;
+    }
+
+    .post-header-wrap {
+      padding-top: 2rem;
+      padding-bottom: 1.25rem;
+    }
+
+    .post-header {
+      position: relative;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: 4.4rem 1.2rem 1.2rem;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.76rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: var(--text-display-lg);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    .lede {
+      max-width: 62ch;
+      margin: 1.15rem 0 0;
+      color: var(--color-text-secondary);
+      font-size: var(--text-body-lg);
+    }
+
+    .meta-row,
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+    }
+
+    .meta-row {
+      margin-top: 1rem;
+      color: var(--color-text-secondary);
+      font-size: var(--text-meta);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-card-muted) 68%, transparent);
+      color: var(--color-text-secondary);
+      font-size: 0.82rem;
+      transition: transform var(--duration-micro) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy), color var(--duration-ui) var(--ease-snappy);
+      cursor: default;
+    }
+
+    .tag-pill:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      background: var(--color-accent-soft);
+      color: var(--color-text);
+    }
+
+    .cover {
+      margin-top: 1.35rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: var(--color-card-muted);
+    }
+
+    .toc-inline {
+      margin-top: 1rem;
+      padding: 3.7rem 1rem 1rem;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc-inline-panel {
+      display: none;
+      padding-top: 0.9rem;
+    }
+
+    .toc-inline[data-open="true"] .toc-inline-panel { display: block; }
+
+    .content-layout {
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .article-grid {
+      display: block;
+    }
+
+    .toc-rail {
+      display: none;
+      position: relative;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: 3.8rem 1rem 1rem;
+      height: fit-content;
+    }
+
+    .toc-rail-inner {
+      position: sticky;
+      top: calc(var(--header-height) + 2rem);
+    }
+
+    .toc-title {
+      margin: 0 0 0.85rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--color-text-tertiary);
+    }
+
+    .toc-links {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .toc-links a {
+      color: var(--color-text-secondary);
+      padding: 0.45rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), transform var(--duration-micro) var(--ease-snappy);
+    }
+
+    .toc-links a:hover {
+      transform: translateX(2px);
+      color: var(--color-text);
+      background: color-mix(in srgb, var(--color-card-muted) 75%, transparent);
+      border-color: var(--color-border);
+    }
+
+    .toc-links a.active {
+      color: var(--color-text);
+      background: var(--color-accent-soft);
+      border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+    }
+
+    .toc-links .depth-3 {
+      padding-left: 1.4rem;
+      font-size: 0.92rem;
+    }
+
+    .article-card {
+      position: relative;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: 4rem 1rem 1.6rem;
+    }
+
+    .article-body {
+      max-width: 70ch;
+      margin: 0 auto;
+      color: var(--color-text-secondary);
+      font-size: var(--text-body);
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: var(--color-text);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      scroll-margin-top: calc(var(--header-height) + 1rem);
+    }
+
+    .article-body h2 {
+      font-size: var(--text-h2);
+      margin: 3rem 0 1rem;
+    }
+
+    .article-body h3 {
+      font-size: var(--text-h3);
+      margin: 2rem 0 0.8rem;
+    }
+
+    .article-body p,
+    .article-body ul,
+    .article-body ol,
+    .article-body blockquote,
+    .article-body .callout,
+    .article-body .code-block,
+    .article-body figure,
+    .article-body .table-wrap {
+      margin: 1.1rem 0;
+    }
+
+    .article-body a { color: var(--color-accent-hover); }
+
+    .article-body ul {
+      padding-left: 1.2rem;
+    }
+
+    .article-body li + li { margin-top: 0.5rem; }
+
+    .callout {
+      position: relative;
+      padding: 3.1rem 1rem 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in srgb, var(--color-info) 25%, var(--color-border));
+      background: color-mix(in srgb, var(--color-card-muted) 84%, transparent);
+      color: var(--color-text);
+    }
+
+    .callout.warning {
+      border-color: color-mix(in srgb, var(--color-warning) 35%, var(--color-border));
+    }
+
+    .code-block {
+      position: relative;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      background: #0b1220;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: #94a3b8;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      font-size: 0.82rem;
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    pre {
+      margin: 0;
+      overflow-x: auto;
+      padding: 1rem;
+      color: #e2e8f0;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .token-keyword { color: #c084fc; }
+    .token-function { color: #60a5fa; }
+    .token-string { color: #86efac; }
+    .token-comment { color: #64748b; }
+    .token-number { color: #f59e0b; }
+
+    figure {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: var(--color-card-muted);
+    }
+
+    figcaption {
+      padding: 0.9rem 1rem 1rem;
+      color: var(--color-text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    blockquote {
+      padding-left: 1rem;
+      border-left: 3px solid var(--color-accent);
+      color: var(--color-text);
+      font-size: 1.04rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-card-muted) 78%, transparent);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 38rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    th { color: var(--color-text); }
+
+    .related {
+      padding-bottom: 2rem;
+    }
+
+    .related-shell {
+      position: relative;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: 4rem 1rem 1rem;
+    }
+
+    .related-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .related-card {
+      position: relative;
+      background: color-mix(in srgb, var(--color-card-muted) 60%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 3.4rem 1rem 1rem;
+      transition: transform var(--duration-ui) var(--ease-standard), border-color var(--duration-ui) var(--ease-standard), box-shadow var(--duration-ui) var(--ease-standard);
+    }
+
+    .related-card:hover,
+    .related-card:focus-within {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+      box-shadow: var(--shadow-md);
+    }
+
+    .related-card h3 {
+      margin: 0.75rem 0 0.5rem;
+      font-size: 1.2rem;
+      line-height: 1.2;
+      color: var(--color-text);
+      letter-spacing: -0.03em;
+    }
+
+    .related-card p,
+    .footer-panel p { margin: 0; color: var(--color-text-secondary); }
+
+    .footer-panel {
+      position: relative;
+      background: color-mix(in srgb, var(--color-card) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: 3.9rem 1rem 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid transparent;
+      transition: color var(--duration-ui) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy);
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--color-text);
+      border-color: var(--color-accent);
+      outline: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 768px) {
+      .container, .wide-container { width: min(100% - 3rem, var(--container-content)); }
+      .wide-container { width: min(100% - 3rem, var(--container-wide)); }
+      .post-header { padding: 4.75rem 1.8rem 1.6rem; }
+      .toc-inline { padding: 3.8rem 1.35rem 1.1rem; }
+      .article-card { padding: 4.2rem 1.5rem 2rem; }
+      .related-shell { padding: 4.1rem 1.5rem 1.4rem; }
+      .footer-panel { padding: 4rem 1.5rem 1.4rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .site-nav { display: flex; }
+      .menu-toggle { display: none; }
+      .mobile-menu { display: none !important; }
+      .toc-inline { display: none; }
+      .article-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) var(--toc-rail);
+        gap: 1.5rem;
+        align-items: start;
+      }
+      .toc-rail { display: block; }
+    }
+
+    @media (min-width: 1280px) {
+      .container { width: min(100% - 5rem, var(--container-content)); }
+      .wide-container { width: min(100% - 5rem, var(--container-wide)); }
+      .post-header { padding: 5.5rem 2.6rem 1.8rem; }
+      .cover { margin-top: 1.6rem; }
+      .content-layout { padding-top: 1.5rem; padding-bottom: 2.5rem; }
+      .article-grid { gap: 2rem; }
+      .article-card { padding: 4.5rem 2rem 2.25rem; }
+      .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .related-shell { padding: 4.3rem 2rem 1.5rem; }
+      .footer-panel { padding: 4.2rem 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to article</a>
+
+  <div class="reading-progress-shell client-boundary" aria-hidden="true">
+    <span class="component-label">ReadingProgress [client]</span>
+    <div class="reading-progress-track" data-testid="reading-progress">
+      <div class="reading-progress-bar" id="reading-progress-bar"></div>
+    </div>
+  </div>
+
+  <header class="site-header section" data-testid="site-header">
+    <span class="component-label">Header</span>
+    <div class="wide-container header-inner">
+      <a class="brand" href="blog.html" aria-label="Go to blog index mockup">
+        <strong>Shaeel Afsar</strong>
+        <span>Featured article</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary" data-testid="site-nav">
+        <a href="blog.html">Blog</a>
+        <a href="blog-post.html" aria-current="page">Featured Post</a>
+        <a href="#table-of-contents">On this page</a>
+        <a href="#related-posts">Related</a>
+      </nav>
+      <div class="header-actions">
+        <div class="client-boundary">
+          <span class="component-label">ThemeToggle [client]</span>
+          <button class="icon-button theme-toggle" type="button" data-testid="theme-toggle" aria-label="Toggle color theme">◐</button>
+        </div>
+        <div class="client-boundary menu-toggle">
+          <span class="component-label">MobileMenu [client]</span>
+          <button class="icon-button mobile-menu-trigger" type="button" data-testid="mobile-menu-trigger" aria-expanded="false" aria-controls="mobile-menu-panel" aria-label="Toggle mobile navigation">☰</button>
+        </div>
+      </div>
+      <div class="mobile-menu client-boundary" id="mobile-menu-panel" data-open="false">
+        <span class="component-label">MobileMenu [client]</span>
+        <a href="blog.html">Blog</a>
+        <a href="blog-post.html" aria-current="page">Featured Post</a>
+        <a href="#table-of-contents">On this page</a>
+        <a href="#related-posts">Related posts</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="wide-container post-header-wrap section" data-testid="post-header">
+      <article class="post-header">
+        <span class="component-label">PostHeader</span>
+        <span class="eyebrow">Long-form engineering note</span>
+        <div class="meta-row">
+          <span class="anim-badge fade-badge">[fade-in]</span>
+          <span>May 2, 2026</span>
+          <span>8 min read</span>
+          <span>By Rachael</span>
+        </div>
+        <h1>Building Accessible React Components Without Slowing Down Shipping</h1>
+        <p class="lede">A reading-first article mockup translating the blog post wireframe into an interactive prototype with a sticky progress bar, responsive table of contents, MDX-style content, and related posts.</p>
+        <div class="tag-row" style="margin-top: 1rem;">
+          <span class="tag-pill">Accessibility</span>
+          <span class="tag-pill">React</span>
+          <span class="tag-pill">Design Systems</span>
+          <span class="tag-pill">TypeScript</span>
+        </div>
+        <figure class="cover">
+          <img alt="Abstract dark editorial cover art with highlighted code and interface cards" src="data:image/svg+xml;utf8,
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 640'>
+              <defs>
+                <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+                  <stop offset='0%' stop-color='%230f172a'/>
+                  <stop offset='55%' stop-color='%23111827'/>
+                  <stop offset='100%' stop-color='%230a0a0a'/>
+                </linearGradient>
+                <linearGradient id='panel' x1='0' y1='0' x2='1' y2='1'>
+                  <stop offset='0%' stop-color='%231d4ed8' stop-opacity='0.32'/>
+                  <stop offset='100%' stop-color='%233b82f6' stop-opacity='0.08'/>
+                </linearGradient>
+              </defs>
+              <rect width='1200' height='640' fill='url(%23bg)'/>
+              <circle cx='1020' cy='120' r='140' fill='%233b82f6' fill-opacity='0.16'/>
+              <circle cx='190' cy='520' r='180' fill='%2360a5fa' fill-opacity='0.12'/>
+              <rect x='92' y='92' width='1016' height='456' rx='28' fill='url(%23panel)' stroke='%233b82f6' stroke-opacity='0.28'/>
+              <rect x='140' y='150' width='470' height='20' rx='10' fill='%23e2e8f0' fill-opacity='0.18'/>
+              <rect x='140' y='195' width='380' height='20' rx='10' fill='%23e2e8f0' fill-opacity='0.12'/>
+              <rect x='140' y='270' width='320' height='180' rx='22' fill='%230b1220' stroke='%23334155'/>
+              <rect x='500' y='270' width='560' height='72' rx='22' fill='%23111827' stroke='%232563eb' stroke-opacity='0.44'/>
+              <rect x='500' y='365' width='560' height='72' rx='22' fill='%23111827' stroke='%23334155'/>
+              <rect x='500' y='460' width='310' height='40' rx='20' fill='%233b82f6' fill-opacity='0.25'/>
+            </svg>" />
+          <figcaption>Editorial cover image placeholder with restrained blue accent and glassy surfaces.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="container section">
+      <div class="toc-inline client-boundary" id="table-of-contents" data-testid="toc-disclosure" data-open="false">
+        <span class="component-label">TableOfContents [client]</span>
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc-inline-panel">
+          <span>On this page</span>
+          <span aria-hidden="true">▾</span>
+        </button>
+        <div class="toc-inline-panel" id="toc-inline-panel">
+          <nav class="toc-links" aria-label="Table of contents">
+            <a href="#designing-the-contract" class="toc-link depth-2">Designing the contract</a>
+            <a href="#guardrails-first" class="toc-link depth-3">Guardrails first</a>
+            <a href="#composable-apis" class="toc-link depth-2">Composable APIs</a>
+            <a href="#testing-rhythm" class="toc-link depth-2">Testing rhythm</a>
+            <a href="#what-shipped" class="toc-link depth-2">What shipped</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <section class="container content-layout section">
+      <div class="article-grid">
+        <article class="article-card" data-testid="blog-article">
+          <span class="component-label">Article</span>
+          <div class="article-body">
+            <div class="meta-row" style="margin-top: 0; margin-bottom: 1rem;">
+              <span class="anim-badge fade-badge">[fade-in]</span>
+              <span class="anim-badge stagger-badge">[stagger]</span>
+              <span>Comfortable reading width · 70ch</span>
+            </div>
+
+            <p>Every team says they care about accessibility until a release gets tight. Then semantics, focus order, and states become “follow-up work.” The pattern that finally worked for us was simple: move the decisions that matter into the component contract, then make the happy path the accessible path.</p>
+
+            <blockquote>Accessible components should feel faster to use than inaccessible ones — for the implementer, reviewer, and the person navigating with a keyboard.</blockquote>
+
+            <h2 id="designing-the-contract" tabindex="-1">Designing the contract</h2>
+            <p>We started by listing the decisions that should <em>never</em> be deferred to product teams: button semantics, icon labeling, error messaging slots, and keyboard behavior for composite widgets. Once those decisions lived inside primitives, feature teams spent less time remembering rules and more time composing real interfaces.</p>
+            <p>The payoff was strongest in states-heavy components such as menus, dialogs, and comboboxes. Instead of shipping loose wrappers, we defined opinionated primitives with semantic defaults, and then exposed only the extension points that design actually needed.</p>
+
+            <div class="callout section">
+              <span class="component-label">CalloutBox</span>
+              <strong style="display:block; margin-bottom: 0.45rem; color: var(--color-text);">Callout · practical heuristic</strong>
+              <p style="margin:0; color: var(--color-text-secondary);">If a reviewer needs a checklist to verify the default state, the component API is probably too loose. Good primitives make misuse slightly inconvenient.</p>
+            </div>
+
+            <h3 id="guardrails-first" tabindex="-1">Guardrails first</h3>
+            <p>We built guardrails around the moments where teams usually regress:</p>
+            <ul>
+              <li>automatic association between labels, help text, and error text;</li>
+              <li>focus-visible styling that matches the design system in both light and dark themes;</li>
+              <li>sensible fallbacks for icon-only actions and loading states;</li>
+              <li>slot structures that encourage headings and landmarks in the right order.</li>
+            </ul>
+
+            <div class="code-block section">
+              <span class="component-label">CodeBlock</span>
+              <div class="code-header">
+                <span>Button.tsx</span>
+                <span>tsx</span>
+              </div>
+              <pre><code><span class="token-keyword">export function</span> <span class="token-function">Button</span>({
+  intent = <span class="token-string">"primary"</span>,
+  icon,
+  children,
+  ...props
+}) {
+  <span class="token-keyword">const</span> needsAriaLabel = icon &amp;&amp; !children;
+
+  <span class="token-keyword">return</span> (
+    &lt;button
+      data-intent={intent}
+      aria-label={needsAriaLabel ? <span class="token-string">"Open menu"</span> : props[<span class="token-string">"aria-label"</span>]}
+      {...props}
+    &gt;
+      {icon}
+      {children}
+    &lt;/button&gt;
+  );
+}
+<span class="token-comment">// Encodes an accessible default instead of relying on downstream memory.</span></code></pre>
+            </div>
+
+            <h2 id="composable-apis" tabindex="-1">Composable APIs</h2>
+            <p>We resisted “do everything” components and focused on composition. A good primitive should be easy to combine with layout and content systems, but still strict about semantics. That usually meant separating structure from polish: primitives handled role, state, and keyboard logic; wrappers layered on spacing, art direction, and editorial rhythm.</p>
+
+            <figure class="section">
+              <span class="component-label">InlineImage</span>
+              <img alt="Wireframe style content layout showing article column beside a sticky table of contents rail" src="data:image/svg+xml;utf8,
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 560'>
+                  <rect width='960' height='560' fill='%23111827'/>
+                  <rect x='56' y='56' width='848' height='448' rx='32' fill='%230f172a' stroke='%23334155'/>
+                  <rect x='96' y='116' width='520' height='28' rx='14' fill='%23e2e8f0' fill-opacity='0.14'/>
+                  <rect x='96' y='168' width='430' height='18' rx='9' fill='%23e2e8f0' fill-opacity='0.10'/>
+                  <rect x='96' y='214' width='430' height='18' rx='9' fill='%23e2e8f0' fill-opacity='0.10'/>
+                  <rect x='666' y='116' width='182' height='288' rx='20' fill='%230b1220' stroke='%233b82f6' stroke-opacity='0.44'/>
+                  <rect x='696' y='152' width='114' height='12' rx='6' fill='%23e2e8f0' fill-opacity='0.12'/>
+                  <rect x='696' y='188' width='118' height='10' rx='5' fill='%233b82f6' fill-opacity='0.44'/>
+                  <rect x='696' y='226' width='96' height='10' rx='5' fill='%23e2e8f0' fill-opacity='0.12'/>
+                  <rect x='96' y='278' width='470' height='170' rx='24' fill='%231d4ed8' fill-opacity='0.16' stroke='%233b82f6' stroke-opacity='0.36'/>
+                </svg>" />
+              <figcaption>Inline MDX-style figure reinforcing the reading rail and narrow article measure.</figcaption>
+            </figure>
+
+            <p>That division also helped us explain <a href="blog.html">where client boundaries actually belong</a>. Some interactions genuinely need JavaScript, like menus or reading progress. Others only look dynamic but can stay server-rendered. Keeping that line sharp protected performance and reduced hydration cost.</p>
+
+            <div class="callout warning section">
+              <span class="component-label">CalloutBox</span>
+              <strong style="display:block; margin-bottom: 0.45rem; color: var(--color-text);">Warning · common trap</strong>
+              <p style="margin:0; color: var(--color-text-secondary);">Adding client logic “just in case” is how content-heavy pages become sluggish. If an interaction is decorative, prefer CSS. If it changes focus, state, or layout semantics, earn the boundary with intent.</p>
+            </div>
+
+            <h2 id="testing-rhythm" tabindex="-1">Testing rhythm</h2>
+            <p>Our testing rhythm blended accessibility checks into ordinary UI review instead of making them a separate gate. Designers validated spacing and contrast, engineers verified keyboard flows, and QA spot-checked screen-reader labels on the highest-risk paths.</p>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Surface</th>
+                    <th>Guardrail</th>
+                    <th>Review cue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Buttons</td>
+                    <td>Accessible name required for icon-only use</td>
+                    <td>Keyboard focus visible in dark mode</td>
+                  </tr>
+                  <tr>
+                    <td>Inputs</td>
+                    <td>Descriptions and errors linked automatically</td>
+                    <td>Tab order matches visual flow</td>
+                  </tr>
+                  <tr>
+                    <td>Dialogs</td>
+                    <td>Focus trapped and returned on close</td>
+                    <td>Escape closes without losing context</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="what-shipped" tabindex="-1">What shipped</h2>
+            <p>In the end, the biggest win wasn’t the component library itself. It was the calmer review process. With semantics and focus handled centrally, teams could talk about clarity, hierarchy, and product tradeoffs instead of relitigating baseline accessibility each sprint.</p>
+            <p>That’s the kind of system work I want from a blog: fewer declarations, more honest implementation details, and enough specificity that another developer could borrow the pattern tomorrow.</p>
+          </div>
+        </article>
+
+        <aside class="toc-rail client-boundary" id="table-of-contents-desktop" data-testid="table-of-contents">
+          <span class="component-label">TableOfContents [client]</span>
+          <div class="toc-rail-inner">
+            <p class="toc-title">On this page</p>
+            <nav class="toc-links" aria-label="Table of contents">
+              <a href="#designing-the-contract" class="toc-link depth-2 active">Designing the contract</a>
+              <a href="#guardrails-first" class="toc-link depth-3">Guardrails first</a>
+              <a href="#composable-apis" class="toc-link depth-2">Composable APIs</a>
+              <a href="#testing-rhythm" class="toc-link depth-2">Testing rhythm</a>
+              <a href="#what-shipped" class="toc-link depth-2">What shipped</a>
+            </nav>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container related section" id="related-posts" data-testid="related-posts">
+      <div class="related-shell">
+        <span class="component-label">RelatedPosts</span>
+        <div class="meta-row" style="margin-top: 0; margin-bottom: 1rem;">
+          <span class="anim-badge stagger-badge">[stagger]</span>
+          <span>Shared-tag lookup · 2-up on wide desktop</span>
+        </div>
+        <div class="related-grid">
+          <article class="related-card">
+            <span class="component-label">PostCard</span>
+            <a href="blog.html">
+              <div class="meta-row" style="margin-top: 0; font-size: 0.8rem;">
+                <span>Apr 18, 2026</span>
+                <span>6 min read</span>
+              </div>
+              <h3 id="rust-journey">My Journey with Rust</h3>
+              <p>Learning systems programming through small tooling projects and compiler-guided refactors.</p>
+            </a>
+          </article>
+          <article class="related-card">
+            <span class="component-label">PostCard</span>
+            <a href="blog.html">
+              <div class="meta-row" style="margin-top: 0; font-size: 0.8rem;">
+                <span>Mar 29, 2026</span>
+                <span>11 min read</span>
+              </div>
+              <h3 id="systems-scale">Design Systems at Scale</h3>
+              <p>How tokens, review rituals, and ownership models keep design systems useful after launch.</p>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container" data-testid="site-footer">
+    <div class="footer-panel section">
+      <span class="component-label">Footer</span>
+      <strong style="display:block; margin-bottom: 0.55rem; font-size: 1.05rem;">Prototype complete: reading progress, TOC, and editorial layout.</strong>
+      <p>This mockup stays self-contained with inline CSS/JS, responsive layout changes across mobile, tablet, desktop, and wide desktop, plus cross-links back to the blog index prototype.</p>
+      <div class="footer-links">
+        <a href="blog.html">Back to blog index</a>
+        <a href="#table-of-contents">Jump to TOC</a>
+        <a href="#main-content">Back to article top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.querySelector('.theme-toggle');
+    const menuButton = document.querySelector('.mobile-menu-trigger');
+    const mobileMenu = document.getElementById('mobile-menu-panel');
+    const tocDisclosure = document.querySelector('.toc-inline');
+    const tocToggle = document.querySelector('.toc-toggle');
+    const progressBar = document.getElementById('reading-progress-bar');
+    const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+    const headingIds = ['designing-the-contract', 'guardrails-first', 'composable-apis', 'testing-rhythm', 'what-shipped'];
+    const headings = headingIds.map((id) => document.getElementById(id)).filter(Boolean);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    themeToggle?.addEventListener('click', () => {
+      root.classList.toggle('light');
+      root.classList.toggle('dark');
+    });
+
+    menuButton?.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.setAttribute('data-open', String(!isOpen));
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuButton?.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('data-open', 'false');
+      });
+    });
+
+    tocToggle?.addEventListener('click', () => {
+      const isOpen = tocToggle.getAttribute('aria-expanded') === 'true';
+      tocToggle.setAttribute('aria-expanded', String(!isOpen));
+      tocDisclosure?.setAttribute('data-open', String(!isOpen));
+    });
+
+    const setActiveTocLink = (id) => {
+      tocLinks.forEach((link) => {
+        const active = link.getAttribute('href') === `#${id}`;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href')?.slice(1);
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        event.preventDefault();
+        const headerOffset = Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10) || 72;
+        const offsetTop = target.getBoundingClientRect().top + window.scrollY - (headerOffset + 24);
+        window.history.replaceState({}, '', `#${targetId}`);
+        window.scrollTo({ top: offsetTop, behavior: reducedMotion ? 'auto' : 'smooth' });
+        window.setTimeout(() => target.focus({ preventScroll: true }), reducedMotion ? 0 : 180);
+        if (window.innerWidth < 1024) {
+          tocToggle?.setAttribute('aria-expanded', 'false');
+          tocDisclosure?.setAttribute('data-open', 'false');
+        }
+        setActiveTocLink(targetId);
+      });
+    });
+
+    const updateProgress = () => {
+      const article = document.querySelector('[data-testid="blog-article"]');
+      if (!article || !progressBar) return;
+      const rect = article.getBoundingClientRect();
+      const articleTop = rect.top + window.scrollY;
+      const articleHeight = article.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const totalScrollable = Math.max(articleHeight - viewportHeight, 1);
+      const rawProgress = (window.scrollY - articleTop) / totalScrollable;
+      const progress = Math.min(Math.max(rawProgress, 0), 1);
+      progressBar.style.transform = `scaleX(${progress})`;
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]?.target?.id) {
+        setActiveTocLink(visible[0].target.id);
+      }
+    }, {
+      rootMargin: '-25% 0px -55% 0px',
+      threshold: [0.1, 0.5, 1]
+    });
+
+    headings.forEach((heading) => observer.observe(heading));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+
+    if (window.location.hash) {
+      const initial = window.location.hash.slice(1);
+      if (headingIds.includes(initial)) setActiveTocLink(initial);
+    }
+    updateProgress();
+  </script>
+</body>
+</html>

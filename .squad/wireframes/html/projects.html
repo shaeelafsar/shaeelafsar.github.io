@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Wireframe Mockup</title>
+  <style>
+    :root {
+      --color-bg: #0a0a0a;
+      --color-bg-secondary: #171717;
+      --color-surface: rgba(23, 23, 23, 0.72);
+      --color-surface-strong: rgba(20, 20, 20, 0.9);
+      --color-card: #141414;
+      --color-card-muted: #101826;
+      --color-text: #fafafa;
+      --color-text-secondary: #a3a3a3;
+      --color-text-tertiary: #737373;
+      --color-border: #262626;
+      --color-border-strong: #3f3f46;
+      --color-primary: #fafafa;
+      --color-secondary: #cbd5e1;
+      --color-accent: #3b82f6;
+      --color-accent-hover: #60a5fa;
+      --color-accent-soft: rgba(59, 130, 246, 0.16);
+      --color-accent-glow: rgba(96, 165, 250, 0.24);
+      --color-success: #4ade80;
+      --color-warning: #fbbf24;
+      --color-error: #f87171;
+      --color-info: #38bdf8;
+      --color-selection: rgba(59, 130, 246, 0.24);
+      --container-narrow: 72ch;
+      --container-content: 80rem;
+      --container-wide: 90rem;
+      --radius-sm: 0.75rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --radius-pill: 999px;
+      --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.18);
+      --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.24);
+      --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.3);
+      --focus-ring: 0 0 0 3px var(--color-accent-soft);
+      --ease-standard: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+      --ease-snappy: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --duration-micro: 150ms;
+      --duration-ui: 300ms;
+      --duration-enter: 600ms;
+      --text-display-lg: clamp(2.75rem, 6vw, 5rem);
+      --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+      --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+      --text-body-lg: clamp(1.125rem, 1.3vw, 1.375rem);
+      --text-body: clamp(1rem, 1vw, 1.125rem);
+      --text-meta: clamp(0.75rem, 0.7vw, 0.875rem);
+      color-scheme: dark;
+    }
+
+    body.light {
+      --color-bg: #fafafa;
+      --color-bg-secondary: #f1f5f9;
+      --color-surface: rgba(255, 255, 255, 0.72);
+      --color-surface-strong: rgba(255, 255, 255, 0.9);
+      --color-card: #ffffff;
+      --color-card-muted: #f8fafc;
+      --color-text: #171717;
+      --color-text-secondary: #525252;
+      --color-text-tertiary: #737373;
+      --color-border: #e5e7eb;
+      --color-border-strong: #d4d4d8;
+      --color-primary: #171717;
+      --color-secondary: #475569;
+      --color-accent: #2563eb;
+      --color-accent-hover: #1d4ed8;
+      --color-accent-soft: rgba(37, 99, 235, 0.12);
+      --color-accent-glow: rgba(37, 99, 235, 0.22);
+      --color-success: #15803d;
+      --color-warning: #b45309;
+      --color-error: #b91c1c;
+      --color-info: #0369a1;
+      --color-selection: rgba(37, 99, 235, 0.16);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.14), transparent 30%),
+        linear-gradient(180deg, var(--color-bg) 0%, #060b12 100%);
+      color: var(--color-text);
+      min-height: 100vh;
+      transition: background var(--duration-ui) var(--ease-snappy), color var(--duration-ui) var(--ease-snappy);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { min-height: 100vh; display: flex; flex-direction: column; }
+    .container {
+      width: min(calc(100% - 2rem), var(--container-content));
+      margin: 0 auto;
+    }
+    .component-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: var(--text-meta);
+      line-height: 1;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+    }
+    .component-label::before {
+      content: "";
+      width: 0.6rem;
+      height: 1px;
+      background: var(--color-accent);
+      opacity: 0.8;
+    }
+    .animation-badge,
+    .state-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-meta);
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .animation-badge { color: var(--color-info); background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.24); }
+    .animation-badge.stagger { color: var(--color-warning); background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.26); }
+    .state-badge.active { color: var(--color-accent-hover); background: var(--color-accent-soft); border-color: var(--color-accent); }
+    .state-badge.pending { color: var(--color-warning); background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.32); }
+    .state-badge.zero { color: var(--color-error); background: rgba(248, 113, 113, 0.12); border-color: rgba(248, 113, 113, 0.32); }
+    .client-boundary {
+      position: relative;
+      border: 1px dashed rgba(96, 165, 250, 0.32) !important;
+    }
+    .client-boundary::after {
+      content: "client";
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent-hover);
+      opacity: 0.8;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: var(--color-surface);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+    .brand strong { font-size: 0.98rem; }
+    .brand span { font-size: var(--text-meta); color: var(--color-text-secondary); }
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle,
+    .mobile-menu-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 999px;
+      background: var(--color-card);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      cursor: pointer;
+      transition: transform var(--duration-micro) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy);
+    }
+    .theme-toggle:hover,
+    .mobile-menu-trigger:hover { transform: translateY(-1px); border-color: var(--color-border-strong); }
+    .site-nav {
+      display: none;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 0.9rem 1rem;
+      font-size: 0.94rem;
+    }
+    .site-nav a,
+    .mobile-menu-panel a {
+      position: relative;
+      color: var(--color-text-secondary);
+      padding-bottom: 0.25rem;
+      transition: color var(--duration-ui) var(--ease-snappy);
+    }
+    .site-nav a.active,
+    .site-nav a:hover,
+    .mobile-menu-panel a.active {
+      color: var(--color-text);
+    }
+    .site-nav a.active::after,
+    .site-nav a:hover::after,
+    .mobile-menu-panel a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.15rem;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--color-accent);
+    }
+    .mobile-menu-panel {
+      display: none;
+      padding: 0 0 1rem;
+    }
+    .mobile-menu-panel.open { display: block; }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.85rem;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-strong);
+      border: 1px solid var(--color-border);
+    }
+
+    main { flex: 1; }
+    .hero {
+      padding: 4rem 0 2rem;
+    }
+    .hero-card,
+    .filter-card,
+    .empty-card,
+    .card,
+    .footer-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 100%), var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-card {
+      padding: 2rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: var(--text-display-lg);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 60ch;
+      color: var(--color-text-secondary);
+      font-size: var(--text-body-lg);
+      line-height: 1.65;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .filter-section {
+      padding: 0 0 2rem;
+    }
+    .filter-card {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .filter-top {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .filter-description {
+      color: var(--color-text-secondary);
+      font-size: var(--text-body);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .filter-row {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      scrollbar-width: thin;
+    }
+    .pill {
+      flex: 0 0 auto;
+      border: 1px solid var(--color-border-strong);
+      background: transparent;
+      color: var(--color-text-secondary);
+      padding: 0.72rem 1rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: transform var(--duration-micro) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy), color var(--duration-ui) var(--ease-snappy), opacity var(--duration-ui) var(--ease-snappy);
+    }
+    .pill:hover,
+    .pill.is-hover-preview {
+      color: var(--color-text);
+      background: var(--color-accent-soft);
+      border-color: rgba(96, 165, 250, 0.45);
+      transform: translateY(-1px);
+    }
+    .pill[aria-pressed="true"] {
+      color: var(--color-text);
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.22), rgba(59, 130, 246, 0.1));
+      border-color: var(--color-accent);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+    .pill.pending { opacity: 0.7; pointer-events: none; }
+    .pill:focus-visible,
+    .theme-toggle:focus-visible,
+    .mobile-menu-trigger:focus-visible,
+    .card-link:focus-visible,
+    .cta-link:focus-visible,
+    .footer-nav a:focus-visible,
+    .mobile-menu-panel a:focus-visible,
+    .site-nav a:focus-visible {
+      outline: 2px solid transparent;
+      box-shadow: var(--focus-ring);
+      border-color: var(--color-accent);
+    }
+    .state-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      color: var(--color-text-secondary);
+      font-size: var(--text-meta);
+    }
+
+    .projects-section {
+      padding: 0 0 4rem;
+    }
+    .grid-head {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid-head h2 {
+      margin: 0;
+      font-size: var(--text-h2);
+      letter-spacing: -0.03em;
+    }
+    .grid-head p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      max-width: 58ch;
+      line-height: 1.65;
+    }
+    .grid-status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--color-text-secondary);
+      font-size: var(--text-meta);
+      margin-bottom: 1rem;
+    }
+    .grid-wrap {
+      position: relative;
+    }
+    .grid-wrap.loading .projects-grid { opacity: 0.42; }
+    .projects-grid {
+      display: grid;
+      gap: 1rem;
+      transition: opacity var(--duration-ui) var(--ease-snappy);
+    }
+    .card {
+      overflow: hidden;
+      transition: transform var(--duration-ui) var(--ease-standard), border-color var(--duration-ui) var(--ease-snappy), box-shadow var(--duration-ui) var(--ease-standard);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(96, 165, 250, 0.3);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-link { display: block; }
+    .card-media {
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 65%),
+        linear-gradient(135deg, #374151, #1f2937 60%, #111827);
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-media::after {
+      content: "Image placeholder";
+      position: absolute;
+      inset: auto 1rem 1rem auto;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .card-body {
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+    }
+    .card h3 {
+      margin: 0;
+      font-size: var(--text-h3);
+      letter-spacing: -0.03em;
+    }
+    .card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      font-size: var(--text-body);
+    }
+    .project-meta,
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .meta-badge,
+    .tag-badge {
+      padding: 0.4rem 0.7rem;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-meta);
+      border: 1px solid var(--color-border);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text-secondary);
+    }
+    .meta-badge.featured { color: var(--color-warning); border-color: rgba(251, 191, 36, 0.25); background: rgba(251, 191, 36, 0.08); }
+    .tag-badge { background: var(--color-card-muted); }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      color: var(--color-text-tertiary);
+      font-size: var(--text-meta);
+    }
+    .empty-card {
+      display: none;
+      padding: 2rem;
+      gap: 1rem;
+      align-items: start;
+    }
+    .empty-card.show { display: grid; }
+    .cta-link,
+    .reset-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-accent);
+      background: var(--color-accent);
+      color: white;
+      font-weight: 600;
+      transition: transform var(--duration-micro) var(--ease-snappy), background var(--duration-ui) var(--ease-snappy), border-color var(--duration-ui) var(--ease-snappy);
+    }
+    .cta-link:hover,
+    .reset-link:hover { transform: translateY(-1px); background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+    .reset-link.secondary {
+      background: transparent;
+      color: var(--color-text);
+      border-color: var(--color-border-strong);
+    }
+
+    .footer {
+      padding: 0 0 2rem;
+    }
+    .footer-card {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--color-text-secondary);
+    }
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      color: var(--color-text-secondary);
+      font-size: var(--text-meta);
+    }
+
+    @media (min-width: 768px) {
+      .container { width: min(calc(100% - 3rem), var(--container-content)); }
+      .site-nav { display: flex; }
+      .mobile-menu-trigger, .mobile-menu-panel { display: none !important; }
+      .hero { padding-top: 5rem; }
+      .hero-card { padding: 2.5rem; }
+      .filter-top { flex-direction: row; justify-content: space-between; align-items: end; }
+      .filter-card { padding: 1.75rem; }
+      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+      .empty-card { padding: 2.25rem; }
+      .footer-card { grid-template-columns: 1.2fr auto; align-items: end; }
+      .footer-bottom { align-items: start; }
+    }
+
+    @media (min-width: 1024px) {
+      .filter-section.sticky-enabled .filter-card {
+        position: sticky;
+        top: 5.3rem;
+      }
+      .projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1280px) {
+      .container { width: min(calc(100% - 5rem), var(--container-wide)); }
+      .hero-card {
+        grid-template-columns: 1.25fr 0.75fr;
+        align-items: end;
+        padding: 3rem;
+      }
+      .grid-head {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+      }
+      .grid-head p { max-width: 48ch; }
+      .footer-card { padding: 2rem; }
+    }
+  </style>
+</head>
+<body class="dark">
+  <div class="shell">
+    <header class="site-header" data-testid="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="home.html" aria-label="Go to Home wireframe">
+          <strong>Shaeel Afsar</strong>
+          <span>Frontend Portfolio Wireframes</span>
+        </a>
+        <nav class="site-nav" data-testid="site-nav" aria-label="Primary">
+          <a href="home.html">Home</a>
+          <a href="about.html">About</a>
+          <a class="active" href="projects.html">Projects</a>
+          <a href="project-detail.html">Project Detail</a>
+          <a href="blog.html">Blog</a>
+          <a href="blog-post.html">Blog Post</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <button class="theme-toggle client-boundary" data-testid="theme-toggle" type="button" aria-label="Switch to light theme">◐</button>
+          <button class="mobile-menu-trigger client-boundary" data-testid="mobile-menu-trigger" type="button" aria-expanded="false" aria-controls="mobile-menu-panel">☰</button>
+        </div>
+      </div>
+      <div class="container mobile-menu-panel client-boundary" id="mobile-menu-panel" data-testid="mobile-menu-panel">
+        <div class="mobile-menu-links">
+          <a href="home.html">Home</a>
+          <a href="about.html">About</a>
+          <a class="active" href="projects.html">Projects</a>
+          <a href="project-detail.html">Project Detail</a>
+          <a href="blog.html">Blog</a>
+          <a href="blog-post.html">Blog Post</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-card" data-testid="projects-hero">
+            <div>
+              <div class="component-label">ProjectsHero</div>
+              <h1><span class="animation-badge">fade-in</span><br />Selected work with product depth.</h1>
+            </div>
+            <div>
+              <p>Interactive mockup of the portfolio projects page with responsive shell behavior, clickable filter pills, hover-ready cards, and a zero-results path for edge-state review.</p>
+              <div class="hero-meta">
+                <span class="meta-badge">Dark theme first</span>
+                <span class="meta-badge">375 / 768 / 1024 / 1280+</span>
+                <span class="meta-badge featured">Featured first</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="filter-section sticky-enabled">
+        <div class="container">
+          <div class="filter-card client-boundary" data-testid="projects-filter">
+            <div class="filter-top">
+              <div>
+                <div class="component-label">ProjectFilter <span class="animation-badge">fade-in</span></div>
+                <p class="filter-description">Pills simulate hover, keyboard focus, selected, pending, and zero-results states. Try <strong>DevOps</strong> for an empty state example, or use arrow keys to move between pills.</p>
+              </div>
+              <div class="state-preview" aria-hidden="true">
+                <span class="state-badge">default</span>
+                <span class="state-badge active">active</span>
+                <span class="state-badge pending">loading</span>
+                <span class="state-badge zero">zero-results</span>
+              </div>
+            </div>
+            <div class="filter-row" role="group" aria-label="Filter projects by tag">
+              <button class="pill" data-tag="all" aria-pressed="true" data-testid="filter-pill-all">All</button>
+              <button class="pill" data-tag="next-js" aria-pressed="false" data-testid="filter-pill-next-js">Next.js</button>
+              <button class="pill is-hover-preview" data-tag="ai" aria-pressed="false" data-testid="filter-pill-ai">AI</button>
+              <button class="pill" data-tag="typescript" aria-pressed="false" data-testid="filter-pill-typescript">TypeScript</button>
+              <button class="pill" data-tag="design-systems" aria-pressed="false" data-testid="filter-pill-design-systems">Design Systems</button>
+              <button class="pill" data-tag="cli" aria-pressed="false" data-testid="filter-pill-cli">CLI</button>
+              <button class="pill" data-tag="devops" aria-pressed="false" data-testid="filter-pill-devops">DevOps</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section">
+        <div class="container">
+          <div class="grid-head">
+            <div>
+              <div class="component-label">ProjectGrid <span class="animation-badge stagger">stagger</span></div>
+              <h2>Featured case studies and product builds</h2>
+            </div>
+            <p>Cards remain full-surface links and refresh softly under filter updates. Wide layouts lock to three columns; tablet compresses to two; mobile stacks cleanly in a single column.</p>
+          </div>
+          <div class="grid-status" id="grid-status">
+            <span>Showing <strong id="results-count">4</strong> projects</span>
+            <span class="state-badge pending" id="pending-badge" hidden>pending refresh</span>
+          </div>
+          <div class="grid-wrap" id="grid-wrap">
+            <div class="projects-grid" id="projects-grid" data-testid="projects-grid">
+              <article class="card" data-tags="all next-js ai typescript" data-title="AI Dashboard">
+                <a class="card-link" href="project-detail.html" aria-label="Open AI Dashboard case study">
+                  <div class="card-media"></div>
+                  <div class="card-body">
+                    <div class="card-top">
+                      <div>
+                        <h3>AI Dashboard</h3>
+                        <p>Executive analytics workspace for monitoring model health, usage patterns, and experiment rollout decisions.</p>
+                      </div>
+                      <span class="meta-badge featured">Featured</span>
+                    </div>
+                    <div class="project-meta">
+                      <span class="meta-badge">2026</span>
+                      <span class="meta-badge">SaaS</span>
+                      <span class="meta-badge">Frontend Lead</span>
+                    </div>
+                    <div class="badge-row">
+                      <span class="tag-badge">Next.js</span>
+                      <span class="tag-badge">TypeScript</span>
+                      <span class="tag-badge">AI</span>
+                      <span class="tag-badge">Charts</span>
+                    </div>
+                    <div class="card-footer">
+                      <span>Model observability · enterprise UX</span>
+                      <span>View case study →</span>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="card" data-tags="all next-js typescript design-systems" data-title="E-commerce Platform">
+                <a class="card-link" href="project-detail.html" aria-label="Open E-commerce Platform case study">
+                  <div class="card-media"></div>
+                  <div class="card-body">
+                    <div class="card-top">
+                      <div>
+                        <h3>E-commerce Platform</h3>
+                        <p>Composable storefront for global product launches with reusable merchandising modules and high-trust checkout flows.</p>
+                      </div>
+                    </div>
+                    <div class="project-meta">
+                      <span class="meta-badge">2025</span>
+                      <span class="meta-badge">Web App</span>
+                      <span class="meta-badge">Design Systems</span>
+                    </div>
+                    <div class="badge-row">
+                      <span class="tag-badge">Next.js</span>
+                      <span class="tag-badge">TypeScript</span>
+                      <span class="tag-badge">Design Systems</span>
+                      <span class="tag-badge">Commerce</span>
+                    </div>
+                    <div class="card-footer">
+                      <span>Accessibility-first retail UI</span>
+                      <span>Open details →</span>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="card" data-tags="all cli typescript" data-title="CLI Tool">
+                <a class="card-link" href="project-detail.html" aria-label="Open CLI Tool case study">
+                  <div class="card-media"></div>
+                  <div class="card-body">
+                    <div class="card-top">
+                      <div>
+                        <h3>CLI Tool</h3>
+                        <p>Terminal workflow assistant for scaffolding releases, validating content, and automating repetitive engineering tasks.</p>
+                      </div>
+                    </div>
+                    <div class="project-meta">
+                      <span class="meta-badge">2024</span>
+                      <span class="meta-badge">Developer Tools</span>
+                      <span class="meta-badge">Full Stack</span>
+                    </div>
+                    <div class="badge-row">
+                      <span class="tag-badge">Node.js</span>
+                      <span class="tag-badge">TypeScript</span>
+                      <span class="tag-badge">CLI</span>
+                      <span class="tag-badge">DX</span>
+                    </div>
+                    <div class="card-footer">
+                      <span>Fast onboarding for internal teams</span>
+                      <span>Inspect flow →</span>
+                    </div>
+                  </div>
+                </a>
+              </article>
+
+              <article class="card" data-tags="all ai design-systems" data-title="Component Intelligence Lab">
+                <a class="card-link" href="project-detail.html" aria-label="Open Component Intelligence Lab case study">
+                  <div class="card-media"></div>
+                  <div class="card-body">
+                    <div class="card-top">
+                      <div>
+                        <h3>Component Intelligence Lab</h3>
+                        <p>Design-to-code experimentation environment for translating tokenized UI patterns into reusable product components.</p>
+                      </div>
+                    </div>
+                    <div class="project-meta">
+                      <span class="meta-badge">2024</span>
+                      <span class="meta-badge">R&D</span>
+                      <span class="meta-badge">Prototype</span>
+                    </div>
+                    <div class="badge-row">
+                      <span class="tag-badge">AI</span>
+                      <span class="tag-badge">Design Systems</span>
+                      <span class="tag-badge">Storybook</span>
+                      <span class="tag-badge">Tokens</span>
+                    </div>
+                    <div class="card-footer">
+                      <span>Bridging systems and automation</span>
+                      <span>Explore concept →</span>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            </div>
+
+            <div class="empty-card" id="projects-empty-state" data-testid="projects-empty-state">
+              <div class="component-label">ZeroResultsState <span class="state-badge zero">zero-results</span></div>
+              <h3 style="margin:0; font-size: var(--text-h3);">No projects match this filter yet.</h3>
+              <p style="margin:0; color: var(--color-text-secondary); line-height: 1.65; max-width: 52ch;">This state mirrors the wireframe’s empty-grid replacement. In a real build, the URL would fall back to a valid tag set or offer recovery. Here, the <strong>DevOps</strong> pill intentionally returns zero cards.</p>
+              <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+                <a class="reset-link" href="#" id="reset-filters-link">Reset filters</a>
+                <a class="reset-link secondary" href="project-detail.html">Open project detail</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="site-footer" data-testid="site-footer">
+      <div class="container">
+        <div class="footer-card">
+          <div>
+            <div class="component-label">Footer</div>
+            <strong style="display:block; font-size:1.1rem; margin-bottom:0.45rem;">Want the full story behind these builds?</strong>
+            <span style="color: var(--color-text-secondary); line-height:1.6;">Review the linked case study mockup or use this frame as a handoff artifact for implementation.</span>
+          </div>
+          <div class="footer-bottom">
+            <nav class="footer-nav" aria-label="Footer navigation">
+              <a href="projects.html">Projects</a>
+              <a href="project-detail.html">Case Study</a>
+              <a href="mailto:hello@shaeel.dev">Contact</a>
+            </nav>
+            <span>Built as a standalone HTML wireframe with inline CSS and interaction states.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const body = document.body;
+    const themeToggle = document.querySelector('.theme-toggle');
+    const menuButton = document.querySelector('.mobile-menu-trigger');
+    const menuPanel = document.getElementById('mobile-menu-panel');
+    const pills = Array.from(document.querySelectorAll('.pill'));
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const gridWrap = document.getElementById('grid-wrap');
+    const grid = document.getElementById('projects-grid');
+    const emptyState = document.getElementById('projects-empty-state');
+    const resultsCount = document.getElementById('results-count');
+    const pendingBadge = document.getElementById('pending-badge');
+    const resetLink = document.getElementById('reset-filters-link');
+
+    const setTheme = () => {
+      const isLight = body.classList.contains('light');
+      themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+      themeToggle.textContent = isLight ? '◑' : '◐';
+    };
+    setTheme();
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light');
+      setTheme();
+    });
+
+    menuButton.addEventListener('click', () => {
+      const open = menuPanel.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? '✕' : '☰';
+    });
+
+    const applyFilter = (tag) => {
+      pills.forEach((pill) => {
+        pill.classList.add('pending');
+        pill.setAttribute('aria-pressed', String(pill.dataset.tag === tag));
+      });
+      pendingBadge.hidden = false;
+      gridWrap.classList.add('loading');
+
+      window.setTimeout(() => {
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const match = tag === 'all' || card.dataset.tags.split(' ').includes(tag);
+          card.style.display = match ? '' : 'none';
+          if (match) visibleCount += 1;
+        });
+
+        resultsCount.textContent = String(visibleCount);
+        emptyState.classList.toggle('show', visibleCount === 0);
+        grid.style.display = visibleCount === 0 ? 'none' : 'grid';
+
+        pills.forEach((pill) => pill.classList.remove('pending'));
+        pendingBadge.hidden = true;
+        gridWrap.classList.remove('loading');
+      }, 280);
+    };
+
+    pills.forEach((pill, index) => {
+      pill.addEventListener('click', () => applyFilter(pill.dataset.tag));
+      pill.addEventListener('keydown', (event) => {
+        let nextIndex = null;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % pills.length;
+        if (event.key === 'ArrowLeft') nextIndex = (index - 1 + pills.length) % pills.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = pills.length - 1;
+        if (nextIndex !== null) {
+          event.preventDefault();
+          pills[nextIndex].focus();
+        }
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          applyFilter(pill.dataset.tag);
+        }
+      });
+    });
+
+    resetLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      applyFilter('all');
+      pills[0].focus();
+    });
+  </script>
+</body>
+</html>
