@@ -1,4 +1,4 @@
-import { expect, type Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 
 export const viewports = {
   sm: { width: 375, height: 812 },
@@ -6,6 +6,18 @@ export const viewports = {
   lg: { width: 1024, height: 768 },
   xl: { width: 1280, height: 900 },
 } as const;
+
+export const mobileDeviceViewports = {
+  iphoneSe: { width: 375, height: 667 },
+  iphone1415: { width: 390, height: 844 },
+  iphone1415ProMax: { width: 430, height: 932 },
+  galaxyS23: { width: 360, height: 780 },
+  galaxyS23Ultra: { width: 384, height: 854 },
+} as const;
+
+function escapeForRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 type PageRoute = {
   name: string;
@@ -42,8 +54,8 @@ export const pageRoutes: PageRoute[] = [
   },
   {
     name: "Project Detail",
-    path: "/projects/personal-website-foundation",
-    heading: "Personal website foundation",
+    path: "/projects/personal-website",
+    heading: "Personal Portfolio Website",
     testId: "project-mdx-body",
   },
   {
@@ -55,8 +67,8 @@ export const pageRoutes: PageRoute[] = [
   },
   {
     name: "Blog Post",
-    path: "/blog/foundation-systems",
-    heading: "Designing the foundation for a calm, technical portfolio",
+    path: "/blog/welcome",
+    heading: "Welcome to my corner of the internet",
     testId: "blog-article",
   },
   {
@@ -96,7 +108,7 @@ export async function expectRouteContent(page: Page, route: PageRoute) {
   await expect(
     page.getByRole("heading", {
       level: route.headingLevel ?? 1,
-      name: route.heading,
+      name: new RegExp(escapeForRegex(route.heading), "i"),
     }),
   ).toBeVisible();
 
@@ -117,6 +129,14 @@ export async function expectNoHorizontalOverflow(page: Page) {
   });
 
   expect(overflow).toBeLessThanOrEqual(8);
+}
+
+export async function expectMinimumTouchTarget(locator: Locator, minimumSize = 44) {
+  const box = await locator.boundingBox();
+
+  expect(box).not.toBeNull();
+  expect(box?.width ?? 0).toBeGreaterThanOrEqual(minimumSize);
+  expect(box?.height ?? 0).toBeGreaterThanOrEqual(minimumSize);
 }
 
 export async function scrollToHeadingWithOffset(page: Page, id: string, offset = 112) {

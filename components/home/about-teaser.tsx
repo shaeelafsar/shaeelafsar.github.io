@@ -31,12 +31,12 @@ export function AboutTeaser() {
             <div
               role="img"
               aria-label="Abstract studio workspace illustration representing Shaeel Afsar's approach to product engineering"
-              className="glass-panel neon-card glitch-hover hero-gradient-shell relative overflow-hidden rounded-[var(--radius-xl)] border border-border/80 p-8"
+              className="glass-panel neon-card glitch-hover hero-gradient-shell relative overflow-hidden rounded-[var(--radius-xl)] border border-border/80 p-6 sm:p-8"
             >
               <div className="cyber-grid absolute inset-0 opacity-55" />
               <div className="accent-orb accent-orb-magenta absolute -right-8 top-6 h-28 w-28 opacity-65" />
               <div className="relative space-y-6">
-                <div className="grid grid-cols-[1.1fr_0.9fr] gap-4">
+                <div className="grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
                   <div className="glass-panel rounded-[var(--radius-lg)] border border-border/70 p-5">
                     <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground">
                       Approach
@@ -45,7 +45,7 @@ export function AboutTeaser() {
                       Discovery workshops, architecture proposals, and proof-of-concepts that drive adoption.
                     </p>
                   </div>
-                  <div className="glass-panel relative rounded-[var(--radius-lg)] border border-border/70 bg-card-muted/70">
+                  <div className="glass-panel relative min-h-32 rounded-[var(--radius-lg)] border border-border/70 bg-card-muted/70">
                     <div className="absolute inset-4 rounded-[calc(var(--radius-lg)-0.5rem)] border border-white/10" />
                     <div className="absolute inset-x-5 top-6 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
                     <div className="absolute inset-x-5 bottom-6 flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.18em] text-muted-foreground">

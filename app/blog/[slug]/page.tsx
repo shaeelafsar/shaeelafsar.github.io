@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="max-w-[var(--container-narrow)] space-y-6" data-testid="post-header">
             <FadeIn>
               <Link
-                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-foreground"
+                className="inline-flex min-h-11 items-center gap-2 py-2 text-sm font-medium text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-foreground"
                 href="/blog"
               >
                 <span aria-hidden="true">←</span>

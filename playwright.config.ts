@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: "http://127.0.0.1:3100",
     trace: "on-first-retry",
   },
   projects: [
@@ -28,8 +28,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm dev",
-    url: "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
+    command: "pnpm exec next dev --turbopack --port 3100",
+    url: "http://127.0.0.1:3100",
+    reuseExistingServer: false,
   },
 });

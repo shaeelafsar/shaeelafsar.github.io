@@ -50,7 +50,7 @@ export function Nav({
             href={item.href}
             onClick={onNavigate}
             className={cn(
-              "relative inline-flex items-center rounded-[var(--radius-pill)] px-3 py-2 text-sm font-medium transition-[color,transform] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] after:absolute after:bottom-1 after:left-3 after:h-px after:w-[calc(100%-1.5rem)] after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-[var(--duration-ui)] after:ease-[var(--ease-snappy)] hover:text-foreground focus-visible:text-accent focus-visible:after:scale-x-100",
+              "relative inline-flex min-h-11 items-center rounded-[var(--radius-pill)] px-3 py-2 text-sm font-medium transition-[color,transform] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] after:absolute after:bottom-1 after:left-3 after:h-px after:w-[calc(100%-1.5rem)] after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-[var(--duration-ui)] after:ease-[var(--ease-snappy)] hover:text-foreground focus-visible:text-accent focus-visible:after:scale-x-100",
               active
                 ? "text-accent after:scale-x-100"
                 : "text-muted-foreground hover:after:scale-x-100 hover:after:bg-border-strong",

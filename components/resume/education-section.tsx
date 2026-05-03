@@ -29,7 +29,7 @@ export function EducationSection({ entries }: EducationSectionProps) {
                 <Heading as="h3" size="h3">
                   {entry.degree}
                 </Heading>
-                <p className="text-lg font-medium text-foreground">
+                <p className="break-words text-lg font-medium text-foreground">
                   {entry.institution}
                   {entry.fieldOfStudy ? ` · ${entry.fieldOfStudy}` : ""}
                 </p>

@@ -31,7 +31,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
+                    className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -53,7 +53,7 @@ export function Footer() {
                       href={link.href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noreferrer" : undefined}
-                      className="text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
+                      className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
                     >
                       {link.label}
                     </a>

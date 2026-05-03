@@ -70,7 +70,7 @@ export default async function AboutPage() {
               data-testid="about-portrait"
             >
               <div className="aspect-[4/5] rounded-[var(--radius-lg)] bg-[radial-gradient(circle_at_top,var(--color-accent-soft),transparent_32%),linear-gradient(180deg,var(--color-card-muted),transparent)]" />
-              <div className="absolute inset-x-10 bottom-10 rounded-[var(--radius-lg)] border border-border bg-card/90 p-5 backdrop-blur-[var(--blur-sm)]">
+              <div className="absolute inset-x-4 bottom-4 rounded-[var(--radius-lg)] border border-border bg-card/90 p-4 backdrop-blur-[var(--blur-sm)] sm:inset-x-10 sm:bottom-10 sm:p-5">
                 <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground">
                   Based in
                 </p>

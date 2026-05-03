@@ -24,7 +24,7 @@ export default async function ResumePage() {
       <Section className="pt-16 md:pt-20 lg:pt-24">
         <Container>
           <FadeIn>
-            <div className="grid gap-8 rounded-[var(--radius-xl)] border border-border bg-card/85 p-8 shadow-[var(--shadow-md)] md:p-10 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-start">
+            <div className="grid gap-8 rounded-[var(--radius-xl)] border border-border bg-card/85 p-6 shadow-[var(--shadow-md)] sm:p-8 md:p-10 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-start">
               <div className="space-y-6" data-testid="resume-hero">
                 <div className="space-y-4">
                   <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.2em] text-muted-foreground">
@@ -49,7 +49,7 @@ export default async function ResumePage() {
               </div>
 
               <div className="flex flex-col items-start gap-3 lg:items-end">
-                <Button as="a" href="/resume.pdf" size="lg" data-testid="resume-download">
+                <Button as="a" href="/resume.pdf" size="lg" className="w-full sm:w-auto" data-testid="resume-download">
                   Download resume PDF
                 </Button>
                 <p className="text-sm text-muted-foreground">

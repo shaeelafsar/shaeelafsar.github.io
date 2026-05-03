@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
 import { cn } from "@/lib/utils";
@@ -36,9 +36,24 @@ function createParticles(width: number, height: number, count: number): Particle
 export function ParticleField({ className }: ParticleFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [allowParticles, setAllowParticles] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
+    const mediaQuery = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+    const updateAllowance = () => {
+      setAllowParticles(mediaQuery.matches);
+    };
+
+    updateAllowance();
+    mediaQuery.addEventListener("change", updateAllowance);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateAllowance);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion || !allowParticles) {
       return;
     }
 
@@ -143,9 +158,9 @@ export function ParticleField({ className }: ParticleFieldProps) {
       window.removeEventListener("resize", resize);
       resizeObserver?.disconnect();
     };
-  }, [prefersReducedMotion]);
+  }, [allowParticles, prefersReducedMotion]);
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || !allowParticles) {
     return null;
   }
 

@@ -14,7 +14,7 @@ import { Section } from "@/components/ui/section";
 export function Hero() {
   return (
     <Section
-      className="hero-gradient-shell relative flex min-h-[calc(100dvh-5rem)] items-center overflow-hidden py-16 md:py-20 lg:py-24"
+      className="hero-gradient-shell relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-14 sm:min-h-[calc(100dvh-5rem)] sm:py-16 md:py-20 lg:py-24"
       data-testid="home-hero"
     >
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
@@ -22,13 +22,13 @@ export function Hero() {
         <GridBackground className="bottom-[-16%] top-[34%] opacity-75" color="rgba(34, 211, 238, 0.34)" />
         <ParticleField className="opacity-70" />
         <div className="matrix-dots absolute inset-0 opacity-20" />
-        <div className="ambient-pulse accent-orb accent-orb-cyan absolute left-[6%] top-16 h-56 w-56" />
+        <div className="ambient-pulse accent-orb accent-orb-cyan absolute left-[6%] top-16 h-32 w-32 sm:h-56 sm:w-56" />
         <div
-          className="ambient-pulse accent-orb accent-orb-magenta absolute right-[8%] top-[12%] h-64 w-64"
+          className="ambient-pulse accent-orb accent-orb-magenta absolute right-[8%] top-[12%] h-36 w-36 sm:h-64 sm:w-64"
           style={{ animationDelay: "-4s" }}
         />
         <div
-          className="ambient-float accent-orb accent-orb-blue absolute bottom-[12%] left-[28%] h-48 w-48"
+          className="ambient-float accent-orb accent-orb-blue absolute bottom-[12%] left-[28%] h-28 w-28 sm:h-48 sm:w-48"
           style={{ animationDelay: "-2.5s" }}
         />
       </div>
@@ -43,7 +43,7 @@ export function Hero() {
         className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent"
       />
       <Container className="relative max-w-[var(--container-wide)]">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] lg:items-center lg:gap-16">
           <div className="max-w-4xl">
             <FadeIn delay={0.05} className="mb-6">
               <p className="flicker-text font-mono text-[length:var(--text-meta)] uppercase tracking-[0.22em] text-[color:var(--color-neon-green)]">
@@ -56,8 +56,8 @@ export function Hero() {
               </GlitchText>
             </Heading>
             <FadeIn delay={0.22} className="mt-6">
-              <p className="typing-glitch inline-flex rounded-[var(--radius-pill)] border border-border/80 bg-card/60 px-4 py-2 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-accent shadow-[var(--shadow-neon-sm)]">
-                <TypeWriter text="Backend systems // cloud architecture" delay={0.22} />
+              <p className="typing-glitch inline-flex max-w-full rounded-[var(--radius-pill)] border border-border/80 bg-card/60 px-4 py-2 text-left font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-accent shadow-[var(--shadow-neon-sm)]">
+                <TypeWriter text="Backend systems // cloud architecture" delay={0.22} className="max-w-full" />
               </p>
             </FadeIn>
             <FadeIn delay={0.35} className="mt-8 max-w-2xl">
@@ -82,7 +82,7 @@ export function Hero() {
             <FadeIn delay={0.78} className="mt-12">
               <a
                 href="#featured-projects"
-                className="neon-link group inline-flex items-center gap-3 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent"
+                className="neon-link group inline-flex min-h-11 items-center gap-3 py-2 pr-1 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent"
               >
                 <span className="h-px w-12 bg-border transition-[transform,background-color,box-shadow] duration-[var(--duration-ui)] ease-[var(--ease-standard)] motion-safe:group-hover:translate-x-1 motion-safe:group-hover:bg-accent motion-safe:group-hover:shadow-[var(--shadow-neon-sm)]" />
                 Scroll to selected work

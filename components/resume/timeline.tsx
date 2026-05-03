@@ -74,7 +74,7 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
                   <CardContent className="gap-5">
                     <button
                       type="button"
-                      className="flex w-full items-start justify-between gap-4 text-left"
+                      className="flex min-h-11 w-full items-start justify-between gap-4 text-left"
                       aria-expanded={expanded}
                       aria-controls={detailsId}
                       onClick={() => setExpandedIndex((current) => (current === index ? null : index))}
@@ -87,7 +87,7 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
                           <Heading as="h3" size="h3">
                             {experience.role}
                           </Heading>
-                          <p className="text-lg font-medium text-foreground">
+                          <p className="break-words text-lg font-medium text-foreground">
                             {experience.company}
                             {experience.location ? ` · ${experience.location}` : ""}
                           </p>

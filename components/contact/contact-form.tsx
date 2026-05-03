@@ -151,7 +151,7 @@ export function ContactForm() {
         <div
           role={state.status === "error" ? "alert" : "status"}
           className={cn(
-            "rounded-[var(--radius-md)] border px-4 py-3 text-sm",
+            "rounded-[var(--radius-md)] border px-4 py-3 text-sm break-words [overflow-wrap:anywhere]",
             state.status === "success"
               ? "border-success/40 bg-success/10 text-success"
               : state.status === "error"

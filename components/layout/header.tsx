@@ -11,13 +11,13 @@ export function Header() {
       data-testid="site-header"
       style={{ viewTransitionName: "site-header" }}
     >
-      <Container className="flex min-h-20 items-center justify-between gap-4 py-4">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="inline-flex flex-col leading-none">
-            <span className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.22em] text-muted-foreground">
+      <Container className="flex min-h-16 items-center justify-between gap-3 py-3 sm:min-h-20 sm:gap-4 sm:py-4">
+        <div className="flex min-w-0 items-center gap-4 sm:gap-8">
+          <Link href="/" className="inline-flex min-w-0 flex-col leading-none">
+            <span className="truncate font-mono text-[length:var(--text-meta)] uppercase tracking-[0.22em] text-muted-foreground">
               Shaeel Afsar
             </span>
-            <span className="mt-2 text-sm font-medium text-foreground">
+            <span className="mt-2 hidden text-sm font-medium text-foreground sm:block">
               Frontend engineer · builder · writer
             </span>
           </Link>
@@ -25,7 +25,7 @@ export function Header() {
             <Nav />
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="shrink-0 flex items-center gap-2">
           <ThemeToggle />
           <MobileMenu />
         </div>

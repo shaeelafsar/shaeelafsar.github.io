@@ -42,7 +42,7 @@ export function Heading({
   return (
     <Component
       className={cn(
-        "font-semibold tracking-tight text-balance text-foreground",
+        "min-w-0 font-semibold tracking-tight text-balance break-words text-foreground",
         sizeClasses[resolvedSize],
         className,
       )}

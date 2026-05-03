@@ -72,7 +72,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         <Container className="max-w-[var(--container-wide)] space-y-10 md:space-y-12">
         <FadeIn>
           <Link
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-foreground"
+            className="inline-flex min-h-11 items-center gap-2 py-2 text-sm font-medium text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-foreground"
             href="/projects"
           >
             <span aria-hidden="true">←</span>

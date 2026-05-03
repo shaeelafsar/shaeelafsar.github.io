@@ -43,6 +43,18 @@ export function GridBackground({
           }
         }
 
+        @media (max-width: 767px), (pointer: coarse) {
+          .grid-surface {
+            background-size: 3rem 3rem;
+            opacity: 0.2;
+            transform: perspective(760px) rotateX(76deg) scale(1.08);
+          }
+
+          .grid-surface-animated {
+            animation: none;
+          }
+        }
+
         @keyframes grid-drift {
           from {
             background-position: 0 0, 0 0;

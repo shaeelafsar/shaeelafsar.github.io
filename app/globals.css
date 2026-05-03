@@ -38,9 +38,9 @@
   --z-reading-progress: 60;
   --z-toast: 70;
   --z-debug: 80;
-  --text-display-xl: clamp(3.5rem, 8vw, 7.5rem);
-  --text-display-lg: clamp(2.75rem, 6vw, 5rem);
-  --text-h1: clamp(2.25rem, 4vw, 3.75rem);
+  --text-display-xl: clamp(3rem, 10vw, 7.5rem);
+  --text-display-lg: clamp(2.25rem, 8vw, 5rem);
+  --text-h1: clamp(2rem, 6vw, 3.75rem);
   --text-h2: clamp(1.75rem, 3vw, 2.75rem);
   --text-h3: clamp(1.25rem, 2vw, 1.75rem);
   --text-h4: clamp(1.125rem, 1.5vw, 1.375rem);
@@ -49,10 +49,10 @@
   --text-body-lg: clamp(1.125rem, 1.3vw, 1.375rem);
   --text-body: clamp(1rem, 1vw, 1.125rem);
   --text-meta: clamp(0.75rem, 0.7vw, 0.875rem);
-  --section-padding-y: 6rem;
+  --section-padding-y: 4.5rem;
   --section-padding-y-md: 8rem;
   --section-padding-y-lg: 10rem;
-  --card-padding: 1.5rem;
+  --card-padding: 1.25rem;
   --card-padding-md: 2rem;
   --grid-gap: 1.5rem;
   --grid-gap-md: 2rem;
@@ -202,6 +202,8 @@
 }
 
 html {
+  width: 100%;
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: var(--anchor-offset);
   background: var(--color-bg);
@@ -223,7 +225,9 @@ html.lenis body,
 
 body {
   position: relative;
+  width: 100%;
   min-height: 100dvh;
+  overflow-x: clip;
   background:
     radial-gradient(circle at 12% 10%, color-mix(in srgb, var(--color-neon-blue) 10%, transparent), transparent 28%),
     radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--color-neon-magenta) 11%, transparent), transparent 24%),
@@ -701,6 +705,50 @@ body::after {
     border-color: color-mix(in srgb, var(--color-neon-cyan) 28%, var(--color-border-strong));
     box-shadow: var(--shadow-lg), var(--shadow-neon-lg);
     transform: translate3d(0, -4px, 0) scale(1.01);
+  }
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  :root {
+    --blur-md: 14px;
+    --blur-lg: 18px;
+    --shadow-neon-sm: 0 0 0 1px color-mix(in srgb, var(--color-neon-cyan) 12%, transparent),
+      0 0 18px color-mix(in srgb, var(--color-neon-cyan) 12%, transparent);
+    --shadow-neon-md: 0 0 0 1px color-mix(in srgb, var(--color-neon-cyan) 16%, transparent),
+      0 0 22px color-mix(in srgb, var(--color-neon-cyan) 14%, transparent);
+    --shadow-neon-lg: 0 0 0 1px color-mix(in srgb, var(--color-neon-cyan) 18%, transparent),
+      0 0 28px color-mix(in srgb, var(--color-neon-cyan) 16%, transparent);
+    --text-shadow-neon: 0 0 14px color-mix(in srgb, var(--color-neon-cyan) 16%, transparent);
+  }
+
+  body::after,
+  .hero-gradient-shell::before,
+  .cyber-grid::before,
+  .ambient-pulse,
+  .ambient-float,
+  .accent-pulse,
+  .flicker-text {
+    animation: none;
+  }
+
+  body::after {
+    opacity: 0.32;
+  }
+
+  .accent-orb {
+    filter: blur(18px);
+    opacity: 0.42;
+  }
+
+  .typing-glitch {
+    display: flex;
+    white-space: normal;
+    text-wrap: pretty;
+  }
+
+  .typing-glitch::before,
+  .typing-glitch::after {
+    display: none;
   }
 }
 

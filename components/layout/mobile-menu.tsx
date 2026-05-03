@@ -143,7 +143,7 @@ export function MobileMenu() {
               animate="visible"
               exit="exit"
               variants={panelVariants}
-              className="absolute inset-y-0 right-0 flex w-full max-w-full flex-col bg-surface-strong px-6 pb-10 pt-6 backdrop-blur-[var(--blur-lg)]"
+              className="absolute inset-y-0 right-0 flex w-full max-w-full flex-col overflow-y-auto bg-surface-strong px-4 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:pt-6 backdrop-blur-[var(--blur-lg)]"
               data-testid="mobile-menu-panel"
             >
               <div className="flex items-center justify-between gap-4 border-b border-border pb-6">

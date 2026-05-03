@@ -1,4 +1,5 @@
 import { Geist_Mono, Inter } from "next/font/google";
+import type { Viewport } from "next";
 import type { ReactNode } from "react";
 import { SmoothScrollProvider } from "@/components/animation";
 import { Footer } from "@/components/layout/footer";
@@ -36,6 +37,11 @@ const themeScript = `(() => {
 })();`;
 
 export const metadata = createMetadata();
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 const websiteStructuredData = createWebsiteStructuredData();
 
