@@ -1,4 +1,4 @@
-import { FadeIn } from "@/components/animation";
+import { FadeIn, TextReveal } from "@/components/animation";
 import { ProjectsBrowser } from "@/components/projects/projects-browser";
 import type { ProjectFilterOption } from "@/components/projects/project-filter";
 import { Container } from "@/components/ui/container";
@@ -52,7 +52,9 @@ export default async function ProjectsPage() {
           </FadeIn>
           <FadeIn delay={0.15}>
             <Heading as="h1" size="display-lg" className="max-w-4xl text-balance">
-              Projects built with product clarity and a frontend-first eye.
+              <TextReveal className="block" delay={0.08} neonTrail>
+                Projects built with product clarity and a frontend-first eye.
+              </TextReveal>
             </Heading>
           </FadeIn>
           <FadeIn delay={0.3}>

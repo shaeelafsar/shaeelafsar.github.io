@@ -7,7 +7,7 @@ type Theme = "light" | "dark";
 
 function getPreferredTheme(): Theme {
   if (typeof window === "undefined") {
-    return "light";
+    return "dark";
   }
 
   const storedTheme = window.localStorage.getItem("theme");
@@ -16,7 +16,7 @@ function getPreferredTheme(): Theme {
     return storedTheme;
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return "dark";
 }
 
 export function ThemeToggle() {
@@ -38,7 +38,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-pill)] border border-border bg-card/80 text-foreground transition-[transform,background-color,border-color,color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] hover:border-border-strong hover:bg-accent-soft motion-safe:hover:-translate-y-0.5"
+      className="glitch-hover inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-pill)] border border-border bg-card/80 text-foreground shadow-[var(--shadow-neon-xs)] transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] hover:border-border-strong hover:bg-accent-soft motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[var(--shadow-neon-sm)]"
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={isDark}
       data-testid="theme-toggle"
@@ -48,7 +48,7 @@ export function ThemeToggle() {
         <span
           className={cn(
             "absolute inset-0 transition-[opacity,transform] duration-[var(--duration-ui)] ease-[var(--ease-standard)]",
-            !isDark ? "opacity-100 scale-100" : "opacity-0 scale-75",
+            !isDark ? "scale-100 opacity-100" : "scale-75 opacity-0",
           )}
           aria-hidden="true"
         >
@@ -65,7 +65,7 @@ export function ThemeToggle() {
         <span
           className={cn(
             "absolute inset-0 transition-[opacity,transform] duration-[var(--duration-ui)] ease-[var(--ease-standard)]",
-            isDark ? "opacity-100 scale-100" : "opacity-0 scale-75",
+            isDark ? "scale-100 opacity-100" : "scale-75 opacity-0",
           )}
           aria-hidden="true"
         >

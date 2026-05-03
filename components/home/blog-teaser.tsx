@@ -1,4 +1,4 @@
-import { FadeIn, StaggerChildren } from "@/components/animation";
+import { FadeIn, Magnetic, StaggerChildren } from "@/components/animation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -19,26 +19,29 @@ const postDateFormatter = new Intl.DateTimeFormat("en-US", {
 
 export function BlogTeaser({ posts }: BlogTeaserProps) {
   return (
-    <Section data-testid="blog-teaser-section">
-      <Container className="space-y-12">
+    <Section className="relative overflow-hidden" data-testid="blog-teaser-section">
+      <div aria-hidden="true" className="accent-orb accent-orb-magenta absolute right-[10%] top-20 h-40 w-40 opacity-35" />
+      <Container className="relative space-y-12">
         <FadeIn className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl space-y-4">
-            <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-accent">
+            <p className="flicker-text font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-accent">
               Latest writing
             </p>
-            <Heading as="h2" size="h2">
+            <Heading as="h2" size="h2" className="text-balance">
               Notes on systems, product detail, and frontend craftsmanship.
             </Heading>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
               Short essays from the build process — the decisions, patterns, and tradeoffs behind thoughtful digital products.
             </p>
           </div>
-          <Button as="a" href="/blog" variant="ghost">
-            Read the Blog
-          </Button>
+          <Magnetic className="inline-flex">
+            <Button as="a" href="/blog" variant="ghost">
+              Read the Blog
+            </Button>
+          </Magnetic>
         </FadeIn>
         {posts.length === 0 ? (
-          <FadeIn className="rounded-[var(--radius-xl)] border border-dashed border-border-strong bg-card/70 p-8 md:p-10">
+          <FadeIn className="glass-panel neon-card rounded-[var(--radius-xl)] border border-dashed border-border-strong p-8 md:p-10">
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
               New writing is on the way. Visit the blog index for upcoming essays and notes.
             </p>

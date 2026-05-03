@@ -4,6 +4,8 @@ export { Magnetic } from "./magnetic";
 export type { MagneticProps } from "./magnetic";
 export { Parallax } from "./parallax";
 export type { ParallaxProps } from "./parallax";
+export { SlideIn } from "./slide-in";
+export type { SlideInProps } from "./slide-in";
 export { SmoothScrollProvider, useLenis } from "./smooth-scroll-provider";
 export type { SmoothScrollProviderProps } from "./smooth-scroll-provider";
 export { StaggerChildren } from "./stagger-children";

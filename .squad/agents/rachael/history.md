@@ -26,6 +26,8 @@
 - **2026-05-02T22:18:28Z** — Phase 1 Wave 1-2 completion: Scribe processed inbox decisions (ADRs 011-015), logged orchestration events. Rachael and Pris teams completed foundation successfully. Build passing. Ready for Wave 3 (content pages).
 - **2026-05-03T09:11:36-05:00** — GitHub Pages static export is now the deployment target: `next.config.ts` uses `output: "export"`, server-only routes were replaced with generated static files, and `pnpm build` now produces a deployable `out/` directory.
 - **2026-05-03T09:11:36-05:00** — The contact page no longer depends on Server Actions; it validates client-side, posts to Formspree when configured, and falls back to `mailto:` so the static deployment stays usable without a backend.
+- **2026-05-03T10:07:18.041-05:00** — Neon/cyberpunk polish now lives in isolated client-only effect primitives under `components/effects/`, which keeps page shells server-rendered while layering in hover-only lighting, glitch text, and lightweight ambient motion.
+- **2026-05-03T10:07:18.041-05:00** — The safest way to add richer motion here is component-local CSS/SVG/canvas with strict reduced-motion exits and no `app/globals.css` changes; `ParticleField` stays performant by capping particles at 30 and cleaning up its animation loop on unmount.
 
 ## Implementability Review (rachael-1) — 2026-05-02
 

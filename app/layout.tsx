@@ -23,18 +23,15 @@ const themeScript = `(() => {
     const storageKey = "theme";
     const root = document.documentElement;
     const storedTheme = localStorage.getItem(storageKey);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const theme = storedTheme === "light" || storedTheme === "dark"
       ? storedTheme
-      : prefersDark
-        ? "dark"
-        : "light";
+      : "dark";
 
     root.classList.toggle("dark", theme === "dark");
     root.style.colorScheme = theme;
   } catch {
-    document.documentElement.classList.remove("dark");
-    document.documentElement.style.colorScheme = "light";
+    document.documentElement.classList.add("dark");
+    document.documentElement.style.colorScheme = "dark";
   }
 })();`;
 

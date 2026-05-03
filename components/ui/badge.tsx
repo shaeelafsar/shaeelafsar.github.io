@@ -5,9 +5,11 @@ type BadgeVariant = "default" | "outline" | "accent";
 
 const variantClasses: Record<BadgeVariant, string> = {
   default:
-    "border-transparent bg-card-muted text-foreground/80",
-  outline: "border-border bg-transparent text-muted-foreground",
-  accent: "border-transparent bg-accent-soft text-accent",
+    "border-transparent bg-card-muted text-foreground/80 shadow-[var(--shadow-neon-xs)]",
+  outline:
+    "border-border bg-transparent text-muted-foreground shadow-[var(--shadow-neon-xs)]",
+  accent:
+    "border-transparent bg-accent-soft text-accent shadow-[var(--shadow-neon-sm)]",
 };
 
 interface BadgeProps {

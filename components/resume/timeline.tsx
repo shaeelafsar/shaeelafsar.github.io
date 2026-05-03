@@ -50,7 +50,7 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
 
   return (
     <ol
-      className="relative space-y-6 before:absolute before:bottom-3 before:left-[0.45rem] before:top-3 before:w-px before:bg-border before:content-[''] lg:before:left-1/2 lg:before:-translate-x-1/2"
+      className="relative space-y-6 before:absolute before:bottom-3 before:left-[0.45rem] before:top-3 before:w-px before:bg-[linear-gradient(180deg,rgba(103,232,249,0)_0%,rgba(103,232,249,0.72)_18%,rgba(244,114,182,0.64)_82%,rgba(244,114,182,0)_100%)] before:shadow-[0_0_22px_rgba(34,211,238,0.2)] before:content-[''] lg:before:left-1/2 lg:before:-translate-x-1/2"
       data-testid="experience-timeline"
     >
       {experiences.map((experience, index) => {
@@ -60,8 +60,8 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
 
         return (
           <li key={`${experience.company}-${experience.role}-${experience.startDate}`} className="relative">
-            <div className="absolute left-0 top-9 flex h-[0.9rem] w-[0.9rem] items-center justify-center rounded-full border border-accent/30 bg-background shadow-[0_0_0_6px_var(--color-bg)] lg:left-1/2 lg:-translate-x-1/2" aria-hidden="true">
-              <span className="h-2 w-2 rounded-full bg-accent" />
+            <div className="absolute left-0 top-9 flex h-[0.9rem] w-[0.9rem] items-center justify-center rounded-full border border-cyan-300/35 bg-background shadow-[0_0_0_6px_var(--color-bg),0_0_20px_rgba(34,211,238,0.2)] lg:left-1/2 lg:-translate-x-1/2" aria-hidden="true">
+              <span className="h-2 w-2 rounded-full bg-[linear-gradient(180deg,rgba(125,249,255,1)_0%,rgba(244,114,182,0.9)_100%)] shadow-[0_0_12px_rgba(34,211,238,0.34)]" />
             </div>
             <div
               className={cn(

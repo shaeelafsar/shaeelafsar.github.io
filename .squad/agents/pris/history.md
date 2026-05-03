@@ -19,6 +19,8 @@
 - **2026-05-02T16:18:40-05:00** — Standardized motion handoff patterns around TextReveal for hero moments, 600ms section reveals, 100ms card staggers, and static reduced-motion fallbacks across all primary routes.
 - **2026-05-02T17:18:28-05:00** — Implemented the shared animation primitive layer in `components/animation/` so scroll reveals, text choreography, parallax, magnetic hover, and Lenis smooth scrolling all use the same easing and reduced-motion contract.
 - **2026-05-02T17:18:28-05:00** — Motion v12 import rules required adding the `motion` package explicitly even though `framer-motion` was present; future animation work should import from `motion/react` to stay aligned with ADR-001.
+- **2026-05-03T10:07:18.041-05:00** — The cyberpunk direction lands best when dark surfaces stay restrained and neon is reserved for glow tokens, hover borders, and micro-accents instead of large saturated fills.
+- **2026-05-03T10:07:18.041-05:00** — CSS-only grid, scanline, typing, and glitch treatments are viable for this portfolio as long as animation stays transform/opacity/box-shadow-only and every effect collapses cleanly under reduced motion.
 
 ## Notifications
 

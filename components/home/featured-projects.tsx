@@ -1,4 +1,4 @@
-import { FadeIn, StaggerChildren } from "@/components/animation";
+import { FadeIn, Magnetic, StaggerChildren } from "@/components/animation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardImage } from "@/components/ui/card";
@@ -18,26 +18,33 @@ const projectDateFormatter = new Intl.DateTimeFormat("en-US", {
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
-    <Section id="featured-projects" className="bg-background-secondary/55" data-testid="featured-projects-section">
-      <Container className="space-y-12">
+    <Section
+      id="featured-projects"
+      className="relative overflow-hidden bg-background-secondary/40"
+      data-testid="featured-projects-section"
+    >
+      <div aria-hidden="true" className="accent-orb accent-orb-cyan absolute left-[8%] top-24 h-44 w-44 opacity-40" />
+      <Container className="relative space-y-12">
         <FadeIn className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl space-y-4">
-            <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-accent">
+            <p className="flicker-text font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-accent">
               Selected work
             </p>
-            <Heading as="h2" size="h2">
+            <Heading as="h2" size="h2" className="text-balance">
               Featured projects that balance product clarity and frontend craft.
             </Heading>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
               A quick look at systems-minded work across design systems, product surfaces, and modern web architecture.
             </p>
           </div>
-          <Button as="a" href="/projects" variant="ghost">
-            View All Projects
-          </Button>
+          <Magnetic className="inline-flex">
+            <Button as="a" href="/projects" variant="ghost">
+              View All Projects
+            </Button>
+          </Magnetic>
         </FadeIn>
         {projects.length === 0 ? (
-          <FadeIn className="rounded-[var(--radius-xl)] border border-dashed border-border-strong bg-card/70 p-8 md:p-10">
+          <FadeIn className="glass-panel neon-card rounded-[var(--radius-xl)] border border-dashed border-border-strong p-8 md:p-10">
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
               Featured case studies are being prepared. In the meantime, you can browse the broader projects archive.
             </p>
@@ -50,7 +57,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             {projects.map((project) => (
               <Card key={project.slug} className="bg-card/95">
                 <CardImage>
-                  <div className="flex min-h-52 flex-col justify-between bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_45%),linear-gradient(160deg,var(--color-card-muted),transparent_78%)] p-6">
+                  <div className="flex min-h-52 flex-col justify-between bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_45%),radial-gradient(circle_at_88%_18%,color-mix(in_srgb,var(--color-neon-magenta)_18%,transparent),transparent_26%),linear-gradient(160deg,var(--color-card-muted),transparent_78%)] p-6">
                     <Badge variant="accent">Featured</Badge>
                     <div className="space-y-3">
                       <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground">
