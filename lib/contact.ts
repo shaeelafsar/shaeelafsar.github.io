@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+export const contactFallbackEmail = "hello@shaeelafsar.com";
+export const formspreeEndpoint =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "https://formspree.io/f/replace-with-your-form-id";
+export const isPlaceholderFormspreeEndpoint = formspreeEndpoint.endsWith("replace-with-your-form-id");
+
 export const contactFormSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name.").max(80, "Name is too long."),
   email: z.string().trim().email("Please enter a valid email address."),

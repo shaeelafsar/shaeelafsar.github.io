@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shaeel Afsar — Personal Website
+
+Static Next.js portfolio, blog, and resume site built with the App Router, TypeScript, Tailwind CSS, and file-based content.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` to work locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build for GitHub Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The site now ships as a static export for GitHub Pages.
 
-## Learn More
+```bash
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+That command:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- generates `public/rss.xml`, `public/feed.xml`, `public/sitemap.xml`, and `public/robots.txt`
+- runs the Next.js static export build
+- writes the deployable site to `out/`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## GitHub Pages Setup
 
-## Deploy on Vercel
+1. Push to `master`.
+2. In GitHub, open **Settings → Pages**.
+3. Set **Source** to **GitHub Actions**.
+4. Let `.github/workflows/deploy.yml` build and publish the `out/` directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Update these placeholders before going live:
+
+- `NEXT_PUBLIC_SITE_URL` in `lib/metadata.ts` if you move to a custom domain
+- `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in `lib/contact.ts` with your real Formspree form ID
+
+If you deploy to `username.github.io/repo-name` instead of a root domain, also add the matching `basePath` and asset prefix in `next.config.ts`.
+
+## Verification
+
+```bash
+pnpm build
+pnpm test:unit
+```

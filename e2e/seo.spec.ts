@@ -86,7 +86,7 @@ test.describe("seo audit", () => {
         root: document.documentElement.tagName,
         urlCount: document.querySelectorAll("urlset > url").length,
         hasHomepage: Array.from(document.querySelectorAll("url > loc")).some(
-          (node) => node.textContent === "https://shaeelafsar.com/",
+          (node) => node.textContent === "https://shaeelafsar.github.io/",
         ),
       };
     }, sitemapXml);
@@ -102,6 +102,6 @@ test.describe("seo audit", () => {
 
     expect(robotsText).toContain("User-Agent: *");
     expect(robotsText).toContain("Allow: /");
-    expect(robotsText).toContain("Sitemap: https://shaeelafsar.com/sitemap.xml");
+    expect(robotsText).toContain("Sitemap: https://shaeelafsar.github.io/sitemap.xml");
   });
 });

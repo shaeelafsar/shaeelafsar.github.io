@@ -1,7 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useTransition } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +13,7 @@ interface ProjectFilterProps {
   options: ProjectFilterOption[];
   selectedValue: string | null;
   hasResults: boolean;
+  onSelect: (nextValue: string | null) => void;
 }
 
 const pillBaseClasses =
@@ -23,26 +23,18 @@ export function ProjectFilter({
   options,
   selectedValue,
   hasResults,
+  onSelect,
 }: ProjectFilterProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
-  const [pendingValue, setPendingValue] = useState<string | null>(null);
   const buttonsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
   const items = useMemo(
     () => [{ label: "All", value: "all" }, ...options],
     [options],
   );
-  const activeValue = pendingValue ?? selectedValue ?? "all";
+  const activeValue = selectedValue ?? "all";
 
   function selectValue(nextValue: string) {
-    const nextHref = nextValue === "all" ? pathname : `${pathname}?tag=${nextValue}`;
-
-    setPendingValue(nextValue === "all" ? null : nextValue);
-    startTransition(() => {
-      router.push(nextHref, { scroll: false });
-    });
+    onSelect(nextValue === "all" ? null : nextValue);
   }
 
   function moveFocus(nextIndex: number) {
@@ -54,10 +46,7 @@ export function ProjectFilter({
     <div className="space-y-4" data-testid="projects-filter">
       <div
         aria-label="Filter projects by tag"
-        className={cn(
-          "flex gap-3 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible",
-          isPending && "opacity-70",
-        )}
+        className="flex gap-3 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible"
         role="toolbar"
       >
         {items.map((item, index) => {
@@ -76,7 +65,6 @@ export function ProjectFilter({
                 selected && "border-accent bg-accent-soft text-accent hover:bg-accent-soft",
               )}
               data-testid={`filter-pill-${item.value}`}
-              disabled={isPending && selected}
               onClick={() => selectValue(item.value)}
               onKeyDown={(event) => {
                 switch (event.key) {

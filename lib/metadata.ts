@@ -35,7 +35,7 @@ export const siteConfig = {
   description:
     "Personal professional website, portfolio, blog, and resume for Shaeel Afsar.",
   tagline: "Thoughtful interfaces, polished frontends, and product clarity.",
-  url: "https://shaeelafsar.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://shaeelafsar.github.io",
   navigation: navigationLinks,
   socials: socialLinks,
   sameAs: socialLinks.filter((link) => link.href.startsWith("http")).map((link) => link.href),
@@ -61,7 +61,7 @@ export function createMetadata({
   title,
   description = siteConfig.description,
   path = "/",
-  image = "/opengraph-image",
+  image = "/og/default.svg",
   type = "website",
   publishedTime,
   section,

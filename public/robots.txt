@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://shaeelafsar.github.io/sitemap.xml
+Host: https://shaeelafsar.github.io

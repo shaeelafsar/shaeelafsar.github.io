@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Shaeel Afsar</title>
+    <link>https://shaeelafsar.github.io/blog</link>
+    <description>Personal professional website, portfolio, blog, and resume for Shaeel Afsar.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 May 2026 22:18:28 GMT</lastBuildDate>
+    
+    <item>
+      <title>Designing the foundation for a calm, technical portfolio</title>
+      <link>https://shaeelafsar.github.io/blog/foundation-systems</link>
+      <guid>https://shaeelafsar.github.io/blog/foundation-systems</guid>
+      <pubDate>Sat, 02 May 2026 22:18:28 GMT</pubDate>
+      <description>A look at the design-system and architecture choices behind a portfolio that needs to feel cinematic, minimal, and maintainable.</description>
+    </item>
+    <item>
+      <title>Shipping server components without losing the human feel</title>
+      <link>https://shaeelafsar.github.io/blog/shipping-server-components</link>
+      <guid>https://shaeelafsar.github.io/blog/shipping-server-components</guid>
+      <pubDate>Tue, 28 Apr 2026 13:15:00 GMT</pubDate>
+      <description>How I keep Next.js pages server-first while still making them feel polished, interactive, and intentional.</description>
+    </item>
+    <item>
+      <title>Shipping interfaces with clarity instead of noise</title>
+      <link>https://shaeelafsar.github.io/blog/shipping-interfaces-with-clarity</link>
+      <guid>https://shaeelafsar.github.io/blog/shipping-interfaces-with-clarity</guid>
+      <pubDate>Sat, 18 Apr 2026 14:00:00 GMT</pubDate>
+      <description>A short essay on reducing visual noise, strengthening hierarchy, and helping products feel confident on first load.</description>
+    </item>
+    <item>
+      <title>Shipping calm interfaces in fast-moving product teams</title>
+      <link>https://shaeelafsar.github.io/blog/ship-calm-interfaces</link>
+      <guid>https://shaeelafsar.github.io/blog/ship-calm-interfaces</guid>
+      <pubDate>Sun, 12 Apr 2026 12:45:00 GMT</pubDate>
+      <description>Why restraint, structure, and interaction discipline usually create more confidence than louder UI ever can.</description>
+    </item>
+    <item>
+      <title>Making MDX work hard for technical writing</title>
+      <link>https://shaeelafsar.github.io/blog/making-mdx-work-hard</link>
+      <guid>https://shaeelafsar.github.io/blog/making-mdx-work-hard</guid>
+      <pubDate>Wed, 08 Apr 2026 12:45:00 GMT</pubDate>
+      <description>The content patterns I reach for when a blog post needs code, tables, callouts, and strong navigation without becoming a maintenance burden.</description>
+    </item>
+    <item>
+      <title>Building for speed and calm in modern Next.js projects</title>
+      <link>https://shaeelafsar.github.io/blog/building-for-speed-and-calm</link>
+      <guid>https://shaeelafsar.github.io/blog/building-for-speed-and-calm</guid>
+      <pubDate>Fri, 27 Mar 2026 13:30:00 GMT</pubDate>
+      <description>Notes on choosing Server Components by default, keeping client islands small, and making performance work visible to the team.</description>
+    </item>
+    <item>
+      <title>Content models that keep personal sites easy to evolve</title>
+      <link>https://shaeelafsar.github.io/blog/content-models-for-personal-sites</link>
+      <guid>https://shaeelafsar.github.io/blog/content-models-for-personal-sites</guid>
+      <pubDate>Mon, 26 Jan 2026 16:10:00 GMT</pubDate>
+      <description>A simple argument for structured frontmatter, reusable MDX utilities, and fewer one-off content decisions.</description>
+    </item>
+  </channel>
+</rss>

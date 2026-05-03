@@ -5,7 +5,7 @@ describe("metadata", () => {
   it("exposes the required site config fields", () => {
     expect(siteConfig.name).toBeTruthy();
     expect(siteConfig.description).toBeTruthy();
-    expect(siteConfig.url).toBe("https://shaeelafsar.com");
+    expect(siteConfig.url).toBe("https://shaeelafsar.github.io");
     expect(siteConfig.author).toBe("Shaeel Afsar");
   });
 
@@ -14,24 +14,24 @@ describe("metadata", () => {
       title: "Projects",
       description: "Selected case studies and writing.",
       path: "/projects",
-      image: "/projects/example/opengraph-image",
+      image: "/images/projects/personal-website-foundation.svg",
     });
 
-    expect(metadata.metadataBase?.toString()).toBe("https://shaeelafsar.com/");
+    expect(metadata.metadataBase?.toString()).toBe("https://shaeelafsar.github.io/");
     expect(metadata.title).toBe("Projects | Shaeel Afsar");
     expect(metadata.description).toBe("Selected case studies and writing.");
-    expect(metadata.alternates?.canonical).toBe("https://shaeelafsar.com/projects");
+    expect(metadata.alternates?.canonical).toBe("https://shaeelafsar.github.io/projects");
     expect(metadata.authors).toEqual([{ name: "Shaeel Afsar" }]);
     expect(metadata.openGraph).toMatchObject({
       title: "Projects | Shaeel Afsar",
       description: "Selected case studies and writing.",
-      url: "https://shaeelafsar.com/projects",
+      url: "https://shaeelafsar.github.io/projects",
       siteName: "Shaeel Afsar",
       type: "website",
     });
     expect(metadata.openGraph?.images).toEqual([
       {
-        url: "https://shaeelafsar.com/projects/example/opengraph-image",
+        url: "https://shaeelafsar.github.io/images/projects/personal-website-foundation.svg",
         width: 1200,
         height: 630,
         alt: "Projects | Shaeel Afsar",
@@ -43,7 +43,7 @@ describe("metadata", () => {
       description: "Selected case studies and writing.",
       creator: "@shaeelafsar",
       site: "@shaeelafsar",
-      images: ["https://shaeelafsar.com/projects/example/opengraph-image"],
+      images: ["https://shaeelafsar.github.io/images/projects/personal-website-foundation.svg"],
     });
   });
 
@@ -52,7 +52,7 @@ describe("metadata", () => {
       title: "Shipping server components without losing the human feel",
       description: "A post on balancing performance and polish.",
       path: "/blog/shipping-server-components",
-      image: "/blog/shipping-server-components/opengraph-image",
+      image: "/images/blog/shipping-server-components.svg",
       type: "article",
       publishedTime: "2026-04-02T09:00:00-05:00",
       section: "Blog",

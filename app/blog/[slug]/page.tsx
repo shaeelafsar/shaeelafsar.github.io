@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
-    image: `/blog/${post.slug}/opengraph-image`,
+    image: post.image,
     type: "article",
     publishedTime: post.date,
     section: "Blog",

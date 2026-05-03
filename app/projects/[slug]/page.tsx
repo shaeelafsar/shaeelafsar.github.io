@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
     title: project.title,
     description: project.excerpt,
     path: `/projects/${project.slug}`,
-    image: `/projects/${project.slug}/opengraph-image`,
+    image: project.image,
     type: "article",
     publishedTime: project.date,
     section: project.category,

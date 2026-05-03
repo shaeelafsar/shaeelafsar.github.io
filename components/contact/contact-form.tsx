@@ -1,11 +1,17 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitContactForm } from "@/app/contact/actions";
+import { useMemo, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
-import { initialContactActionState } from "@/lib/contact";
+import {
+  contactFallbackEmail,
+  formspreeEndpoint,
+  initialContactActionState,
+  isPlaceholderFormspreeEndpoint,
+  normalizeContactFormValues,
+  validateContactForm,
+} from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
 const inputClasses =
@@ -23,9 +29,109 @@ function FieldError({ id, error }: { id: string; error?: string }) {
   );
 }
 
+function buildMailtoUrl(values: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) {
+  const subject = values.subject.trim() || `Website inquiry from ${values.name}`;
+  const body = [`Name: ${values.name}`, `Email: ${values.email}`, "", values.message].join("\n");
+
+  return `mailto:${contactFallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(submitContactForm, initialContactActionState);
-  const formKey = JSON.stringify([state.status, state.message, state.values]);
+  const [state, setState] = useState(initialContactActionState);
+  const [pending, setPending] = useState(false);
+  const formKey = useMemo(() => JSON.stringify([state.status, state.message, state.values]), [state]);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setPending(true);
+
+    const formData = new FormData(event.currentTarget);
+    const values = normalizeContactFormValues({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+      company: formData.get("company"),
+    });
+
+    if (values.company.trim().length > 0) {
+      setState({
+        status: "success",
+        message: "Thanks for reaching out — I’ll review your message soon.",
+        fieldErrors: {},
+        values: initialContactActionState.values,
+      });
+      setPending(false);
+      return;
+    }
+
+    const fieldErrors = validateContactForm(values);
+
+    if (Object.keys(fieldErrors).length > 0) {
+      setState({
+        status: "error",
+        message: "Please review the highlighted fields and try again.",
+        fieldErrors,
+        values,
+      });
+      setPending(false);
+      return;
+    }
+
+    if (isPlaceholderFormspreeEndpoint) {
+      window.location.href = buildMailtoUrl(values);
+      setState({
+        status: "success",
+        message:
+          "Formspree still needs your form ID, so I opened your email app instead. Replace the placeholder endpoint when you’re ready.",
+        fieldErrors: {},
+        values: initialContactActionState.values,
+      });
+      setPending(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send message");
+      }
+
+      setState({
+        status: "success",
+        message: "Thanks — your message was sent successfully. I’ll get back to you soon.",
+        fieldErrors: {},
+        values: initialContactActionState.values,
+      });
+    } catch {
+      setState({
+        status: "error",
+        message: `The contact service is temporarily unavailable. You can also email ${contactFallbackEmail} directly.`,
+        fieldErrors: {},
+        values,
+      });
+    } finally {
+      setPending(false);
+    }
+  }
 
   return (
     <Card as="section" className="bg-card/90" data-testid="contact-form-panel">
@@ -38,7 +144,7 @@ export function ContactForm() {
             Tell me a little about the project.
           </Heading>
           <p className="text-[length:var(--text-body)] leading-7 text-muted-foreground">
-            Share the problem space, timeline, and what kind of support you need. Use “demo error” in the subject if you want to preview the error state.
+            Share the problem space, timeline, and what kind of support you need. The form submits through Formspree, with an email fallback until the final endpoint is configured.
           </p>
         </div>
 
@@ -54,10 +160,10 @@ export function ContactForm() {
           )}
           data-testid="contact-status"
         >
-          {state.message || "Prefer email? Reach me directly at hello@shaeelafsar.com."}
+          {state.message || `Prefer email? Reach me directly at ${contactFallbackEmail}.`}
         </div>
 
-        <form key={formKey} action={formAction} className="space-y-5" data-testid="contact-form">
+        <form key={formKey} className="space-y-5" data-testid="contact-form" onSubmit={handleSubmit}>
           <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2">
               <label htmlFor="contact-name" className="text-sm font-medium text-foreground">

@@ -23,7 +23,7 @@ const sampleProject = {
   tags: ["nextjs", "tailwind", "mdx"],
   image: "/images/projects/personal-website-foundation.svg",
   featured: true,
-  liveUrl: "https://shaeelafsar.com",
+  liveUrl: "https://shaeelafsar.github.io",
   githubUrl: "https://github.com/shaeelafsar/personal-website",
   content: "## Problem",
 };
@@ -34,35 +34,35 @@ describe("seo helpers", () => {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Shaeel Afsar",
-      url: "https://shaeelafsar.com",
+      url: "https://shaeelafsar.github.io",
     });
   });
 
   it("creates blog and project structured data with dynamic og image URLs", () => {
     expect(createBlogPostStructuredData(samplePost)).toMatchObject({
-      image: "https://shaeelafsar.com/blog/shipping-server-components/opengraph-image",
-      mainEntityOfPage: "https://shaeelafsar.com/blog/shipping-server-components",
+      image: "https://shaeelafsar.github.io/images/blog/shipping-server-components.svg",
+      mainEntityOfPage: "https://shaeelafsar.github.io/blog/shipping-server-components",
     });
 
     expect(createProjectStructuredData(sampleProject)).toMatchObject({
-      image: "https://shaeelafsar.com/projects/personal-website-foundation/opengraph-image",
-      sameAs: ["https://shaeelafsar.com", "https://github.com/shaeelafsar/personal-website"],
+      image: "https://shaeelafsar.github.io/images/projects/personal-website-foundation.svg",
+      sameAs: ["https://shaeelafsar.github.io", "https://github.com/shaeelafsar/personal-website"],
     });
   });
 
   it("creates sitemap entries for static and dynamic routes", () => {
     const sitemap = createSitemapEntries([samplePost], [sampleProject]);
 
-    expect(sitemap.some((entry) => entry.url === "https://shaeelafsar.com/")).toBe(true);
-    expect(sitemap.some((entry) => entry.url === "https://shaeelafsar.com/blog/shipping-server-components")).toBe(true);
-    expect(sitemap.some((entry) => entry.url === "https://shaeelafsar.com/projects/personal-website-foundation")).toBe(true);
+    expect(sitemap.some((entry) => entry.url === "https://shaeelafsar.github.io/")).toBe(true);
+    expect(sitemap.some((entry) => entry.url === "https://shaeelafsar.github.io/blog/shipping-server-components")).toBe(true);
+    expect(sitemap.some((entry) => entry.url === "https://shaeelafsar.github.io/projects/personal-website-foundation")).toBe(true);
   });
 
   it("creates rss xml for published posts", () => {
     const xml = createRssXml([samplePost]);
 
     expect(xml).toContain("<rss version=\"2.0\">");
-    expect(xml).toContain("https://shaeelafsar.com/blog/shipping-server-components");
+    expect(xml).toContain("https://shaeelafsar.github.io/blog/shipping-server-components");
     expect(xml).toContain("Shipping server components without losing the human feel");
   });
 });

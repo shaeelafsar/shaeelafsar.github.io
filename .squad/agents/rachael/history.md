@@ -24,6 +24,8 @@
 - **2026-05-02T21:10:31Z** — Design review complete. Pris flagged 5 key areas: shared visual tokens, motion timing normalization, shadow/color animation constraints, Shiki theming, and page-level art direction. Updates merged to `.squad/decisions.md`.
 - **2026-05-02T21:10:31Z** — Testing review complete. Roy evaluated all 31 specs: 13 ✅, 18 ⚠️. Proposed shared fixture content set and deterministic QA hooks. Details in `.squad/orchestration-log/2026-05-02T21:10:31Z-roy.md`.
 - **2026-05-02T22:18:28Z** — Phase 1 Wave 1-2 completion: Scribe processed inbox decisions (ADRs 011-015), logged orchestration events. Rachael and Pris teams completed foundation successfully. Build passing. Ready for Wave 3 (content pages).
+- **2026-05-03T09:11:36-05:00** — GitHub Pages static export is now the deployment target: `next.config.ts` uses `output: "export"`, server-only routes were replaced with generated static files, and `pnpm build` now produces a deployable `out/` directory.
+- **2026-05-03T09:11:36-05:00** — The contact page no longer depends on Server Actions; it validates client-side, posts to Formspree when configured, and falls back to `mailto:` so the static deployment stays usable without a backend.
 
 ## Implementability Review (rachael-1) — 2026-05-02
 

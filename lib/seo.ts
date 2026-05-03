@@ -2,7 +2,7 @@ import type { BlogPost } from "@/types/blog";
 import type { Project } from "@/types/project";
 import { absoluteUrl, siteConfig } from "@/lib/metadata";
 
-const buildTimestamp = new Date("2026-05-02T17:18:28-05:00");
+const buildTimestamp = new Date("2026-05-03T09:11:36-05:00");
 const personReference = {
   "@type": "Person",
   name: siteConfig.author,
@@ -61,7 +61,7 @@ export function createBlogStructuredData(posts: BlogPost[]) {
       url: absoluteUrl(`/blog/${post.slug}`),
       datePublished: isoDate(post.date),
       description: post.excerpt,
-      image: absoluteUrl(`/blog/${post.slug}/opengraph-image`),
+      image: absoluteUrl(post.image),
       keywords: post.tags,
       author: personReference,
     })),
@@ -76,7 +76,7 @@ export function createBlogPostStructuredData(post: BlogPost) {
     description: post.excerpt,
     datePublished: isoDate(post.date),
     dateModified: isoDate(post.date),
-    image: absoluteUrl(`/blog/${post.slug}/opengraph-image`),
+    image: absoluteUrl(post.image),
     url: absoluteUrl(`/blog/${post.slug}`),
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
     author: personReference,
@@ -95,7 +95,7 @@ export function createProjectStructuredData(project: Project) {
     datePublished: isoDate(project.date),
     url: absoluteUrl(`/projects/${project.slug}`),
     mainEntityOfPage: absoluteUrl(`/projects/${project.slug}`),
-    image: absoluteUrl(`/projects/${project.slug}/opengraph-image`),
+    image: absoluteUrl(project.image),
     genre: project.category,
     keywords: project.tags,
     author: personReference,
