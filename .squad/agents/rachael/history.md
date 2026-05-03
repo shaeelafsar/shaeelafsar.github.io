@@ -30,6 +30,7 @@
 - **2026-05-03T14:10:43.947-05:00** — GitHub repository renamed to `shaeelafsar.github.io`; removed `basePath` from `next.config.ts` and updated all URLs to resolve from root domain. Metadata, canonical, sitemap, and robots URLs now reference `https://shaeelafsar.github.io`. Deployment verified; site live. Commit df76d03.
 - **2026-05-03T14:30:40.831-05:00** — The floating hero/about skill pills were calmer and more readable once converted from animated/absolute decorations into static badge rows inside their content blocks; desktop polish here should stay anchored rather than drifting.
 - **2026-05-03T14:30:40.831-05:00** — Footer and contact layouts hold together better when small screens prioritize centered/stacked content first, then switch to multi-column alignment at `lg` instead of forcing split layouts too early.
+- **2026-05-03T14:30:40.831-05:00** — Static badge rows replacement was successful (commit eb6337f); responsive consistency now confirmed across hero, about, and footer surfaces.
 
 ## Notifications
 

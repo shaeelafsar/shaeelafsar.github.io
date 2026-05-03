@@ -128,6 +128,24 @@
 - **Rationale:** Cleaner isolation than URL-flag hacks. Absolute URL duplication contained in single constant.
 - **Results (2026-05-03):** 39/39 tests passed (57s, chromium). Covers: all pages (200 + title), desktop/mobile nav, content, blog, SEO, responsive (375/768/1280px), internal links, visual regression.
 
+### ADR-015: Static badge rows over animated floating pills
+
+**Date:** 2026-05-03T14:30:40.831-05:00 · **Status:** Decided · **Author:** Rachael
+
+- **Context:** Floating animated skill pills/badges felt distracting on desktop and could visually drift from parent cards.
+- **Decision:** Replace animated floating skill pills/badges with static, in-flow badge rows for hero/about surfaces. Gate footer multi-column alignment to larger breakpoints.
+- **Rationale:** Static badge rows preserve content signal without creating motion noise. Delaying footer column splits until `lg` keeps alignment cleaner at tablet widths.
+- **Frontend impact:** Hero, about teaser, and about portrait badges remain non-animated unless there is a strong interaction-specific reason to reintroduce motion.
+
+### ADR-016: Canonical responsive debug suite in `tests/e2e/` with `PLAYWRIGHT_BASE_URL` support
+
+**Date:** 2026-05-03T14:30:40.831-05:00 · **Status:** Decided · **Author:** Roy
+
+- **Context:** Playwright config points at `e2e/`, but responsive debug coverage needed under `tests/e2e/`. Tests must run against whichever localhost port is already serving the app.
+- **Decision:** Keep canonical diagnostic spec in `tests/e2e/responsive-debug.spec.ts`, add thin wrapper at `e2e/responsive-debug.spec.ts` for current runner, and make `playwright.config.ts` honor `PLAYWRIGHT_BASE_URL` while reusing an already-running dev server.
+- **Why:** Avoids breaking current suite layout, works in shared local environments where `pnpm dev` may bind to 3001/3002, gives team a single reusable diagnostic suite for pre-fix and post-deploy verification.
+- **Observed regressions from first run:** Projects page text overflow at 375px (`Cloud` filter pill) and non-opening mobile menu on localhost.
+
 ## User Direction
 
 ### Backend/Full-Stack Emphasis

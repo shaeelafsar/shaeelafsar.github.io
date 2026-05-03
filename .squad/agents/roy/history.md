@@ -16,6 +16,7 @@
 - **2026-05-03T10:38:08.957-05:00** — Mobile QA needs explicit 360–430px coverage: long badges/URLs and the hero typing treatment are the first places overflow shows up, and coarse-pointer devices should get lighter visual effects instead of the full neon/particle stack.
 - **2026-05-03T14:30:40.831-05:00** — A reusable responsive debug suite now lives at `tests/e2e/responsive-debug.spec.ts`, with an `e2e/` wrapper so the existing Playwright config can execute it without moving the current suite.
 - **2026-05-03T14:30:40.831-05:00** — Localhost responsive diagnostics currently flag two concrete regressions: the `Cloud` filter pill overflows the Projects page at 375px wide, and the mobile menu trigger never opens `mobile-menu-panel` on the local dev build.
+- **2026-05-03T14:30:40.831-05:00** — Responsive-debug suite created and validated (commit d47a88e); 40/42 tests passed with clear actionable findings for follow-up frontend fixes.
 
 ## Notifications
 
