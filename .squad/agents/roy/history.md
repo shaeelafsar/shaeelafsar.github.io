@@ -53,3 +53,35 @@
 3. Add deterministic QA hooks for hard-to-trigger flows
 
 **Verdict:** Docs are visually strong but test coverage blocked by ambiguous filter behavior, incomplete form-state definitions, and missing shared accessibility/consistency contracts. Once state matrices, empty/error paths, and shared shell behavior locked, will support deterministic E2E and accessibility testing.
+- **2026-05-03T12:08:49-05:00** — When testing a GitHub Pages site with a `basePath` (e.g. `/personal-website`), Playwright's `baseURL` does NOT work as expected for sub-path deployments: `page.goto('/')` with `baseURL: "https://host/personal-website"` resolves to `https://host/` (origin root), not `https://host/personal-website/`. Drop `baseURL` from config and use absolute paths in every `goto()` call.
+- **2026-05-03T12:08:49-05:00** — A fixed-position mobile menu panel that is `pointer-events-none` on its wrapper but `pointer-events-auto` on inner content will block a second trigger click to close. Use `Escape` key press as the close gesture — more reliable and matches real keyboard UX.
+- **2026-05-03T12:08:49-05:00** — `page.goBack()` can navigate to `about:blank` or a prior origin if no real "previous" entry exists in test context. Always navigate explicitly with `page.goto()` rather than relying on `goBack()` in stateless E2E tests.
+
+## Live-Site Validation Run — 2026-05-03T12:08
+
+**Status:** SUCCESS — 39/39 tests passed
+
+**What ran:** Full E2E suite against `https://shaeelafsar.github.io/personal-website/` (production GitHub Pages deployment).
+
+**Coverage:**
+- All 8 primary pages verified (200 OK responses + canonical title checks)
+- Navigation: desktop menu + mobile drawer (Escape close tested)
+- Content: hero, about teaser, projects, blog, resume sections
+- SEO: canonical URLs, OG images, metadata tags
+- Responsive: 375px, 768px, 1280px layouts all verified
+- Internal link resolution within `/personal-website/` sub-path
+- Visual regression snapshots (desktop + mobile on 4 key pages)
+
+**Key findings:**
+1. Sub-path URL routing stable — all 200 responses, no 404s
+2. Mobile menu accessibility — Escape key closes reliably
+3. Content delivery verified across all sections
+4. SEO tags correct for sub-path deployment
+5. Responsive layout holds across mobile/tablet/desktop
+
+**Decisions validated:**
+- ADR-010 (GitHub Pages static export) — production deployment stable
+- ADR-013 (Mobile device QA coverage) — 375px+ layout holds
+- ADR-014 (Live-site Playwright config) — new pattern documented and validated
+
+**Notes:** All learnings from earlier testability review now baked into live test suite. No test blockers encountered. Production deployment ready for scheduled monitoring.

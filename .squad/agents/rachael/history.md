@@ -23,6 +23,8 @@
 
 - **2026-05-03T11:07:20.721-05:00** — A shared `ProfileAvatar` client component now handles the hero/about portrait flow: it tries `/public/images/profile.jpg` first, then `/public/images/profile.png`, and falls back to a neon `SA` initials circle so static export builds stay valid before a real photo is added.
 - **2026-05-03T11:07:20.721-05:00** — Lightweight motion scales best here when split into small client primitives (`ScrollReveal`, `CountUp`) that honor reduced motion and feed server-rendered sections; React `ViewTransition` can wrap the page shell while existing CSS handles the actual cross-page fade.
+- **2026-05-03T12:08:49-05:00** — GitHub Pages static export deployment validated against live site at `https://shaeelafsar.github.io/personal-website/`. All 39 integration tests passed: home/about/blog/projects/resume pages, desktop + mobile navigation, SEO tags, responsive layouts (375/768/1280px), and visual regression snapshots. No content or rendering issues on production.
+- **2026-05-03T12:08:49-05:00** — The neon theme and progressive motion enhancements validated successfully on live site. Mobile menu closes via Escape reliably. Hero hero glitch and particle effects degrade correctly on coarse pointers. All lighthouse-critical elements render without jank.
 
 ## Notifications
 
