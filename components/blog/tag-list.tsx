@@ -12,7 +12,7 @@ export function TagList({ tags, postCount }: TagListProps) {
 
   return (
     <div
-      className="rounded-[var(--radius-lg)] border border-border bg-card/70 p-6 md:p-8"
+      className="glass-depth rounded-[var(--radius-lg)] border border-border bg-card/70 p-6 md:p-8"
       data-testid="blog-tag-list"
     >
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -24,7 +24,7 @@ export function TagList({ tags, postCount }: TagListProps) {
             {postCount} published essays across product thinking, engineering craft, and technical notes.
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="neon-tag-cloud flex flex-wrap gap-2">
           {tags.map((tag) => (
             <Badge key={tag} variant="outline">
               {tag}

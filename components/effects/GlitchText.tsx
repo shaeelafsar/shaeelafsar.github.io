@@ -12,12 +12,17 @@ export interface GlitchTextProps {
 
 export function GlitchText({ children, className }: GlitchTextProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(true); // default true to prevent flash of glitch layers
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    return window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
+  });
 
   useEffect(() => {
     const mql = window.matchMedia("(max-width: 767px), (pointer: coarse)");
-    setIsMobile(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    const handler = (event: MediaQueryListEvent) => setIsMobile(event.matches);
     mql.addEventListener("change", handler);
     return () => mql.removeEventListener("change", handler);
   }, []);

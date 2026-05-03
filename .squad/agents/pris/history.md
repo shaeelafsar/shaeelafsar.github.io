@@ -21,6 +21,8 @@
 - **2026-05-02T17:18:28-05:00** — Motion v12 import rules required adding the `motion` package explicitly even though `framer-motion` was present; future animation work should import from `motion/react` to stay aligned with ADR-001.
 - **2026-05-03T10:07:18.041-05:00** — The cyberpunk direction lands best when dark surfaces stay restrained and neon is reserved for glow tokens, hover borders, and micro-accents instead of large saturated fills.
 - **2026-05-03T10:07:18.041-05:00** — CSS-only grid, scanline, typing, and glitch treatments are viable for this portfolio as long as animation stays transform/opacity/box-shadow-only and every effect collapses cleanly under reduced motion.
+- **2026-05-03T11:07:20.721-05:00** — Leaned into the cyberpunk system by adding progressive-enhancement section reveals, deeper glass layers, card tilt and shimmer states, and animated divider treatments without changing layout structure or relying on style jsx.
+- **2026-05-03T11:07:20.721-05:00** — Neon-heavy micro-interactions stay safest when coarse pointers and reduced-motion paths collapse tilt, shimmer, aurora, and pulsing layers back to static glass surfaces on mobile.
 
 ## Notifications
 

@@ -7,11 +7,12 @@ const copyrightYear = new Date("2026-05-02T17:18:28-05:00").getFullYear();
 export function Footer() {
   return (
     <footer
-      className="border-t border-border/80 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--color-card)_86%,transparent),color-mix(in_srgb,var(--color-bg-secondary)_65%,transparent))]"
+      className="footer-aurora border-t border-border/80 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--color-card)_86%,transparent),color-mix(in_srgb,var(--color-bg-secondary)_65%,transparent))]"
       data-testid="site-footer"
       style={{ viewTransitionName: "site-footer" }}
     >
-      <Container className="grid gap-10 py-10 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:justify-between">
+      <Container className="relative grid gap-10 py-10 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:justify-between">
+        <div aria-hidden="true" className="gradient-divider absolute inset-x-0 top-0" />
         <div className="space-y-4">
           <p className="text-lg font-semibold text-foreground">{siteConfig.name}</p>
           <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -31,7 +32,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
+                    className="link-underline inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -53,7 +54,7 @@ export function Footer() {
                       href={link.href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noreferrer" : undefined}
-                      className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
+                      className="link-underline inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
                     >
                       {link.label}
                     </a>

@@ -1,4 +1,4 @@
-import { FadeIn } from "@/components/animation";
+import { FadeIn, TextReveal } from "@/components/animation";
 import { EducationSection } from "@/components/resume/education-section";
 import { SkillsGrid } from "@/components/resume/skills-grid";
 import { ExperienceTimeline } from "@/components/resume/timeline";
@@ -21,17 +21,19 @@ export default async function ResumePage() {
 
   return (
     <>
-      <Section className="pt-16 md:pt-20 lg:pt-24">
+      <Section className="section-reveal-shell pt-16 md:pt-20 lg:pt-24">
         <Container>
           <FadeIn>
-            <div className="grid gap-8 rounded-[var(--radius-xl)] border border-border bg-card/85 p-6 shadow-[var(--shadow-md)] sm:p-8 md:p-10 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-start">
+            <div className="glass-depth grid gap-8 rounded-[var(--radius-xl)] border border-border bg-card/85 p-6 shadow-[var(--shadow-md)] sm:p-8 md:p-10 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-start">
               <div className="space-y-6" data-testid="resume-hero">
                 <div className="space-y-4">
                   <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.2em] text-muted-foreground">
                     Resume
                   </p>
                   <Heading as="h1" size="h1" className="max-w-4xl text-balance">
-                    {resume.name}
+                    <TextReveal className="block" delay={0.06} neonTrail>
+                      {resume.name}
+                    </TextReveal>
                   </Heading>
                   <p className="text-[length:var(--text-body-lg)] leading-8 text-muted-foreground">
                     {resume.title}
@@ -62,7 +64,7 @@ export default async function ResumePage() {
       </Section>
 
       {resume.experience.length > 0 ? (
-        <Section className="pt-0 md:pt-0 lg:pt-0">
+        <Section className="section-reveal-shell pt-0 md:pt-0 lg:pt-0">
           <Container className="space-y-10">
             <FadeIn>
               <div className="space-y-4">
@@ -70,7 +72,9 @@ export default async function ResumePage() {
                   Experience
                 </p>
                 <Heading as="h2" size="h2">
-                  Selected work across consulting, product, and delivery.
+                  <TextReveal className="block" delay={0.05} neonTrail>
+                    Selected work across consulting, product, and delivery.
+                  </TextReveal>
                 </Heading>
               </div>
             </FadeIn>
@@ -82,7 +86,7 @@ export default async function ResumePage() {
       ) : null}
 
       {resume.skillCategories.length > 0 ? (
-        <Section className="bg-background-secondary/40 py-20 md:py-24 lg:py-28">
+        <Section className="section-reveal-shell bg-background-secondary/40 py-20 md:py-24 lg:py-28">
           <Container className="space-y-10">
             <FadeIn>
               <div className="space-y-4">
@@ -90,7 +94,9 @@ export default async function ResumePage() {
                   Skills
                 </p>
                 <Heading as="h2" size="h2">
-                  Tools and disciplines I rely on to ship durable web experiences.
+                  <TextReveal className="block" delay={0.05} neonTrail>
+                    Tools and disciplines I rely on to ship durable web experiences.
+                  </TextReveal>
                 </Heading>
               </div>
             </FadeIn>
@@ -102,7 +108,7 @@ export default async function ResumePage() {
       ) : null}
 
       {resume.education.length > 0 ? (
-        <Section className="pt-16 md:pt-20 lg:pt-24">
+        <Section className="section-reveal-shell pt-16 md:pt-20 lg:pt-24">
           <Container className="space-y-10">
             <FadeIn>
               <div className="space-y-4">
@@ -110,7 +116,9 @@ export default async function ResumePage() {
                   Education
                 </p>
                 <Heading as="h2" size="h2">
-                  Formal training, grounded in practical product work.
+                  <TextReveal className="block" delay={0.05} neonTrail>
+                    Formal training, grounded in practical product work.
+                  </TextReveal>
                 </Heading>
               </div>
             </FadeIn>

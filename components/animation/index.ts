@@ -1,9 +1,13 @@
+export { CountUp } from "./count-up";
+export type { CountUpProps } from "./count-up";
 export { FadeIn } from "./fade-in";
 export type { FadeInProps } from "./fade-in";
 export { Magnetic } from "./magnetic";
 export type { MagneticProps } from "./magnetic";
 export { Parallax } from "./parallax";
 export type { ParallaxProps } from "./parallax";
+export { ScrollReveal } from "./scroll-reveal";
+export type { ScrollRevealProps } from "./scroll-reveal";
 export { SlideIn } from "./slide-in";
 export type { SlideInProps } from "./slide-in";
 export { SmoothScrollProvider, useLenis } from "./smooth-scroll-provider";

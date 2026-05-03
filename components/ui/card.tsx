@@ -22,7 +22,7 @@ export function Card({
   return (
     <Component
       className={cn(
-        "glass-panel neon-card glitch-hover group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border/80 bg-card/92 shadow-[var(--shadow-sm)] ring-1 ring-white/55 backdrop-blur-[var(--blur-sm)] transition-[transform,box-shadow,border-color,background-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] dark:ring-white/5 motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] motion-safe:hover:border-border-strong motion-safe:hover:shadow-[var(--shadow-lg)]",
+        "interactive-card tilt-card glass-depth glass-panel neon-card glitch-hover group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border/80 bg-card/92 shadow-[var(--shadow-sm)] ring-1 ring-white/55 backdrop-blur-[var(--blur-sm)] transition-[transform,box-shadow,border-color,background-color] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] dark:ring-white/5 motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] motion-safe:hover:border-border-strong motion-safe:hover:shadow-[var(--shadow-lg)]",
         className,
       )}
       {...props}

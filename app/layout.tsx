@@ -1,6 +1,6 @@
 import { Geist_Mono, Inter } from "next/font/google";
 import type { Viewport } from "next";
-import type { ReactNode } from "react";
+import { ViewTransition, type ReactNode } from "react";
 import { SmoothScrollProvider } from "@/components/animation";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -70,9 +70,11 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <div className="flex min-h-dvh flex-col">
             <Header />
-            <main id="main-content" className="flex-1" style={{ viewTransitionName: "site-content" }}>
-              {children}
-            </main>
+            <ViewTransition>
+              <main id="main-content" className="flex-1" style={{ viewTransitionName: "site-content" }}>
+                {children}
+              </main>
+            </ViewTransition>
             <Footer />
           </div>
         </SmoothScrollProvider>

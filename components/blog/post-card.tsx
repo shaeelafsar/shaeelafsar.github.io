@@ -30,7 +30,7 @@ export function PostCard({ post }: PostCardProps) {
               {post.excerpt}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="neon-tag-cloud flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <Badge key={tag} variant="outline">
                 {tag}
@@ -39,7 +39,7 @@ export function PostCard({ post }: PostCardProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <span className="text-sm font-medium text-accent transition-colors duration-[var(--duration-ui)] group-hover:text-accent-hover">
+          <span className="link-underline text-sm font-medium text-accent transition-colors duration-[var(--duration-ui)] group-hover:text-accent-hover">
             Read article →
           </span>
         </CardFooter>

@@ -22,7 +22,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         href={`/projects/${project.slug}`}
         className="group block h-full rounded-[var(--radius-lg)] focus-visible:rounded-[var(--radius-lg)]"
       >
-        <Card className="h-full motion-safe:group-hover:scale-[1.02] motion-safe:group-hover:border-accent/35 motion-safe:group-hover:shadow-[var(--shadow-lg)]">
+        <Card className="project-card-shimmer h-full motion-safe:group-hover:scale-[1.02] motion-safe:group-hover:border-accent/35 motion-safe:group-hover:shadow-[var(--shadow-lg)]">
           <CardImage>
             <div className="relative aspect-[16/10] overflow-hidden bg-card-muted">
               <Image

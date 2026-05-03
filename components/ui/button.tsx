@@ -12,7 +12,7 @@ type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
 type ButtonSize = "sm" | "md" | "lg";
 
 const baseClasses =
-  "neon-link glitch-hover relative inline-flex min-w-0 items-center justify-center overflow-hidden rounded-[var(--radius-pill)] border text-center text-sm font-medium whitespace-normal transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] disabled:pointer-events-none disabled:opacity-50 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] focus-visible:border-accent";
+  "pressable-control neon-link glitch-hover relative inline-flex min-w-0 items-center justify-center overflow-hidden rounded-[var(--radius-pill)] border text-center text-sm font-medium whitespace-normal transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-ui)] ease-[var(--ease-snappy)] disabled:pointer-events-none disabled:opacity-50 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-px motion-safe:active:scale-[0.975] focus-visible:border-accent";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -26,7 +26,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "min-h-11 px-4",
+  sm: "min-h-10 px-4",
   md: "min-h-11 px-5",
   lg: "min-h-12 px-6 text-base",
 };

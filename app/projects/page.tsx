@@ -1,4 +1,4 @@
-import { FadeIn, TextReveal } from "@/components/animation";
+import { ScrollReveal, TextReveal } from "@/components/animation";
 import { ProjectsBrowser } from "@/components/projects/projects-browser";
 import type { ProjectFilterOption } from "@/components/projects/project-filter";
 import { Container } from "@/components/ui/container";
@@ -42,29 +42,31 @@ export default async function ProjectsPage() {
   );
 
   return (
-    <Section className="pt-16 md:pt-20 lg:pt-24">
+    <Section className="section-reveal-shell pt-16 md:pt-20 lg:pt-24">
       <Container className="space-y-12 md:space-y-14">
         <div className="space-y-6" data-testid="projects-hero">
-          <FadeIn>
+          <ScrollReveal>
             <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground">
               Selected work
             </p>
-          </FadeIn>
-          <FadeIn delay={0.15}>
+          </ScrollReveal>
+          <ScrollReveal delay={0.12}>
             <Heading as="h1" size="display-lg" className="max-w-4xl text-balance">
               <TextReveal className="block" delay={0.08} neonTrail>
                 Projects built with product clarity and a frontend-first eye.
               </TextReveal>
             </Heading>
-          </FadeIn>
-          <FadeIn delay={0.3}>
+          </ScrollReveal>
+          <ScrollReveal delay={0.24}>
             <p className="max-w-3xl text-[length:var(--text-body-lg)] leading-8 text-muted-foreground">
               A growing archive of interface systems, backend platforms, and full-stack products. Filter by discipline to browse the case studies most relevant to the work ahead.
             </p>
-          </FadeIn>
+          </ScrollReveal>
         </div>
 
-        <ProjectsBrowser options={filterOptions} projects={projects} />
+        <ScrollReveal delay={0.12}>
+          <ProjectsBrowser options={filterOptions} projects={projects} />
+        </ScrollReveal>
       </Container>
     </Section>
   );

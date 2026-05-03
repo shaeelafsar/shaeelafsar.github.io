@@ -1,4 +1,4 @@
-import { FadeIn, StaggerChildren } from "@/components/animation";
+import { FadeIn, StaggerChildren, TextReveal } from "@/components/animation";
 import { PostCard } from "@/components/blog/post-card";
 import { TagList } from "@/components/blog/tag-list";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -31,7 +31,7 @@ export default async function BlogPage() {
   return (
     <>
       <JsonLd data={structuredData} />
-      <Section className="pt-16 md:pt-20 lg:pt-24">
+      <Section className="section-reveal-shell pt-16 md:pt-20 lg:pt-24">
         <Container className="space-y-12 md:space-y-14">
           <div className="space-y-6" data-testid="blog-hero">
             <FadeIn>
@@ -41,7 +41,9 @@ export default async function BlogPage() {
             </FadeIn>
             <FadeIn delay={0.15}>
               <Heading as="h1" size="display-lg" className="max-w-4xl text-balance">
-                Essays about frontend craft, technical systems, and the product choices behind them.
+                <TextReveal className="block" delay={0.08} neonTrail>
+                  Essays about frontend craft, technical systems, and the product choices behind them.
+                </TextReveal>
               </Heading>
             </FadeIn>
             <FadeIn delay={0.3}>

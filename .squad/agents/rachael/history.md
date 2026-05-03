@@ -21,6 +21,9 @@
 - **2026-05-02T17:18:28-05:00** — Wave 2 foundation now includes a shared shell (`Header`, `Footer`, desktop `Nav`, `ThemeToggle`, `MobileMenu`), design-system UI primitives in `components/ui/`, and global CSS tokens aligned to Pris's design-system spec.
 - **2026-05-02T17:18:28-05:00** — The file-based content pipeline is live with `lib/mdx.ts`, `lib/blog.ts`, `lib/projects.ts`, `lib/resume.ts`, placeholder content under `content/`, and validated `pnpm lint && pnpm build` output on the updated shell.
 
+- **2026-05-03T11:07:20.721-05:00** — A shared `ProfileAvatar` client component now handles the hero/about portrait flow: it tries `/public/images/profile.jpg` first, then `/public/images/profile.png`, and falls back to a neon `SA` initials circle so static export builds stay valid before a real photo is added.
+- **2026-05-03T11:07:20.721-05:00** — Lightweight motion scales best here when split into small client primitives (`ScrollReveal`, `CountUp`) that honor reduced motion and feed server-rendered sections; React `ViewTransition` can wrap the page shell while existing CSS handles the actual cross-page fade.
+
 ## Notifications
 
 - **2026-05-02T20:42:05Z** — Architecture and specifications ready for team review at `.squad/architecture.md` and `.squad/specs/`. See `.squad/orchestration-log/2026-05-02T2042-deckard.md` for details.

@@ -1,4 +1,4 @@
-import { FadeIn, Magnetic, StaggerChildren } from "@/components/animation";
+import { FadeIn, Magnetic, StaggerChildren, TextReveal } from "@/components/animation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardImage } from "@/components/ui/card";
@@ -20,7 +20,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
     <Section
       id="featured-projects"
-      className="relative overflow-hidden bg-background-secondary/40"
+      className="section-reveal-shell relative overflow-hidden bg-background-secondary/40"
       data-testid="featured-projects-section"
     >
       <div aria-hidden="true" className="accent-orb accent-orb-cyan absolute left-[8%] top-24 h-44 w-44 opacity-40" />
@@ -31,7 +31,9 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
               Selected work
             </p>
             <Heading as="h2" size="h2" className="text-balance">
-              Featured projects that balance product clarity and frontend craft.
+              <TextReveal className="block" delay={0.06} neonTrail>
+                Featured projects that balance product clarity and frontend craft.
+              </TextReveal>
             </Heading>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
               A quick look at systems-minded work across design systems, product surfaces, and modern web architecture.
@@ -55,7 +57,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             data-testid="featured-projects-grid"
           >
             {projects.map((project) => (
-              <Card key={project.slug} className="bg-card/95">
+              <Card key={project.slug} className="project-card-shimmer bg-card/95">
                 <CardImage>
                   <div className="flex min-h-52 flex-col justify-between bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_45%),radial-gradient(circle_at_88%_18%,color-mix(in_srgb,var(--color-neon-magenta)_18%,transparent),transparent_26%),linear-gradient(160deg,var(--color-card-muted),transparent_78%)] p-6">
                     <Badge variant="accent">Featured</Badge>
