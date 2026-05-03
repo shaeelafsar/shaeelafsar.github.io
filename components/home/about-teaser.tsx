@@ -13,10 +13,10 @@ export function AboutTeaser() {
             About me
           </p>
           <Heading as="h2" size="h2" className="max-w-3xl">
-            I care about frontend work that feels precise, resilient, and easy to trust.
+            I care about building scalable solutions that bridge technical excellence with real business impact.
           </Heading>
           <p className="max-w-2xl text-[length:var(--text-body)] leading-8 text-muted-foreground">
-            My favorite projects sit at the intersection of product thinking, interface craft, and practical systems work. I enjoy shaping the details that make a site feel calm on first load and durable over time.
+            With experience across Fortune 500 companies like Amazon, United Airlines, and UnitedHealth Group, I enjoy the intersection of engineering discipline, stakeholder alignment, and delivering measurable outcomes.
           </p>
           <Button as="a" href="/about" variant="ghost">
             Learn More
@@ -36,7 +36,7 @@ export function AboutTeaser() {
                     Approach
                   </p>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    Thoughtful systems, elegant interaction, and just enough motion.
+                    Discovery workshops, architecture proposals, and proof-of-concepts that drive adoption.
                   </p>
                 </div>
                 <div className="rounded-[var(--radius-lg)] border border-border bg-card-muted/80" />
@@ -46,7 +46,7 @@ export function AboutTeaser() {
                   What I optimize for
                 </p>
                 <p className="mt-4 text-lg font-medium text-foreground">
-                  Interfaces with a clear hierarchy, strong accessibility, and a premium feel across every breakpoint.
+                  Scalable backend services, clear stakeholder communication, and measurable business outcomes across every engagement.
                 </p>
               </div>
             </div>

@@ -10,23 +10,23 @@ import { getResumeData } from "@/lib/resume";
 
 const interests = [
   {
-    title: "Writing to clarify",
-    body: "I like turning implementation details into language that helps teams align faster and make better product decisions.",
+    title: "Bridging tech & business",
+    body: "I thrive at the intersection of engineering and stakeholder engagement — translating complex technical ideas into clear value propositions that drive adoption.",
   },
   {
-    title: "Systems that scale quietly",
-    body: "The work I enjoy most is often invisible: naming, spacing, component structure, and the patterns that keep future changes easy.",
+    title: "Mentoring & leadership",
+    body: "I enjoy mentoring engineers on technical storytelling, presentation skills, and how to think about architecture as a business enabler.",
   },
   {
     title: "Life outside the screen",
-    body: "Good coffee, long walks, films with strong pacing, and the kind of side projects that start as curiosity and become practice.",
+    body: "Good coffee, fitness, family time, and the kind of side projects that start as curiosity and become real products.",
   },
 ] as const;
 
 export const metadata = createMetadata({
   title: "About",
   description:
-    "About Shaeel Afsar — frontend engineer focused on thoughtful systems, premium interfaces, and calm product execution.",
+    "About Shaeel Afsar — Lead Software Engineer focused on scalable cloud solutions, enterprise architecture, and bridging technical and business priorities.",
   path: "/about",
 });
 
@@ -51,7 +51,7 @@ export default async function AboutPage() {
               {resume.summary}
             </p>
             <p className="max-w-2xl text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              I&apos;m most energized by ambitious ideas that need clear structure: multi-page marketing sites, content-rich product surfaces, and design systems that make teams faster without flattening the experience.
+              Known for clear communication, stakeholder alignment, and translating complex ideas into client value. I bring a unique perspective shaped by years in both engineering and customer-facing sales roles.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button as="a" href="/projects">
@@ -88,15 +88,15 @@ export default async function AboutPage() {
               What I do
             </p>
             <Heading as="h2" size="h2" className="max-w-xl">
-              I approach software as a blend of product judgment, engineering discipline, and visual craft.
+              I approach software as a blend of engineering discipline, business acumen, and clear communication.
             </Heading>
           </FadeIn>
           <FadeIn delay={0.15} className="space-y-6">
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              The best frontend work helps users feel oriented immediately. That means hierarchy that reads clearly, interactions that never fight the task, and systems underneath that make iteration easier for the team.
+              The best engineering work starts with understanding the problem deeply. That means listening to stakeholders, defining clear requirements, and building solutions that are reliable, scalable, and aligned with real business outcomes.
             </p>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              I like sweating the details — naming, spacing, accessibility, motion timing, content structure — because those details compound into software that feels more trustworthy. My goal is to leave a product more coherent than I found it.
+              I care about the details that compound — architecture decisions that enable future growth, clear documentation that keeps teams aligned, and proof-of-concepts that build confidence before full commitments.
             </p>
           </FadeIn>
         </Container>
@@ -109,10 +109,10 @@ export default async function AboutPage() {
               Technologies
             </p>
             <Heading as="h2" size="h2">
-              Tools and disciplines I reach for most often.
+              Tools and technologies I work with most often.
             </Heading>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              A grouped view of the technologies and practices that shape my day-to-day frontend work.
+              A grouped view of the technologies and practices that shape my day-to-day engineering work.
             </p>
           </FadeIn>
           <SkillsGrid categories={resume.skillCategories} />
@@ -129,7 +129,7 @@ export default async function AboutPage() {
               The human side of how I work.
             </Heading>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              I&apos;m drawn to work that blends taste with systems thinking, and that usually spills into the way I write, collaborate, and recharge.
+              I&apos;m drawn to work that blends technical depth with clear stakeholder communication, and that shapes how I lead, collaborate, and grow.
             </p>
           </FadeIn>
           <StaggerChildren className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -161,7 +161,7 @@ export default async function AboutPage() {
                   Want to see the work in context?
                 </Heading>
                 <p className="mt-6 text-[length:var(--text-body)] leading-8 text-muted-foreground">
-                  Explore selected projects or reach out if you&apos;re building something that needs thoughtful frontend leadership.
+                  Explore selected projects or reach out if you&apos;re looking for an engineering leader who delivers results.
                 </p>
                 <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                   <Button as="a" href="/projects" className="w-full sm:w-auto">

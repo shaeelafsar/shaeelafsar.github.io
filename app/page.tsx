@@ -12,7 +12,7 @@ import { getFeaturedProjects } from "@/lib/projects";
 export const metadata = createMetadata({
   title: "Home",
   description:
-    "Cinematic portfolio home for Shaeel Afsar featuring selected work, writing, and a clear path to connect.",
+    "Cinematic portfolio home for Shaeel Afsar featuring selected work, experience, and a clear path to connect.",
   path: "/",
 });
 

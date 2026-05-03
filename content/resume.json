@@ -1,119 +1,120 @@
 {
   "name": "Shaeel Afsar",
-  "title": "Frontend Engineer & Product-Focused Software Developer",
-  "summary": "Frontend-leaning software engineer building performant, content-rich web products with Next.js, TypeScript, and thoughtful product systems. I enjoy pairing strong UX craft with pragmatic architecture, clear documentation, and reliable delivery.",
+  "title": "Lead Software Engineer",
+  "summary": "Customer-focused technology leader with 10 years of combined experience in software engineering and sales within Fortune 500 companies. Skilled at bridging technical and business priorities, leading discovery sessions, and delivering scalable cloud solutions that drive measurable outcomes.",
   "location": "Chicago, IL",
-  "email": "hello@shaeelafsar.com",
-  "website": "https://shaeelafsar.com",
+  "email": "afsarshaeel@gmail.com",
+  "website": "https://shaeelafsar.github.io",
   "experience": [
     {
-      "company": "Independent Consulting",
-      "role": "Senior Software Engineer",
-      "location": "Remote",
-      "startDate": "2024-01-01",
-      "summary": "Partner with founders and small teams to design, build, and ship modern web platforms with a focus on product clarity, performance, and maintainable frontends.",
+      "company": "United Airlines",
+      "role": "Lead Software Engineer",
+      "location": "Chicago, IL",
+      "startDate": "2023-08-01",
+      "summary": "Defining requirements and proposing architectures that align enterprise systems with business objectives and customer workflows.",
       "highlights": [
-        "Delivered marketing, portfolio, and SaaS surfaces in Next.js with accessible component systems and reusable content models.",
-        "Defined design-token foundations, motion patterns, and page-building primitives that reduced implementation churn across launches.",
-        "Improved Lighthouse scores, perceived load time, and authoring workflows by simplifying data fetching and content publishing paths."
+        "Defined requirements and proposed architectures aligning enterprise systems with business objectives and customer workflows.",
+        "Led discovery workshops, solution demos, and proof-of-concepts leveraging various technologies.",
+        "Designed scalable backend services using Java Spring Boot, improving system reliability and extensibility.",
+        "Presented architecture recommendations to leadership, clarifying complex designs for cross-functional stakeholders.",
+        "Mentored engineers on technical storytelling and stakeholder presentation skills."
       ],
-      "techStack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX", "Vercel"]
+      "techStack": ["Java", "Spring Boot", "REST APIs", "Kubernetes", "CI/CD", "Agile"]
     },
     {
-      "company": "Product Studio Collective",
-      "role": "Frontend Engineer",
+      "company": "Amazon (AWS Security)",
+      "role": "Software Development Engineer",
       "location": "Remote",
-      "startDate": "2021-06-01",
-      "endDate": "2023-12-01",
-      "summary": "Built polished product experiences for client engagements spanning dashboards, marketing sites, and editorial content systems.",
+      "startDate": "2021-12-01",
+      "endDate": "2023-03-01",
+      "summary": "Designed and delivered secure, scalable services using AWS and Java Spring Boot, improving compliance visibility across enterprise accounts.",
       "highlights": [
-        "Implemented component-driven design systems that supported shared patterns across multiple product teams and campaigns.",
-        "Shipped high-trust contact, onboarding, and conversion flows with strong validation, analytics hooks, and responsive behavior.",
-        "Collaborated with designers to translate wireframes into production-ready interfaces while keeping motion subtle and performant."
+        "Designed and delivered secure, scalable services using AWS and Java Spring Boot, improving compliance visibility across enterprise accounts.",
+        "Partnered with business teams to define RESTful API integrations, ensuring seamless automation between internal platforms.",
+        "Presented risk mitigation and architecture improvement strategies to leadership and partner teams.",
+        "Supported proofs-of-concept demonstrating AWS Cloud automation and system hardening, driving adoption across business units."
       ],
-      "techStack": ["React", "Next.js", "TypeScript", "Storybook", "Tailwind CSS", "Framer Motion"]
+      "techStack": ["Java", "Spring Boot", "AWS (ECS, Lambda, DynamoDB)", "REST APIs", "Microservices", "CI/CD"]
     },
     {
-      "company": "Civic Data Labs",
+      "company": "UnitedHealth Group (Optum)",
       "role": "Software Engineer",
       "location": "Chicago, IL",
-      "startDate": "2019-03-01",
-      "endDate": "2021-05-01",
-      "summary": "Contributed across frontend and backend systems for internal tools and public-facing data products used by operations and policy teams.",
+      "startDate": "2019-06-01",
+      "endDate": "2021-12-01",
+      "summary": "Engineered enterprise software solutions leveraging Java, REST APIs, and microservices to improve data accuracy and operational efficiency.",
       "highlights": [
-        "Built React interfaces for search, filtering, and reporting workflows that made dense operational data easier to act on.",
-        "Created API integrations and background processing pipelines to synchronize datasets from third-party services.",
-        "Helped improve release reliability with stronger typing, CI checks, and clearer handoff documentation."
+        "Engineered enterprise software solutions leveraging Java, REST APIs, and microservices to improve data accuracy and operational efficiency.",
+        "Collaborated with product managers to design integration flows across cloud systems and API endpoints."
       ],
-      "techStack": ["React", "Node.js", "Express", "PostgreSQL", "Docker", "GitHub Actions"]
+      "techStack": ["Java", "REST APIs", "Microservices", "Cloud Systems", "Python"]
     },
     {
-      "company": "Freelance Web Development",
-      "role": "Frontend Developer",
-      "location": "Remote",
-      "startDate": "2016-01-01",
-      "endDate": "2019-02-01",
-      "summary": "Designed and launched websites for individuals and small businesses, balancing visual polish, CMS practicality, and straightforward maintenance.",
+      "company": "Sprint / Comcast",
+      "role": "Sales & Customer Engagement",
+      "location": "Chicago, IL",
+      "startDate": "2013-01-01",
+      "endDate": "2017-12-01",
+      "summary": "Built a foundation in consultative selling, client engagement, and clear communication that carries into technical leadership today.",
       "highlights": [
-        "Created responsive marketing and portfolio sites with custom theming, content architecture, and SEO-friendly page structure.",
-        "Managed projects end-to-end, from discovery and prototyping through implementation, deployment, and iteration.",
-        "Established a durable foundation in client communication, estimation, and translating goals into shipped product decisions."
+        "Consistently exceeded quotas, ranking in the top 5% regionally and earning multiple performance awards.",
+        "Built trust with customers through consultative selling, needs assessment, and clear product education."
       ],
-      "techStack": ["JavaScript", "TypeScript", "HTML", "CSS", "WordPress", "Netlify"]
+      "techStack": ["Salesforce", "CRM Systems", "Client Engagement"]
     }
   ],
   "education": [
     {
-      "institution": "University of Illinois Chicago",
+      "institution": "DePaul University",
       "degree": "Bachelor of Science",
       "fieldOfStudy": "Computer Science",
       "location": "Chicago, IL",
-      "startDate": "2012-08-01",
-      "endDate": "2016-05-01",
-      "summary": "Coursework emphasized software engineering, human-computer interaction, data structures, and web application development."
+      "startDate": "2017-01-01",
+      "endDate": "2019-03-01",
+      "summary": "Coursework in software engineering, data structures, algorithms, and web application development."
     }
   ],
   "skillCategories": [
     {
-      "title": "Frontend",
+      "title": "Solutioning",
       "skills": [
-        { "name": "React", "level": "advanced" },
-        { "name": "Next.js", "level": "advanced" },
-        { "name": "TypeScript", "level": "advanced" },
-        { "name": "Tailwind CSS", "level": "advanced" },
-        { "name": "Framer Motion", "level": "advanced" },
-        { "name": "Accessibility", "level": "advanced" }
+        { "name": "Client Discovery", "level": "advanced" },
+        { "name": "Solution Design", "level": "advanced" },
+        { "name": "Technical Demos & PoCs", "level": "advanced" },
+        { "name": "Architecture Recommendations", "level": "advanced" },
+        { "name": "Stakeholder Engagement", "level": "advanced" },
+        { "name": "Agile Collaboration", "level": "advanced" }
       ]
     },
     {
-      "title": "Backend",
+      "title": "Backend & Cloud",
       "skills": [
-        { "name": "Node.js", "level": "advanced" },
-        { "name": "Express", "level": "advanced" },
-        { "name": "PostgreSQL", "level": "intermediate" },
+        { "name": "Java", "level": "advanced" },
+        { "name": "Python", "level": "advanced" },
+        { "name": "Spring Boot", "level": "advanced" },
         { "name": "REST APIs", "level": "advanced" },
-        { "name": "Server Actions", "level": "intermediate" }
+        { "name": "Microservices", "level": "advanced" },
+        { "name": "AWS (ECS, Lambda, DynamoDB)", "level": "advanced" }
       ]
     },
     {
-      "title": "DevOps & Tooling",
+      "title": "DevOps & Infrastructure",
       "skills": [
-        { "name": "GitHub Actions", "level": "advanced" },
+        { "name": "Kubernetes", "level": "advanced" },
+        { "name": "CI/CD (Jenkins, GitHub)", "level": "advanced" },
         { "name": "Docker", "level": "intermediate" },
-        { "name": "Vercel", "level": "advanced" },
-        { "name": "pnpm", "level": "advanced" },
-        { "name": "Playwright", "level": "intermediate" },
-        { "name": "Vitest", "level": "intermediate" }
+        { "name": "Azure", "level": "intermediate" },
+        { "name": "GitHub Actions", "level": "intermediate" }
       ]
     },
     {
-      "title": "Languages & Content",
+      "title": "Frontend & Web",
       "skills": [
         { "name": "JavaScript", "level": "advanced" },
         { "name": "TypeScript", "level": "advanced" },
-        { "name": "SQL", "level": "intermediate" },
-        { "name": "MDX", "level": "advanced" },
-        { "name": "Technical Writing", "level": "advanced" }
+        { "name": "React / Next.js", "level": "intermediate" },
+        { "name": "Tailwind CSS", "level": "intermediate" },
+        { "name": "HTML / CSS", "level": "advanced" }
       ]
     }
   ]

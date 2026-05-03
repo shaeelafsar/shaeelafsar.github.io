@@ -15,15 +15,11 @@ export const socialLinks = [
     label: "GitHub",
   },
   {
-    href: "https://www.linkedin.com/in/shaeelafsar",
+    href: "https://www.linkedin.com/in/shaeel-afsar/",
     label: "LinkedIn",
   },
   {
-    href: "https://x.com/shaeelafsar",
-    label: "Twitter/X",
-  },
-  {
-    href: "mailto:hello@shaeelafsar.com",
+    href: "mailto:afsarshaeel@gmail.com",
     label: "Email",
   },
 ] as const;
@@ -31,15 +27,15 @@ export const socialLinks = [
 export const siteConfig = {
   name: "Shaeel Afsar",
   author: "Shaeel Afsar",
-  authorTitle: "Frontend Engineer & Product-Focused Software Developer",
+  authorTitle: "Lead Software Engineer",
   description:
-    "Personal professional website, portfolio, blog, and resume for Shaeel Afsar.",
-  tagline: "Thoughtful interfaces, polished frontends, and product clarity.",
+    "Personal professional website, portfolio, and resume for Shaeel Afsar — Lead Software Engineer based in Chicago.",
+  tagline: "Bridging technical excellence with business impact.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://shaeelafsar.github.io",
   navigation: navigationLinks,
   socials: socialLinks,
   sameAs: socialLinks.filter((link) => link.href.startsWith("http")).map((link) => link.href),
-  twitterHandle: "@shaeelafsar",
+  twitterHandle: undefined,
 } as const;
 
 type CreateMetadataOptions = {

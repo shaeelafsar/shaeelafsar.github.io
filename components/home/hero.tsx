@@ -32,7 +32,7 @@ export function Hero() {
           <div className="max-w-4xl">
             <FadeIn delay={0.05} className="mb-6">
               <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.2em] text-muted-foreground">
-                Frontend engineer · builder · writer
+                Lead Software Engineer · Chicago, IL
               </p>
             </FadeIn>
             <Heading as="h1" size="display-xl" className="max-w-5xl text-balance leading-none">
@@ -42,7 +42,7 @@ export function Hero() {
             </Heading>
             <FadeIn delay={0.35} className="mt-8 max-w-2xl">
               <p className="text-[length:var(--text-body-lg)] leading-8 text-muted-foreground md:leading-9">
-                Frontend engineer building cinematic web experiences with calm precision, strong systems thinking, and motion that always serves the story.
+                Customer-focused technology leader with 10+ years of experience in software engineering and sales at Fortune 500 companies. I bridge technical and business priorities to deliver scalable cloud solutions that drive measurable outcomes.
               </p>
             </FadeIn>
             <FadeIn delay={0.55} className="mt-10">
@@ -75,10 +75,10 @@ export function Hero() {
               <Parallax speed={0.28} className="absolute left-10 top-1/3 right-10">
                 <div className="rounded-[var(--radius-lg)] border border-border bg-card/82 p-6 shadow-[var(--shadow-md)] backdrop-blur-[var(--blur-sm)]">
                   <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-accent">
-                    Selected focus
+                    Current focus
                   </p>
                   <p className="mt-4 text-lg font-medium text-foreground">
-                    Design systems, content-rich interfaces, and premium product detail.
+                    Scalable cloud architectures, enterprise systems, and stakeholder alignment.
                   </p>
                 </div>
               </Parallax>
@@ -88,7 +88,7 @@ export function Hero() {
                     Current stack
                   </p>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    Next.js 16 · React 19 · TypeScript · Tailwind · Motion
+                    Java · Spring Boot · AWS · Python · Kubernetes
                   </p>
                 </div>
               </Parallax>

@@ -19,16 +19,16 @@ export function CtaSection() {
                 Let&apos;s work together
               </p>
               <Heading as="h2" size="h2" className="mt-4">
-                If you need a frontend partner who cares about polish and systems, I&apos;d love to connect.
+                If you need an engineering leader who bridges technical depth with business impact, I&apos;d love to connect.
               </Heading>
               <p className="mt-6 max-w-2xl text-[length:var(--text-body)] leading-8 text-muted-foreground">
-                I enjoy collaborating on product launches, design-system work, and content-rich websites that need both technical structure and visual restraint.
+                I enjoy collaborating on scalable cloud architectures, enterprise platform modernization, and building engineering teams that ship with clarity and confidence.
               </p>
               <div className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
                 <Button as="a" href="/contact" size="lg" className="w-full sm:w-auto">
                   Get in Touch
                 </Button>
-                <Button as="a" href="mailto:hello@shaeelafsar.com" variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button as="a" href="mailto:afsarshaeel@gmail.com" variant="outline" size="lg" className="w-full sm:w-auto">
                   Email Directly
                 </Button>
               </div>

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const contactFallbackEmail = "hello@shaeelafsar.com";
+export const contactFallbackEmail = "afsarshaeel@gmail.com";
 export const formspreeEndpoint =
   process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "https://formspree.io/f/replace-with-your-form-id";
 export const isPlaceholderFormspreeEndpoint = formspreeEndpoint.endsWith("replace-with-your-form-id");
