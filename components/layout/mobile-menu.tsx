@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "motion/react";
 import { Nav } from "@/components/layout/nav";
 import { siteConfig } from "@/lib/metadata";
@@ -87,6 +88,63 @@ export function MobileMenu() {
     };
   }, [open]);
 
+  const overlay = (
+    <AnimatePresence>
+      {open ? (
+        <motion.div
+          initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: prefersReducedMotion ? 1 : 0 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.18, ease: standardEase }}
+          className="fixed inset-0 z-[var(--z-mobile-menu)] pointer-events-none lg:hidden"
+        >
+          <button
+            type="button"
+            className="pointer-events-auto absolute inset-0 bg-black/30"
+            aria-label="Close navigation menu"
+            onClick={() => setOpen(false)}
+          />
+          <motion.div
+            id="mobile-menu-panel"
+            role="dialog"
+            aria-modal="true"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={panelVariants}
+            className="pointer-events-auto absolute inset-y-0 right-0 flex w-full max-w-full flex-col overflow-y-auto bg-surface-strong px-4 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:pt-6 backdrop-blur-[var(--blur-lg)]"
+            data-testid="mobile-menu-panel"
+          >
+            <div className="flex items-center justify-between gap-4 border-b border-border pb-6">
+              <Link href="/" className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground" onClick={() => setOpen(false)}>
+                {siteConfig.name}
+              </Link>
+            </div>
+            <motion.div
+              variants={listVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-1 flex-col justify-between"
+            >
+              <motion.div variants={itemVariants} className="pt-8">
+                <Nav
+                  orientation="vertical"
+                  onNavigate={() => setOpen(false)}
+                  dataTestId="mobile-menu-nav"
+                />
+              </motion.div>
+              <motion.div variants={itemVariants} className="border-t border-border pt-6">
+                <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground">
+                  Portfolio, blog, and case studies
+                </p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+
   return (
     <>
       <button
@@ -120,60 +178,7 @@ export function MobileMenu() {
           />
         </span>
       </button>
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: prefersReducedMotion ? 1 : 0 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.18, ease: standardEase }}
-            className="fixed inset-0 z-[var(--z-mobile-menu)] lg:hidden"
-          >
-            <button
-              type="button"
-              className="absolute inset-0 bg-black/30"
-              aria-label="Close navigation menu"
-              onClick={() => setOpen(false)}
-            />
-            <motion.div
-              id="mobile-menu-panel"
-              role="dialog"
-              aria-modal="true"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={panelVariants}
-              className="absolute inset-y-0 right-0 flex w-full max-w-full flex-col overflow-y-auto bg-surface-strong px-4 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:pt-6 backdrop-blur-[var(--blur-lg)]"
-              data-testid="mobile-menu-panel"
-            >
-              <div className="flex items-center justify-between gap-4 border-b border-border pb-6">
-                <Link href="/" className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground" onClick={() => setOpen(false)}>
-                  {siteConfig.name}
-                </Link>
-              </div>
-              <motion.div
-                variants={listVariants}
-                initial="hidden"
-                animate="visible"
-                className="flex flex-1 flex-col justify-between"
-              >
-                <motion.div variants={itemVariants} className="pt-8">
-                  <Nav
-                    orientation="vertical"
-                    onNavigate={() => setOpen(false)}
-                    dataTestId="mobile-menu-nav"
-                  />
-                </motion.div>
-                <motion.div variants={itemVariants} className="border-t border-border pt-6">
-                  <p className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-muted-foreground">
-                    Portfolio, blog, and case studies
-                  </p>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {typeof document !== "undefined" ? createPortal(overlay, document.body) : null}
     </>
   );
 }

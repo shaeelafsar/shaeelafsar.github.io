@@ -9,6 +9,9 @@
 
 ## Learnings
 
+- **2026-05-03T10:53:41.977-05:00** — On coarse-pointer/mobile devices, decorative text effects need a hard off-switch instead of relying on hover-only opacity; `GlitchText` now hides duplicate layers entirely on mobile to avoid stacked title copies.
+- **2026-05-03T10:53:41.977-05:00** — The hero reads better on phones when it uses content-height-first spacing instead of forcing a viewport-height shell; mobile decorative layers should stay clipped and non-interactive so they never create dead space or block taps.
+- **2026-05-03T10:53:41.977-05:00** — Mobile navigation overlays are safest when portaled to `document.body`, which avoids sticky-header/backdrop stacking issues and keeps the drawer tappable above all page art.
 - **2026-05-02T16:10:31-05:00** — Most frontend specs are implementable, but the main gaps are shared client/server boundaries (`Header`, `Button`, `ProjectFilter`) rather than visual/layout direction.
 - **2026-05-02T16:10:31-05:00** — Long-form content architecture is strong; remaining frontend clarifications are around TOC/reading-progress behavior, MDX image handling, and aligning compiled-content types across specs.
 - **2026-05-02T16:10:31-05:00** — The only major implementation blocker is the contact form submission contract; page structure and validation are already clear.

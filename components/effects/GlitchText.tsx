@@ -66,6 +66,16 @@ export function GlitchText({ children, className }: GlitchTextProps) {
           }
         }
 
+        @media (max-width: 767px), (pointer: coarse) {
+          .glitch-text {
+            display: inline-block;
+          }
+
+          .glitch-layer {
+            display: none;
+          }
+        }
+
         @keyframes glitch-slice-cyan {
           0% {
             clip-path: inset(4% 0 68% 0);

@@ -14,10 +14,10 @@ import { Section } from "@/components/ui/section";
 export function Hero() {
   return (
     <Section
-      className="hero-gradient-shell relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-14 sm:min-h-[calc(100dvh-5rem)] sm:py-16 md:py-20 lg:py-24"
+      className="hero-gradient-shell relative flex items-start overflow-hidden py-12 sm:min-h-[calc(100dvh-5rem)] sm:items-center sm:py-16 md:py-20 lg:py-24"
       data-testid="home-hero"
     >
-      <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="cyber-grid absolute inset-0 opacity-80" />
         <GridBackground className="bottom-[-16%] top-[34%] opacity-75" color="rgba(34, 211, 238, 0.34)" />
         <ParticleField className="opacity-70" />
