@@ -1,10 +1,12 @@
 import { defineConfig } from "@playwright/test";
 
+const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3100";
+
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
   use: {
-    baseURL: "http://127.0.0.1:3100",
+    baseURL,
     trace: "on-first-retry",
   },
   projects: [
@@ -29,7 +31,7 @@ export default defineConfig({
   ],
   webServer: {
     command: "pnpm exec next dev --turbopack --port 3100",
-    url: "http://127.0.0.1:3100",
-    reuseExistingServer: false,
+    url: baseURL,
+    reuseExistingServer: true,
   },
 });

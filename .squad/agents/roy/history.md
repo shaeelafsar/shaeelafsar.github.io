@@ -14,6 +14,8 @@
 - **2026-05-02T16:10:31-05:00** — External validators (RSS, rich results, social preview tools, Lighthouse portals) should backstop local assertions, not replace explicit acceptance criteria.
 - **2026-05-02T17:18:28-05:00** — Next build type-checks root-level test files in this repo, so Vitest matcher types and an explicit E2E exclude in `vitest.config.ts` are required to keep unit tests and Playwright specs from colliding.
 - **2026-05-03T10:38:08.957-05:00** — Mobile QA needs explicit 360–430px coverage: long badges/URLs and the hero typing treatment are the first places overflow shows up, and coarse-pointer devices should get lighter visual effects instead of the full neon/particle stack.
+- **2026-05-03T14:30:40.831-05:00** — A reusable responsive debug suite now lives at `tests/e2e/responsive-debug.spec.ts`, with an `e2e/` wrapper so the existing Playwright config can execute it without moving the current suite.
+- **2026-05-03T14:30:40.831-05:00** — Localhost responsive diagnostics currently flag two concrete regressions: the `Cloud` filter pill overflows the Projects page at 375px wide, and the mobile menu trigger never opens `mobile-menu-panel` on the local dev build.
 
 ## Notifications
 
