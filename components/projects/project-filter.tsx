@@ -46,7 +46,7 @@ export function ProjectFilter({
     <div className="space-y-4" data-testid="projects-filter">
       <div
         aria-label="Filter projects by tag"
-        className="flex gap-3 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible"
+        className="flex max-w-full flex-wrap gap-3 pb-2"
         role="toolbar"
       >
         {items.map((item, index) => {
