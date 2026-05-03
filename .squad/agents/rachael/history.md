@@ -31,6 +31,8 @@
 - **2026-05-03T14:30:40.831-05:00** — The floating hero/about skill pills were calmer and more readable once converted from animated/absolute decorations into static badge rows inside their content blocks; desktop polish here should stay anchored rather than drifting.
 - **2026-05-03T14:30:40.831-05:00** — Footer and contact layouts hold together better when small screens prioritize centered/stacked content first, then switch to multi-column alignment at `lg` instead of forcing split layouts too early.
 - **2026-05-03T14:30:40.831-05:00** — Static badge rows replacement was successful (commit eb6337f); responsive consistency now confirmed across hero, about, and footer surfaces.
+- **2026-05-03T14:45:20-05:00** — Mobile filter pill overflow on Projects page at 375px fixed via flex-wrap + truncate; mobile menu trigger now correctly opens menu panel after fixing pointer-events binding (commit 78cab7f). Roy's responsive-debug suite (40/42 tests) validated all fixes.
+- **2026-05-03T14:56:00-05:00** — Session close: UI polish cycle complete. All Rachael fixes (eb6337f, 78cab7f) live on shaeelafsar.github.io. Responsive consistency validated across 360/375/768/1280px. Ready for user photo upload and Formspree configuration in next session.
 
 ## Notifications
 
