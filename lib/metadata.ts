@@ -31,7 +31,7 @@ export const siteConfig = {
   description:
     "Personal website and portfolio for Shaeel Afsar — Lead Software Engineer specializing in backend systems, microservices, and cloud-native architecture.",
   tagline: "Backend systems · Cloud architecture · Enterprise scale",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://shaeelafsar.github.io",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://shaeelafsar.github.io/personal-website",
   navigation: navigationLinks,
   socials: socialLinks,
   sameAs: socialLinks.filter((link) => link.href.startsWith("http")).map((link) => link.href),
