@@ -27,6 +27,7 @@
 - **2026-05-03T12:08:49-05:00** — The neon theme and progressive motion enhancements validated successfully on live site. Mobile menu closes via Escape reliably. Hero hero glitch and particle effects degrade correctly on coarse pointers. All lighthouse-critical elements render without jank.
 - **2026-05-03T14:10:43.947-05:00** — Once the repo moves to `shaeelafsar.github.io`, GitHub Pages serves the site from the domain root, so `basePath` must stay unset and canonical/site URLs should resolve from `https://shaeelafsar.github.io`.
 - **2026-05-03T14:10:43.947-05:00** — Playwright 1.59 accepts reduced-motion defaults in config via `use.contextOptions.reducedMotion`, not a top-level `use.reducedMotion`; this matters because Next build type-checks `playwright.live.config.ts`.
+- **2026-05-03T14:10:43.947-05:00** — GitHub repository renamed to `shaeelafsar.github.io`; removed `basePath` from `next.config.ts` and updated all URLs to resolve from root domain. Metadata, canonical, sitemap, and robots URLs now reference `https://shaeelafsar.github.io`. Deployment verified; site live. Commit df76d03.
 
 ## Notifications
 

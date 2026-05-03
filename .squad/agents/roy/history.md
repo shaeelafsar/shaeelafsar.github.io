@@ -85,3 +85,4 @@
 - ADR-014 (Live-site Playwright config) — new pattern documented and validated
 
 **Notes:** All learnings from earlier testability review now baked into live test suite. No test blockers encountered. Production deployment ready for scheduled monitoring.
+- **2026-05-03T14:10:43.947-05:00** — Repository renamed to `shaeelafsar.github.io` (root domain GitHub Pages). Live-site Playwright coverage must update: target `https://shaeelafsar.github.io` instead of `https://shaeelafsar.github.io/personal-website`. Remove `basePath` logic; use absolute paths in all `goto()` calls. Previous run (39/39 tests) was against sub-path; next validation run targets root origin.
