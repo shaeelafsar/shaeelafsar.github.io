@@ -18,7 +18,7 @@ export function Header() {
               Shaeel Afsar
             </span>
             <span className="mt-2 hidden text-sm font-medium text-foreground sm:block">
-              Frontend engineer · builder · writer
+              Backend engineer · builder · architect
             </span>
           </Link>
           <div className="hidden lg:block">
