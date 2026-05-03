@@ -32,11 +32,10 @@ export function AboutTeaser() {
             With experience across Fortune 500 companies like Amazon, United Airlines, and UnitedHealth Group, I specialize in Java/Spring Boot microservices, AWS cloud infrastructure, and designing APIs that serve millions of requests.
           </p>
           <div className="flex flex-wrap gap-2">
-            {teaserBadges.map((badge, index) => (
+            {teaserBadges.map((badge) => (
               <span
                 key={badge}
-                className="glass-panel ambient-float inline-flex min-h-10 items-center rounded-full border border-border/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
-                style={{ animationDelay: `-${index + 1.5}s` }}
+                className="glass-panel inline-flex min-h-10 items-center rounded-full border border-border/70 bg-card/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
               >
                 {badge}
               </span>

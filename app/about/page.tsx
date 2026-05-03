@@ -118,7 +118,7 @@ export default async function AboutPage() {
               <div className="accent-orb accent-orb-cyan absolute -left-8 top-10 h-28 w-28 opacity-50" />
               <div className="accent-orb accent-orb-magenta absolute -right-8 bottom-12 h-32 w-32 opacity-55" />
               <div className="relative flex flex-col items-center gap-6">
-                <div className="terminal-shell ambient-float absolute left-0 top-0 z-10 w-[min(17rem,calc(100%-1rem))] max-w-[88%] rounded-[var(--radius-lg)] border border-border/80 bg-card/85 shadow-[var(--shadow-neon-sm)] backdrop-blur-[var(--blur-sm)] sm:left-2 sm:top-2">
+                <div className="terminal-shell absolute left-1/2 top-0 z-10 w-[min(17rem,calc(100%-1.5rem))] max-w-[88%] -translate-x-1/2 rounded-[var(--radius-lg)] border border-border/80 bg-card/85 shadow-[var(--shadow-neon-sm)] backdrop-blur-[var(--blur-sm)] sm:left-2 sm:top-2 sm:w-[min(17rem,calc(100%-1rem))] sm:translate-x-0">
                   <div className="flex items-center justify-between gap-3 border-b border-border/70 px-4 py-3">
                     <div className="flex items-center gap-2">
                       <span className="h-2.5 w-2.5 rounded-full bg-[color:var(--color-neon-magenta)] shadow-[0_0_12px_color-mix(in_srgb,var(--color-neon-magenta)_55%,transparent)]" />
@@ -136,7 +136,7 @@ export default async function AboutPage() {
                     <p className="text-foreground/80">→ translating architecture into product momentum</p>
                   </div>
                 </div>
-                <ProfileAvatar className="w-full max-w-[17rem] pt-28 sm:pt-24" priority sizes="(min-width: 768px) 18rem, 14rem" />
+                <ProfileAvatar className="w-full max-w-[17rem] pt-32 sm:pt-28" priority sizes="(min-width: 768px) 18rem, 14rem" />
                 <div className="grid w-full gap-3 sm:grid-cols-2">
                   <div className="glass-panel rounded-[var(--radius-lg)] border border-border/70 px-4 py-4">
                     <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -152,11 +152,10 @@ export default async function AboutPage() {
                   </div>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2">
-                  {portraitBadges.map((badge, index) => (
+                  {portraitBadges.map((badge) => (
                     <span
                       key={badge}
-                      className="glass-panel ambient-float inline-flex min-h-10 items-center rounded-full border border-border/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
-                      style={{ animationDelay: `-${index + 1.2}s` }}
+                      className="glass-panel inline-flex min-h-10 items-center rounded-full border border-border/70 bg-card/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
                     >
                       {badge}
                     </span>

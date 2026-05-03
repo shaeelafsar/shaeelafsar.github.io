@@ -18,28 +18,7 @@ const heroStats = [
   { label: "Core strengths", value: 3, suffix: "" },
 ] as const;
 
-const floatingSkills = [
-  {
-    label: "Spring Boot",
-    className: "left-0 top-10 xl:-left-6",
-    style: { animationDelay: "-1.4s" },
-  },
-  {
-    label: "AWS",
-    className: "right-2 top-14 xl:-right-4",
-    style: { animationDelay: "-3.1s" },
-  },
-  {
-    label: "Microservices",
-    className: "-left-2 bottom-24 xl:-left-8",
-    style: { animationDelay: "-2.2s" },
-  },
-  {
-    label: "APIs",
-    className: "right-8 bottom-4 xl:right-0",
-    style: { animationDelay: "-4.2s" },
-  },
-] as const;
+const skillPills = ["Spring Boot", "AWS", "Microservices", "APIs"] as const;
 
 export function Hero() {
   return (
@@ -109,15 +88,14 @@ export function Hero() {
                 Backend-focused engineer with 6+ years building distributed systems, microservices, and cloud-native APIs at Fortune 500 companies. I design and ship the services behind the product — scalable, reliable, and built to last.
               </p>
             </ScrollReveal>
-            <ScrollReveal delay={0.42} className="mt-8 lg:hidden">
-              <div className="flex flex-wrap gap-2">
-                {floatingSkills.map((skill) => (
+            <ScrollReveal delay={0.42} className="mt-8">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {skillPills.map((skill) => (
                   <span
-                    key={skill.label}
-                    className="glass-panel ambient-float inline-flex min-h-10 items-center rounded-full border border-border/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
-                    style={skill.style}
+                    key={skill}
+                    className="glass-panel inline-flex min-h-10 items-center rounded-full border border-border/70 bg-card/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
                   >
-                    {skill.label}
+                    {skill}
                   </span>
                 ))}
               </div>
@@ -167,20 +145,6 @@ export function Hero() {
           <div className="hidden lg:block">
             <SlideIn direction="right" delay={0.24}>
               <div className="relative mx-auto max-w-md">
-                {floatingSkills.map((skill) => (
-                  <div
-                    key={skill.label}
-                    className={`absolute z-10 ${skill.className}`}
-                  >
-                    <span
-                      className="glass-panel ambient-float inline-flex min-h-10 items-center rounded-full border border-border/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/85 shadow-[var(--shadow-neon-xs)]"
-                      style={skill.style}
-                    >
-                      {skill.label}
-                    </span>
-                  </div>
-                ))}
-
                 <Parallax speed={0.16} className="relative">
                   <NeonGlow className="rounded-[var(--radius-xl)]" color="cyan">
                     <div className="glass-panel cyber-grid glitch-hover relative overflow-hidden rounded-[var(--radius-xl)] border border-border/80 p-8 shadow-[var(--shadow-lg)] backdrop-blur-[var(--blur-md)]">

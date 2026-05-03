@@ -36,11 +36,11 @@ export default function ContactPage() {
       <Section className="pt-0 md:pt-0 lg:pt-0">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(20rem,0.85fr)] xl:gap-10">
-            <FadeIn className="order-1 lg:order-2">
-              <SocialLinks />
-            </FadeIn>
-            <FadeIn delay={0.15} className="order-2 lg:order-1">
+            <FadeIn delay={0.15}>
               <ContactForm />
+            </FadeIn>
+            <FadeIn>
+              <SocialLinks />
             </FadeIn>
           </div>
         </Container>

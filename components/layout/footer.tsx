@@ -11,57 +11,59 @@ export function Footer() {
       data-testid="site-footer"
       style={{ viewTransitionName: "site-footer" }}
     >
-      <Container className="relative grid gap-10 py-10 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:justify-between">
+      <Container className="relative py-10">
         <div aria-hidden="true" className="gradient-divider absolute inset-x-0 top-0" />
-        <div className="space-y-4">
-          <p className="text-lg font-semibold text-foreground">{siteConfig.name}</p>
-          <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-            Thoughtful interfaces, polished frontends, and a writing practice rooted in product clarity.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            © {copyrightYear} {siteConfig.name}. All rights reserved.
-          </p>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2">
-          <div>
-            <p className="mb-3 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-muted-foreground">
-              Navigate
+        <div className="grid gap-10 text-center sm:text-left lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-12">
+          <div className="space-y-4 lg:max-w-xl">
+            <p className="text-lg font-semibold text-foreground">{siteConfig.name}</p>
+            <p className="text-sm leading-6 text-muted-foreground">
+              Thoughtful interfaces, polished frontends, and a writing practice rooted in product clarity.
             </p>
-            <ul className="space-y-2">
-              {navigationLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="link-underline inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="text-sm text-muted-foreground">
+              © {copyrightYear} {siteConfig.name}. All rights reserved.
+            </p>
           </div>
-          <div>
-            <p className="mb-3 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-muted-foreground">
-              Elsewhere
-            </p>
-            <ul className="space-y-2">
-              {socialLinks.map((link) => {
-                const external = link.href.startsWith("http");
-
-                return (
-                  <li key={link.label}>
-                    <a
+          <div className="grid gap-8 sm:grid-cols-2 lg:justify-self-end">
+            <div>
+              <p className="mb-3 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-muted-foreground">
+                Navigate
+              </p>
+              <ul className="space-y-2">
+                {navigationLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
                       href={link.href}
-                      target={external ? "_blank" : undefined}
-                      rel={external ? "noreferrer" : undefined}
-                      className="link-underline inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent"
+                      className="link-underline inline-flex min-h-11 items-center justify-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent sm:justify-start"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
-                );
-              })}
-            </ul>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="mb-3 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-muted-foreground">
+                Elsewhere
+              </p>
+              <ul className="space-y-2">
+                {socialLinks.map((link) => {
+                  const external = link.href.startsWith("http");
+
+                  return (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noreferrer" : undefined}
+                        className="link-underline inline-flex min-h-11 items-center justify-center text-sm text-muted-foreground transition-colors duration-[var(--duration-ui)] hover:text-accent focus-visible:text-accent sm:justify-start"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </Container>

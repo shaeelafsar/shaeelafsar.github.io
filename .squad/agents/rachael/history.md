@@ -28,6 +28,8 @@
 - **2026-05-03T14:10:43.947-05:00** — Once the repo moves to `shaeelafsar.github.io`, GitHub Pages serves the site from the domain root, so `basePath` must stay unset and canonical/site URLs should resolve from `https://shaeelafsar.github.io`.
 - **2026-05-03T14:10:43.947-05:00** — Playwright 1.59 accepts reduced-motion defaults in config via `use.contextOptions.reducedMotion`, not a top-level `use.reducedMotion`; this matters because Next build type-checks `playwright.live.config.ts`.
 - **2026-05-03T14:10:43.947-05:00** — GitHub repository renamed to `shaeelafsar.github.io`; removed `basePath` from `next.config.ts` and updated all URLs to resolve from root domain. Metadata, canonical, sitemap, and robots URLs now reference `https://shaeelafsar.github.io`. Deployment verified; site live. Commit df76d03.
+- **2026-05-03T14:30:40.831-05:00** — The floating hero/about skill pills were calmer and more readable once converted from animated/absolute decorations into static badge rows inside their content blocks; desktop polish here should stay anchored rather than drifting.
+- **2026-05-03T14:30:40.831-05:00** — Footer and contact layouts hold together better when small screens prioritize centered/stacked content first, then switch to multi-column alignment at `lg` instead of forcing split layouts too early.
 
 ## Notifications
 
