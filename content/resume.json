@@ -1,7 +1,7 @@
 {
   "name": "Shaeel Afsar",
   "title": "Lead Software Engineer",
-  "summary": "Customer-focused technology leader with 10 years of combined experience in software engineering and sales within Fortune 500 companies. Skilled at bridging technical and business priorities, leading discovery sessions, and delivering scalable cloud solutions that drive measurable outcomes.",
+  "summary": "Backend-focused software engineer with 6+ years building distributed systems, microservices, and cloud-native APIs at Fortune 500 companies. I design and ship the services behind the product — scalable, reliable, and built to last. Unique background combining engineering depth with customer-facing experience.",
   "location": "Chicago, IL",
   "email": "afsarshaeel@gmail.com",
   "website": "https://shaeelafsar.github.io",
@@ -76,17 +76,6 @@
   ],
   "skillCategories": [
     {
-      "title": "Solutioning",
-      "skills": [
-        { "name": "Client Discovery", "level": "advanced" },
-        { "name": "Solution Design", "level": "advanced" },
-        { "name": "Technical Demos & PoCs", "level": "advanced" },
-        { "name": "Architecture Recommendations", "level": "advanced" },
-        { "name": "Stakeholder Engagement", "level": "advanced" },
-        { "name": "Agile Collaboration", "level": "advanced" }
-      ]
-    },
-    {
       "title": "Backend & Cloud",
       "skills": [
         { "name": "Java", "level": "advanced" },
@@ -105,6 +94,17 @@
         { "name": "Docker", "level": "intermediate" },
         { "name": "Azure", "level": "intermediate" },
         { "name": "GitHub Actions", "level": "intermediate" }
+      ]
+    },
+    {
+      "title": "Solutioning",
+      "skills": [
+        { "name": "Client Discovery", "level": "advanced" },
+        { "name": "Solution Design", "level": "advanced" },
+        { "name": "Technical Demos & PoCs", "level": "advanced" },
+        { "name": "Architecture Recommendations", "level": "advanced" },
+        { "name": "Stakeholder Engagement", "level": "advanced" },
+        { "name": "Agile Collaboration", "level": "advanced" }
       ]
     },
     {

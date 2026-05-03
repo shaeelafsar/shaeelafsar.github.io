@@ -57,12 +57,12 @@ export function Hero() {
             </Heading>
             <FadeIn delay={0.22} className="mt-6">
               <p className="typing-glitch inline-flex rounded-[var(--radius-pill)] border border-border/80 bg-card/60 px-4 py-2 font-mono text-[length:var(--text-meta)] uppercase tracking-[0.16em] text-accent shadow-[var(--shadow-neon-sm)]">
-                <TypeWriter text="Cloud platforms // product delivery" delay={0.22} />
+                <TypeWriter text="Backend systems // cloud architecture" delay={0.22} />
               </p>
             </FadeIn>
             <FadeIn delay={0.35} className="mt-8 max-w-2xl">
               <p className="text-[length:var(--text-body-lg)] leading-8 text-muted-foreground md:leading-9">
-                Customer-focused technology leader with 10+ years of experience in software engineering and sales at Fortune 500 companies. I bridge technical and business priorities to deliver scalable cloud solutions that drive measurable outcomes.
+                Backend-focused engineer with 6+ years building distributed systems, microservices, and cloud-native APIs at Fortune 500 companies. I design and ship the services behind the product — scalable, reliable, and built to last.
               </p>
             </FadeIn>
             <FadeIn delay={0.55} className="mt-10">
@@ -98,16 +98,16 @@ export function Hero() {
                     <div className="absolute left-8 top-8 flex items-center gap-3">
                       <span className="pulse-dot accent-pulse" />
                       <span className="font-mono text-[length:var(--text-meta)] uppercase tracking-[0.18em] text-[color:var(--color-neon-cyan)]">
-                        Systems view
+                        Backend systems
                       </span>
                     </div>
                     <div className="absolute left-8 top-24 h-20 w-20 rounded-full bg-accent-soft blur-2xl" />
                     <div className="absolute right-10 top-14 h-28 w-28 rounded-full border border-border bg-card/80 shadow-[var(--shadow-sm)]" />
                     <div className="absolute bottom-8 left-8 right-8 grid grid-cols-3 gap-3">
                       {[
-                        ["Scale", "Cloud"],
-                        ["Focus", "Delivery"],
-                        ["Mode", "Lead"],
+                        ["Scale", "Distributed"],
+                        ["Focus", "Backend"],
+                        ["Stack", "JVM + AWS"],
                       ].map(([label, value]) => (
                         <div
                           key={label}
@@ -132,7 +132,7 @@ export function Hero() {
                         <span className="pulse-dot accent-pulse" />
                       </div>
                       <p className="mt-4 text-lg font-medium text-foreground">
-                        Scalable cloud architectures, enterprise systems, and stakeholder alignment.
+                        Distributed backend systems, cloud-native APIs, and enterprise-scale architecture.
                       </p>
                     </div>
                   </NeonGlow>

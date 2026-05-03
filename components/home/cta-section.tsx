@@ -19,10 +19,10 @@ export function CtaSection() {
                   Let&apos;s work together
                 </p>
                 <Heading as="h2" size="h2" className="mt-4 text-balance neon-text">
-                  If you need an engineering leader who bridges technical depth with business impact, I&apos;d love to connect.
+                  If you need a backend engineer who can architect distributed systems and ship reliable cloud-native services, let&apos;s connect.
                 </Heading>
                 <p className="mt-6 max-w-2xl text-[length:var(--text-body)] leading-8 text-muted-foreground">
-                  I enjoy collaborating on scalable cloud architectures, enterprise platform modernization, and building engineering teams that ship with clarity and confidence.
+                  I enjoy collaborating on high-throughput backend systems, API platform design, cloud infrastructure, and building engineering teams that ship with confidence.
                 </p>
                 <div className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
                   <Magnetic className="w-full sm:w-auto">

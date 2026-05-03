@@ -29,8 +29,8 @@ export const siteConfig = {
   author: "Shaeel Afsar",
   authorTitle: "Lead Software Engineer",
   description:
-    "Personal professional website, portfolio, and resume for Shaeel Afsar — Lead Software Engineer based in Chicago.",
-  tagline: "Bridging technical excellence with business impact.",
+    "Personal website and portfolio for Shaeel Afsar — Lead Software Engineer specializing in backend systems, microservices, and cloud-native architecture.",
+  tagline: "Backend systems · Cloud architecture · Enterprise scale",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://shaeelafsar.github.io",
   navigation: navigationLinks,
   socials: socialLinks,

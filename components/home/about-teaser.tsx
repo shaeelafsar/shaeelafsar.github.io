@@ -15,10 +15,10 @@ export function AboutTeaser() {
             About me
           </p>
           <Heading as="h2" size="h2" className="max-w-3xl text-balance">
-            I care about building scalable solutions that bridge technical excellence with real business impact.
+            I build the backend systems that power enterprise products — scalable, reliable, and cloud-native.
           </Heading>
           <p className="max-w-2xl text-[length:var(--text-body)] leading-8 text-muted-foreground">
-            With experience across Fortune 500 companies like Amazon, United Airlines, and UnitedHealth Group, I enjoy the intersection of engineering discipline, stakeholder alignment, and delivering measurable outcomes.
+            With experience across Fortune 500 companies like Amazon, United Airlines, and UnitedHealth Group, I specialize in Java/Spring Boot microservices, AWS cloud infrastructure, and designing APIs that serve millions of requests.
           </p>
           <Magnetic className="inline-flex">
             <Button as="a" href="/about" variant="ghost">
@@ -62,7 +62,7 @@ export function AboutTeaser() {
                     <span className="pulse-dot accent-pulse" />
                   </div>
                   <p className="mt-4 text-lg font-medium text-foreground">
-                    Scalable backend services, clear stakeholder communication, and measurable business outcomes across every engagement.
+                    High-throughput backend services, clean API contracts, and cloud architectures built for reliability at scale.
                   </p>
                 </div>
               </div>

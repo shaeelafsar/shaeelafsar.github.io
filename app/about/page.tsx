@@ -88,15 +88,15 @@ export default async function AboutPage() {
               What I do
             </p>
             <Heading as="h2" size="h2" className="max-w-xl">
-              I approach software as a blend of engineering discipline, business acumen, and clear communication.
+              I approach software as a backend-first engineer — designing distributed systems, cloud APIs, and microservices that are built for scale and reliability.
             </Heading>
           </FadeIn>
           <FadeIn delay={0.15} className="space-y-6">
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              The best engineering work starts with understanding the problem deeply. That means listening to stakeholders, defining clear requirements, and building solutions that are reliable, scalable, and aligned with real business outcomes.
+              The best engineering work starts with understanding the problem deeply. That means designing clean API contracts, choosing the right data models, and building services that handle failure gracefully at scale.
             </p>
             <p className="text-[length:var(--text-body)] leading-8 text-muted-foreground">
-              I care about the details that compound — architecture decisions that enable future growth, clear documentation that keeps teams aligned, and proof-of-concepts that build confidence before full commitments.
+              I care about the details that compound — architecture decisions that enable future growth, service boundaries that keep teams autonomous, and observability that catches issues before customers do.
             </p>
           </FadeIn>
         </Container>
