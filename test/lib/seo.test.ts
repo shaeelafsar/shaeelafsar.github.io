@@ -24,7 +24,7 @@ const sampleProject = {
   image: "/images/projects/personal-website-foundation.svg",
   featured: true,
   liveUrl: "https://shaeelafsar.github.io",
-  githubUrl: "https://github.com/shaeelafsar/personal-website",
+  githubUrl: "https://github.com/shaeelafsar/shaeelafsar.github.io",
   content: "## Problem",
 };
 
@@ -46,7 +46,7 @@ describe("seo helpers", () => {
 
     expect(createProjectStructuredData(sampleProject)).toMatchObject({
       image: "https://shaeelafsar.github.io/images/projects/personal-website-foundation.svg",
-      sameAs: ["https://shaeelafsar.github.io", "https://github.com/shaeelafsar/personal-website"],
+      sameAs: ["https://shaeelafsar.github.io", "https://github.com/shaeelafsar/shaeelafsar.github.io"],
     });
   });
 

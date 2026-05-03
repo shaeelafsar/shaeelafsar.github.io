@@ -1,14 +1,12 @@
 /**
  * Comprehensive E2E tests against the LIVE deployed site:
- *   https://shaeelafsar.github.io/personal-website/
+ *   https://shaeelafsar.github.io/
  *
  * Run with:
  *   npx playwright test --config=playwright.live.config.ts
  *
- * NOTE: All navigation uses absolute URLs because the site lives under a
- * sub-path (/personal-website) on GitHub Pages. Using relative paths with a
- * baseURL that includes the sub-path would cause Playwright to resolve "/" as
- * the root origin (404), so we always build the full URL explicitly.
+ * NOTE: These tests target the root GitHub Pages domain directly, so site
+ * paths can resolve from the origin without a repository sub-path prefix.
  */
 
 import { expect, test, type Page } from "@playwright/test";
@@ -20,16 +18,16 @@ import { expect, test, type Page } from "@playwright/test";
 /** Origin only — used when we already have the full absolute path */
 const ORIGIN = "https://shaeelafsar.github.io";
 
-/** Base URL including the GitHub Pages sub-path */
-const BASE = `${ORIGIN}/personal-website`;
+/** Base URL for the live GitHub Pages site */
+const BASE = ORIGIN;
 
 const PAGES = [
-  { name: "Home",     path: "/personal-website/",         title: /Shaeel Afsar/i },
-  { name: "About",    path: "/personal-website/about",    title: /Shaeel Afsar/i },
-  { name: "Projects", path: "/personal-website/projects", title: /Projects/i },
-  { name: "Blog",     path: "/personal-website/blog",     title: /Blog/i },
-  { name: "Resume",   path: "/personal-website/resume",   title: /Shaeel Afsar/i },
-  { name: "Contact",  path: "/personal-website/contact",  title: /Contact/i },
+  { name: "Home",     path: "/",         title: /Shaeel Afsar/i },
+  { name: "About",    path: "/about",    title: /Shaeel Afsar/i },
+  { name: "Projects", path: "/projects", title: /Projects/i },
+  { name: "Blog",     path: "/blog",     title: /Blog/i },
+  { name: "Resume",   path: "/resume",   title: /Shaeel Afsar/i },
+  { name: "Contact",  path: "/contact",  title: /Contact/i },
 ] as const;
 
 const NAV_LABELS = ["Home", "About", "Projects", "Blog", "Resume", "Contact"] as const;
@@ -43,15 +41,12 @@ const VIEWPORTS = {
 /**
  * Navigate to a path. Accepts either:
  * - An absolute URL (starts with "http")
- * - A site-absolute path starting with "/personal-website/..." → prepends ORIGIN
- * - A short path like "/about" → prepends BASE
+ * - A site-absolute path starting with "/" → prepends ORIGIN
  */
 async function goto(page: Page, path: string) {
   let url: string;
   if (path.startsWith("http")) {
     url = path;
-  } else if (path.startsWith("/personal-website")) {
-    url = `${ORIGIN}${path}`;
   } else {
     url = `${BASE}${path}`;
   }
@@ -84,18 +79,18 @@ test.describe("navigation", () => {
 
     for (const label of NAV_LABELS) {
       // Navigate fresh to home each time to avoid broken history
-      await goto(page, "/personal-website/");
+      await goto(page, "/");
       const link = page.getByTestId("site-nav").getByRole("link", { name: label });
       await expect(link, `${label} link visible`).toBeVisible();
       await link.click();
       await page.waitForLoadState("networkidle");
-      expect(page.url(), `after clicking ${label}`).toContain("/personal-website");
+      expect(page.url(), `after clicking ${label}`).toContain(ORIGIN);
     }
   });
 
   test("mobile menu opens and closes", async ({ page }) => {
     await page.setViewportSize(VIEWPORTS.mobile);
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
 
     const trigger = page.getByTestId("mobile-menu-trigger");
     await expect(trigger, "hamburger trigger visible on mobile").toBeVisible();
@@ -115,7 +110,7 @@ test.describe("navigation", () => {
 
   test("mobile nav links navigate correctly", async ({ page }) => {
     await page.setViewportSize(VIEWPORTS.mobile);
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
 
     await page.getByTestId("mobile-menu-trigger").click();
     const drawer = page.getByTestId("mobile-menu-panel");
@@ -123,8 +118,8 @@ test.describe("navigation", () => {
 
     // Click "About" in the mobile menu
     await drawer.getByRole("link", { name: "About" }).click();
-    await page.waitForURL(/\/personal-website\/about/);
-    expect(page.url()).toContain("/personal-website/about");
+    await page.waitForURL(/\/about$/);
+    expect(page.url()).toContain("/about");
   });
 });
 
@@ -134,7 +129,7 @@ test.describe("navigation", () => {
 
 test.describe("content verification", () => {
   test("home hero shows name and role text", async ({ page }) => {
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
     await expect(page.getByRole("heading", { level: 1, name: /Shaeel Afsar/i })).toBeVisible();
     await expect(
       page.getByText(/frontend|engineer|developer|product/i).first(),
@@ -142,7 +137,7 @@ test.describe("content verification", () => {
   });
 
   test("projects page lists at least one project", async ({ page }) => {
-    await goto(page, "/personal-website/projects");
+    await goto(page, "/projects");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     const projectLinks = page.locator('a[href*="/projects/"]');
     await expect(projectLinks.first()).toBeVisible();
@@ -151,19 +146,19 @@ test.describe("content verification", () => {
   });
 
   test("about page shows bio content", async ({ page }) => {
-    await goto(page, "/personal-website/about");
+    await goto(page, "/about");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     const paras = page.locator("main p");
     await expect(paras.first()).toBeVisible();
   });
 
   test("resume page has experience section", async ({ page }) => {
-    await goto(page, "/personal-website/resume");
+    await goto(page, "/resume");
     await expect(page.getByTestId("experience-timeline")).toBeVisible();
   });
 
   test("contact page has a contact form or contact info", async ({ page }) => {
-    await goto(page, "/personal-website/contact");
+    await goto(page, "/contact");
     const form = page.getByTestId("contact-form");
     await expect(form).toBeVisible();
   });
@@ -175,7 +170,7 @@ test.describe("content verification", () => {
 
 test.describe("blog", () => {
   test("blog index loads and shows at least one post", async ({ page }) => {
-    await goto(page, "/personal-website/blog");
+    await goto(page, "/blog");
     await expect(page.getByTestId("blog-post-list")).toBeVisible();
     const postLinks = page.locator('a[href*="/blog/"]');
     await expect(postLinks.first()).toBeVisible();
@@ -184,7 +179,7 @@ test.describe("blog", () => {
   });
 
   test("blog post page loads with article content", async ({ page }) => {
-    await goto(page, "/personal-website/blog");
+    await goto(page, "/blog");
     const firstPost = page.locator('a[href*="/blog/"]').first();
     const href = await firstPost.getAttribute("href");
     await firstPost.click();
@@ -196,7 +191,7 @@ test.describe("blog", () => {
   });
 
   test("/blog/welcome post loads", async ({ page }) => {
-    const response = await goto(page, "/personal-website/blog/welcome");
+    const response = await goto(page, "/blog/welcome");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   });
@@ -229,14 +224,14 @@ test.describe("SEO meta tags", () => {
   }
 
   test("home page has og:image", async ({ page }) => {
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
     await expect(
       page.locator('meta[property="og:image"]'),
     ).toHaveAttribute("content", /\S+/);
   });
 
   test("home page has canonical link", async ({ page }) => {
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
     const canonical = page.locator('link[rel="canonical"]');
     const count = await canonical.count();
     if (count > 0) {
@@ -253,7 +248,7 @@ test.describe("responsive layout", () => {
   for (const [name, viewport] of Object.entries(VIEWPORTS) as [keyof typeof VIEWPORTS, { width: number; height: number }][]) {
     test(`home page renders without horizontal overflow at ${name} (${viewport.width}px)`, async ({ page }) => {
       await page.setViewportSize(viewport);
-      await goto(page, "/personal-website/");
+      await goto(page, "/");
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
       const overflow = await page.evaluate(() =>
@@ -266,13 +261,13 @@ test.describe("responsive layout", () => {
   test("mobile shows hamburger, desktop shows nav", async ({ page }) => {
     // Mobile
     await page.setViewportSize(VIEWPORTS.mobile);
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
     await expect(page.getByTestId("mobile-menu-trigger")).toBeVisible();
     await expect(page.getByTestId("site-nav")).toBeHidden();
 
     // Desktop
     await page.setViewportSize(VIEWPORTS.desktop);
-    await goto(page, "/personal-website/");
+    await goto(page, "/");
     await expect(page.getByTestId("site-nav")).toBeVisible();
     await expect(page.getByTestId("mobile-menu-trigger")).toBeHidden();
   });
@@ -284,7 +279,7 @@ test.describe("responsive layout", () => {
 
 test.describe("internal links", () => {
   test("projects page links resolve to valid project detail pages", async ({ page }) => {
-    await goto(page, "/personal-website/projects");
+    await goto(page, "/projects");
     const projectLinks = await page.locator('a[href*="/projects/"]').all();
     expect(projectLinks.length, "has project links").toBeGreaterThan(0);
 
@@ -295,7 +290,7 @@ test.describe("internal links", () => {
   });
 
   test("blog post links from index resolve correctly", async ({ page }) => {
-    await goto(page, "/personal-website/blog");
+    await goto(page, "/blog");
     const postLinks = await page.locator('a[href*="/blog/"]').all();
     expect(postLinks.length, "has blog post links").toBeGreaterThan(0);
 
@@ -311,10 +306,10 @@ test.describe("internal links", () => {
 
 test.describe("visual regression screenshots", () => {
   const screenshotRoutes = [
-    { name: "home",     path: "/personal-website/" },
-    { name: "projects", path: "/personal-website/projects" },
-    { name: "blog",     path: "/personal-website/blog" },
-    { name: "resume",   path: "/personal-website/resume" },
+    { name: "home",     path: "/" },
+    { name: "projects", path: "/projects" },
+    { name: "blog",     path: "/blog" },
+    { name: "resume",   path: "/resume" },
   ] as const;
 
   for (const vp of (["desktop", "mobile"] as const)) {

@@ -25,6 +25,8 @@
 - **2026-05-03T11:07:20.721-05:00** — Lightweight motion scales best here when split into small client primitives (`ScrollReveal`, `CountUp`) that honor reduced motion and feed server-rendered sections; React `ViewTransition` can wrap the page shell while existing CSS handles the actual cross-page fade.
 - **2026-05-03T12:08:49-05:00** — GitHub Pages static export deployment validated against live site at `https://shaeelafsar.github.io/personal-website/`. All 39 integration tests passed: home/about/blog/projects/resume pages, desktop + mobile navigation, SEO tags, responsive layouts (375/768/1280px), and visual regression snapshots. No content or rendering issues on production.
 - **2026-05-03T12:08:49-05:00** — The neon theme and progressive motion enhancements validated successfully on live site. Mobile menu closes via Escape reliably. Hero hero glitch and particle effects degrade correctly on coarse pointers. All lighthouse-critical elements render without jank.
+- **2026-05-03T14:10:43.947-05:00** — Once the repo moves to `shaeelafsar.github.io`, GitHub Pages serves the site from the domain root, so `basePath` must stay unset and canonical/site URLs should resolve from `https://shaeelafsar.github.io`.
+- **2026-05-03T14:10:43.947-05:00** — Playwright 1.59 accepts reduced-motion defaults in config via `use.contextOptions.reducedMotion`, not a top-level `use.reducedMotion`; this matters because Next build type-checks `playwright.live.config.ts`.
 
 ## Notifications
 
